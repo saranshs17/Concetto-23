@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HackfestApp</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_timeline">Timeline</string>
+    <string name="menu_problemstatement">Problem Statement</string>
+    <string name="menu_noticeboard">Notice Board</string>
+    <string name="menu_mainsection">Main Section</string>
+    <string name="menu_supportsection">Support Section</string>
+    <string name="menu_rules">Rules</string>
+    <string name="menu_contactus">Contact Us</string>
+    <string name="menu_aboutus">About Us</string>
+
 </resources>

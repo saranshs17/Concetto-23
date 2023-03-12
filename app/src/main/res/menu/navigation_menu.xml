@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <item
+        android:title="@string/menu_mainsection">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/baseline_home_24"
+                    android:title="@string/menu_home" />
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/baseline_person_24"
+                    android:title="@string/menu_profile" />
+                <item
+                    android:id="@+id/nav_timeline"
+                    android:icon="@drawable/baseline_access_time_filled_24"
+                    android:title="@string/menu_timeline" />
+                <item
+                    android:id="@+id/nav_problemstatement"
+                    android:icon="@drawable/baseline_view_list_24"
+                    android:title="@string/menu_problemstatement"/>
+
+                <item
+                    android:id="@+id/nav_noticeboard"
+                    android:icon="@drawable/baseline_notifications_24"
+                    android:title="@string/menu_noticeboard" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:title="@string/menu_supportsection">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_rules"
+                    android:icon="@drawable/baseline_rule_24"
+                    android:title="@string/menu_rules"/>
+
+                <item
+                    android:id="@+id/nav_contactus"
+                    android:icon="@drawable/baseline_call_24"
+                    android:title="@string/menu_contactus"/>
+                <item
+                    android:id = "@+id/nav_aboutus"
+                    android:icon="@drawable/baseline_description_24"
+                    android:title="@string/menu_aboutus"
+                    />
+            </group>
+        </menu>
+    </item>
+
+</menu>
