@@ -11,5 +11,6 @@
     <string name="menu_rules">Rules</string>
     <string name="menu_contactus">Contact Us</string>
     <string name="menu_aboutus">About Us</string>
+    <string name="hackfest">HACKFEST</string>
 
 </resources>

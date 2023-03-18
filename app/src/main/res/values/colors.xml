@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="pitchblack">#28000000</color>
+    <color name="border">#04F8F8</color>
 </resources>
