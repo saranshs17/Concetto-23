@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="pitchblack">#28000000</color>
+    <color name="snackbarbackground">#14213d</color>
+    <color name="snackbarTextColor">#edf2f4</color>
 </resources>

@@ -11,5 +11,7 @@
     <string name="menu_rules">Rules</string>
     <string name="menu_contactus">Contact Us</string>
     <string name="menu_aboutus">About Us</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
