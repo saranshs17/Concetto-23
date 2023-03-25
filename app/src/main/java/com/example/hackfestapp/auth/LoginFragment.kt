@@ -40,7 +40,14 @@ class loginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
             progressBar.visibility=visibility
             val teamName=binding.teamNameEditTextLogin.text.toString()
             val password=binding.passwordLogin.text.toString()
-            viewModel.login(teamName,password)
+            if(teamName.isEmpty()){
+                Toast.makeText(context,"Player Email is required",Toast.LENGTH_LONG).show()
+            }else if(password.isEmpty()){
+                Toast.makeText(context,"Password is required",Toast.LENGTH_LONG).show()
+            }else{
+                viewModel.login(teamName,password)
+            }
+
         }
 
 
