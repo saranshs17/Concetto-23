@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -49,16 +50,28 @@ class AboutUsAdapter : RecyclerView.Adapter<AboutUsAdapter.AboutUsViewHolder>() 
             .centerCrop()
             .circleCrop()
             .into(holder.binding.orgImage)
-
-        holder.binding.orgLinkedin.setOnClickListener {
-            val url = organizer.linkedin_url
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(it.context,intent,null)
+        if(organizer.linkedin_url != ""){
+            holder.binding.orgLinkedin.setOnClickListener {
+                val url = organizer.linkedin_url
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(it.context,intent,null)
+            }
+        }else{
+            holder.binding.orgLinkedin.setOnClickListener {
+                Log.d("tag","Not available at Linkedin")
+            }
         }
-        holder.binding.orgInsta.setOnClickListener {
-            val url = organizer.insta_url
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(it.context,intent,null)
+        if(organizer.insta_url != ""){
+            holder.binding.orgInsta.setOnClickListener {
+                val url = organizer.insta_url
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(it.context,intent,null)
+            }
+        }
+        else{
+            holder.binding.orgInsta.setOnClickListener {
+                Log.d("tag","Not available at Insta")
+            }
         }
 
     }
