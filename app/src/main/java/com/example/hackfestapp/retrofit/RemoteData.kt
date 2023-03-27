@@ -17,15 +17,10 @@ class RemoteData {
     ):Api{
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(OkHttpClient.Builder().also { client->
-                client.connectTimeout(30, TimeUnit.SECONDS)
-                client.readTimeout(30,TimeUnit.SECONDS)
-                if(BuildConfig.DEBUG){
-                    val loggin=HttpLoggingInterceptor();
-                    loggin.setLevel(HttpLoggingInterceptor.Level.BODY)
-                    client.addInterceptor(loggin)
-                }
-            }.build()).addConverterFactory(GsonConverterFactory.create()).build().create(api)
+            .client(OkHttpClient.Builder().build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(api)
 
     }
 }

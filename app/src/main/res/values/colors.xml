@@ -8,8 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="pitchblack">#28000000</color>
+    <color name="pitchblack">#222222</color>
     <color name="border">#04F8F8</color>
+    <color name="dark_translucent">#16000000</color>
     <color name="snackbarbackground">#14213d</color>
     <color name="snackbarTextColor">#edf2f4</color>
 </resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp"
+    app:cardCornerRadius="20dp"
+    android:id="@+id/aboutus_card"
+    android:backgroundTintMode="src_in"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/border"
+        >
+        <ImageView
+            android:src="@drawable/baseline_person_24_white"
+            android:id="@+id/org_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="image"
+            android:background="@color/black"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            >
+
+            <TextView
+                android:text="Name"
+                android:id="@+id/org_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:text="postion"
+                android:id="@+id/org_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:contentDescription="Linkedin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/org_linkedin"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/linkedin_logo"
+                    android:background="@color/black"
+                    />
+                <ImageView
+                    android:contentDescription="Instagram"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/org_insta"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/insta_logo"
+                    android:background="@color/black"
+                    android:layout_marginStart="10dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

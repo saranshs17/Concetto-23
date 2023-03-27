@@ -44,7 +44,7 @@
                 android:textColorHint="@color/black"
                 android:layout_marginTop="60dp"
                 android:textAlignment="textStart"
-                android:drawableEnd="@drawable/person"
+                android:drawableStart="@drawable/person"
                 android:padding="10dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginRight="20dp"
@@ -65,7 +65,7 @@
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:drawableEnd="@drawable/lock"
+                android:drawableStart="@drawable/lock"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
 

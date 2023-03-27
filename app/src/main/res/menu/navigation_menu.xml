@@ -17,6 +17,10 @@
                     android:icon="@drawable/baseline_person_24"
                     android:title="@string/menu_profile" />
                 <item
+                    android:id="@+id/nav_scanqr"
+                    android:icon="@drawable/baseline_qr_code_scanner_24"
+                    android:title="@string/menu_qrscan"/>
+                <item
                     android:id="@+id/nav_timeline"
                     android:icon="@drawable/baseline_access_time_filled_24"
                     android:title="@string/menu_timeline" />
