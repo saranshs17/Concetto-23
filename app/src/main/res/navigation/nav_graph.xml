@@ -7,54 +7,54 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.hackfestapp.ui.homefragment.HomeFragment"
+        android:name="com.iitism.hackfestapp.ui.homefragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.hackfestapp.ui.profilefragment.ProfileFragment"
+        android:name="com.iitism.hackfestapp.ui.profilefragment.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_timeline"
-        android:name="com.example.hackfestapp.ui.timelinefragment.TimelineFragment"
+        android:name="com.iitism.hackfestapp.ui.timelinefragment.TimelineFragment"
         android:label="@string/menu_timeline"
         tools:layout="@layout/fragment_timeline" />
     <fragment
         android:id="@+id/nav_problemstatement"
-        android:name="com.example.hackfestapp.ui.problemstatement.ProblemStatementFragment"
+        android:name="com.iitism.hackfestapp.ui.problemstatement.ProblemStatementFragment"
         android:label="@string/menu_problemstatement"
         tools:layout="@layout/fragment_problem_statement"/>
 
     <fragment
         android:id="@+id/nav_noticeboard"
         android:label="@string/menu_noticeboard"
-        android:name="com.example.hackfestapp.ui.noticeboardfragment.NoticeBoardFragment"
+        android:name="com.iitism.hackfestapp.ui.noticeboardfragment.NoticeBoardFragment"
         tools:layout="@layout/fragment_notice_board"/>
 
     <fragment
         android:id="@+id/nav_rules"
         android:label="@string/menu_rules"
-        android:name="com.example.hackfestapp.ui.rules.RulesFragment"
+        android:name="com.iitism.hackfestapp.ui.rules.RulesFragment"
         tools:layout="@layout/fragment_rules"/>
 
     <fragment
         android:id="@+id/nav_aboutus"
         android:label="@string/menu_aboutus"
-        android:name="com.example.hackfestapp.ui.aboutus.AboutUsFragment"
+        android:name="com.iitism.hackfestapp.ui.aboutus.AboutUsFragment"
         tools:layout="@layout/fragment_about_us"/>
 
     <fragment
         android:id="@+id/nav_contactus"
         android:label="@string/menu_contactus"
-        android:name="com.example.hackfestapp.ui.contactus.ContactUsFragment"
+        android:name="com.iitism.hackfestapp.ui.contactus.ContactUsFragment"
         tools:layout="@layout/fragment_contact_us"/>
     <fragment
         android:id="@+id/nav_scanqr"
         android:label="@string/menu_qrscan"
-        android:name="com.example.hackfestapp.ui.scanqr.ScanQrFragment"
+        android:name="com.iitism.hackfestapp.ui.scanqr.ScanQrFragment"
         tools:layout="@layout/fragment_scanqr"/>
 
 

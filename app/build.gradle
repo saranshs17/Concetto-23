@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.hackfestapp'
+    namespace 'com.iitism.hackfestapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.hackfestapp"
+        applicationId "com.iitism.hackfestapp"
         minSdk 21
         targetSdk 33
         versionCode 1

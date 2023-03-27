@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.hackfestapp.auth.loginFragment"
+        android:name="com.iitism.hackfestapp.auth.loginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 
