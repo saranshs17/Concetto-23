@@ -8,31 +8,48 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import com.iitism.hackfestapp.MainActivity
+import com.iitism.hackfestapp.R
 import com.iitism.hackfestapp.auth.Refractor.LoginRepository
 import com.iitism.hackfestapp.auth.Refractor.LoginViewModel
 import com.iitism.hackfestapp.auth.Refractor.BaseFragment
+import com.iitism.hackfestapp.changePassword.ChangePassword
 import com.iitism.hackfestapp.databinding.FragmentLoginBinding
 import com.iitism.hackfestapp.retrofit.AuthApiLogin
 import com.iitism.hackfestapp.retrofit.Resource
 
-class loginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRepository>() {
+class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRepository>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success->{
-                    Log.d("Login", it.value.message)
-                    val user= User(it.value.data.Player_Email,it.value.data.Team_Name)
+                    Log.d("Login", it.value.data.toString())
+//                    val user= User(it.value.data.Player_Email,it.value.data.Team_Name,it.value.data.Player_Mobile,it.value.data.problem_statement_and_solution,it.value.data.Player_Organisation)
+                    val intent=Intent(context,MainActivity::class.java)
+                    intent.putExtra("playerEmail",it.value.data.Player_Email)
+                    intent.putExtra("teamName",it.value.data.Team_Name)
+                    intent.putExtra("playerMobile",it.value.data.Player_Mobile)
+                    intent.putExtra("problemStatement",it.value.data.problem_statement_and_solution)
+                    intent.putExtra("playerOrgainzation",it.value.data.Player_Organisation)
                     Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_LONG).show()
-                    startActivity(Intent(context,MainActivity::class.java))
+                    startActivity(intent)
                 }
                 is Resource.Failure->{
                     Toast.makeText(requireContext(), it.errorBody.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         })
+        binding.DontSignupTextView.setOnClickListener{
+            val fragmentManager=parentFragment?.parentFragmentManager
+            val fragmentTransaction=fragmentManager?.beginTransaction()
+            val nextFragment=ChangePassword()
+            fragmentTransaction?.replace(R.id.fragmentContainerView,nextFragment)?.commit()
+//
+
+        }
         binding.LoginButton.setOnClickListener{
             val progressBar=binding.loginProgressBar
             val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
@@ -49,8 +66,6 @@ class loginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding, LoginRe
             }
 
         }
-
-
     }
 
 

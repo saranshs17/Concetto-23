@@ -10,6 +10,15 @@
         android:id="@+id/loginFragment"
         android:name="com.iitism.hackfestapp.auth.loginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_changePassword"
+            app:destination="@id/changePassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.iitism.hackfestapp.changePassword.ChangePassword"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 
 </navigation>
