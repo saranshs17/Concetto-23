@@ -28,8 +28,6 @@ class AboutUsAdapter : RecyclerView.Adapter<AboutUsAdapter.AboutUsViewHolder>() 
 
     fun getContext(){return }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AboutUsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = AboutUsCardViewBinding.inflate(layoutInflater,parent,false)
