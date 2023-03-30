@@ -1,5 +1,6 @@
 package com.iitism.hackfestapp
 
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val playerEmail=intent.getStringExtra("playerEmail")
+        val teamName=intent.getStringExtra("teamName")
+        val playerMobile=intent.getLongExtra("playerMobile",0)
+        val problemStatement=intent.getStringExtra("problemStatement")
+        val playerOrganization=intent.getStringExtra("playerOrgainzation")
+        val teamId=intent.getStringExtra("teamId")
 
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
