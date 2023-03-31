@@ -1,5 +1,6 @@
 package com.iitism.hackfestapp.ui.aboutus
 
+import android.app.ProgressDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,18 +21,22 @@ class AboutUsFragment : Fragment() {
     private val adapter = AboutUsAdapter()
     private lateinit var binding : FragmentAboutUsBinding
     private lateinit var viewModel: AboutUsViewModel
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAboutUsBinding.inflate(inflater)
+        progressDialog = ProgressDialog(context)
+        progressDialog.setMessage("Loading ...")
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        progressDialog.show()
         viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api)))
             .get(AboutUsViewModel::class.java)
         binding.recyclerView.adapter = adapter
@@ -40,10 +45,9 @@ class AboutUsFragment : Fragment() {
             viewModel.getAllOrganizers()
             this.launch(Dispatchers.Main) {
                 adapter.setorganizerList(viewModel.organizerList)
+                progressDialog.dismiss()
             }
         }
-
-
     }
 
 }
