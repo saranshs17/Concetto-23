@@ -14,11 +14,15 @@
         <action
             android:id="@+id/action_loginFragment_to_changePassword"
             app:destination="@id/changePassword" />
+        <action
+            android:id="@+id/action_loginFragment_to_nav_graph"
+            app:destination="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/changePassword"
         android:name="com.iitism.hackfestapp.changePassword.ChangePassword"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <include app:graph="@navigation/nav_graph" />
 
 </navigation>

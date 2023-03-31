@@ -1,6 +1,8 @@
 package com.iitism.hackfestapp.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import androidx.preference.PreferenceManager
 import com.iitism.hackfestapp.MainActivity
 import com.iitism.hackfestapp.R
 import com.iitism.hackfestapp.auth.Refractor.LoginRepository
@@ -18,22 +21,34 @@ import com.iitism.hackfestapp.changePassword.ChangePassword
 import com.iitism.hackfestapp.databinding.FragmentLoginBinding
 import com.iitism.hackfestapp.retrofit.AuthApiLogin
 import com.iitism.hackfestapp.retrofit.Resource
+import java.util.prefs.Preferences
 
 class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRepository>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val intent=Intent(this.context,MainActivity::class.java)
+        val sharedPreferences=this.activity?.getSharedPreferences("myPref",Context.MODE_PRIVATE)
+        val editor=sharedPreferences?.edit()
+        val teamId=sharedPreferences?.getString("teamId","")
+        if(teamId!=""){
+            startActivity(intent)
+        }
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
                 is Resource.Success->{
                     Log.d("Login", it.value.data.toString())
 //                    val user= User(it.value.data.Player_Email,it.value.data.Team_Name,it.value.data.Player_Mobile,it.value.data.problem_statement_and_solution,it.value.data.Player_Organisation)
-                    val intent=Intent(context,MainActivity::class.java)
-                    intent.putExtra("playerEmail",it.value.data.Player_Email)
-                    intent.putExtra("teamName",it.value.data.Team_Name)
-                    intent.putExtra("playerMobile",it.value.data.Player_Mobile)
-                    intent.putExtra("problemStatement",it.value.data.problem_statement_and_solution)
-                    intent.putExtra("playerOrgainzation",it.value.data.Player_Organisation)
+                    editor?.apply {
+                        putString("teamId",it.value.data.Team_Id.toString())
+                        putString("email",it.value.data.Player_Email.toString())
+                        putString("teamName",it.value.data.Team_Name)
+                        putLong("playerMobile",it.value.data.Player_Mobile)
+                        putString("problemStatement",it.value.data.problem_statement_and_solution)
+                        putString("playerOrganization",it.value.data.Player_Organisation)
+                        apply()
+                    }
+
                     Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_LONG).show()
                     startActivity(intent)
                 }
@@ -42,6 +57,7 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
                 }
             }
         })
+
         binding.DontSignupTextView.setOnClickListener{
             val fragmentManager=parentFragment?.parentFragmentManager
             val fragmentTransaction=fragmentManager?.beginTransaction()

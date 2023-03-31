@@ -24,7 +24,7 @@
                 <item
                     android:id="@+id/nav_timeline"
                     android:icon="@drawable/baseline_access_time_filled_24"
-                    android:title="@string/menu_timeline" />
+                    android:title="@string/menu_timeline" />https://github.com/soCallmeAdityaKumar/hackfestApp/pull/2/conflict?name=app%252Fsrc%252Fmain%252Fres%252Fmenu%252Fnavigation_menu.xml&ancestor_oid=9e71835f80f6d3fb8ca627dfaf974a789ed6ba66&base_oid=2c589aee5eb6a94932db2e06d76fbcda6f05d8b6&head_oid=11d08feaff929879900b297593483ef282d7f802
                 <item
                     android:id="@+id/nav_problemstatement"
                     android:icon="@drawable/baseline_view_list_24"
