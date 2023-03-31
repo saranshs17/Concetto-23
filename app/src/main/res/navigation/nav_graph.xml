@@ -56,6 +56,17 @@
         android:label="@string/menu_qrscan"
         android:name="com.iitism.hackfestapp.ui.scanqr.ScanQrFragment"
         tools:layout="@layout/fragment_scanqr"/>
+    <fragment
+        android:id="@id/nav_gatepass"
+        android:label="Gate Pass"
+        android:name="com.iitism.hackfestapp.ui.gatepass.GatePassFragment"
+        tools:layout="@layout/fragment_gate_pass"/>
+
+    <fragment
+        android:id="@id/nav_adminscanqr"
+        android:label="Admin Scan Qr"
+        android:name="com.iitism.hackfestapp.ui.adminscanqr.AdminScanQrFragment"
+        tools:layout="@layout/fragment_admin_scan_qr"/>
 
 
 

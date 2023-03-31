@@ -1,22 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.scanqr.ScanQrFragment">
+    tools:context=".ui.scanqr.ScanQrFragment"
+    android:layout_marginTop="80dp">
 
 
-    <Button
-        android:id="@+id/scan_qr_button"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/notmarkedcard"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_qrscan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/counter"
-        />
+        android:elevation="20dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/qr_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="40dp"
+            >
+
+            <TextView
+                android:id="@+id/attendance_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Scan Qr Code to Mark Attendance"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                />
+            <Button
+                android:id="@+id/scan_qr_button"
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scan Qr"
+                android:backgroundTint="@color/black"
+                />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/markedcard"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/qr_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="40dp"
+            >
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/baseline_check_circle_outline_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attendance Marked"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:elevation="30dp"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/loading_card"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="@color/cardview_shadow_end_color">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:padding="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_animated"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

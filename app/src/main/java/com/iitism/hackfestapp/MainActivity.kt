@@ -1,11 +1,14 @@
 package com.iitism.hackfestapp
 
+import android.content.res.Resources
+import android.graphics.BlendMode
 import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import android.view.Gravity
 import androidx.annotation.RequiresApi
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -37,12 +40,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            navView.defaultFocusHighlightEnabled
-        }
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
@@ -53,7 +56,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_aboutus,
                 R.id.nav_contactus,
                 R.id.nav_rules,
-                R.id.nav_scanqr
+                R.id.nav_scanqr,
+                R.id.nav_gatepass,
+                R.id.nav_adminscanqr
             ),
             drawerLayout
         )
@@ -71,14 +76,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_timeline -> "TIMELINE"
                 R.id.nav_scanqr -> "SCAN QR"
                 R.id.nav_home -> "HOME"
+                R.id.nav_gatepass -> "GATE PASS"
                 else -> "HACKFEST"
             }
+
         }
         navView.setupWithNavController(navController)
+        navView.setCheckedItem(R.id.nav_home)
     }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+        else{
+            super.onBackPressed()
+        }
     }
 
 

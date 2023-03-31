@@ -1,5 +1,6 @@
 package com.iitism.hackfestapp.ui.aboutus.retrofit
 
+import com.iitism.hackfestapp.retrofit.Resource
 import com.iitism.hackfestapp.ui.aboutus.AboutUsModel
 import com.iitism.hackfestapp.ui.noticeboardfragment.NoticeBoardModel
 import retrofit2.Response

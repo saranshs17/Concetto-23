@@ -1,6 +1,5 @@
-package com.iitism.hackfestapp.ui.scanqr
+package com.iitism.hackfestapp.ui.adminscanqr
 
-import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,43 +9,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
-import com.iitism.hackfestapp.databinding.FragmentScanqrBinding
 import com.google.zxing.integration.android.IntentIntegrator
+import com.iitism.hackfestapp.R
+import com.iitism.hackfestapp.databinding.FragmentAdminScanQrBinding
 import org.json.JSONException
 
-class ScanQrFragment : Fragment() {
+class AdminScanQrFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = AdminScanQrFragment()
+    }
 
-    private lateinit var viewModel: ScanQrViewModel
-    private lateinit var binding: FragmentScanqrBinding
-    private lateinit var qrScanIntegrator: IntentIntegrator
-    private var ID : String? = null
+    private lateinit var viewModel: AdminScanQrViewModel
+    private lateinit var binding : FragmentAdminScanQrBinding
+    private lateinit var qrScanIntegrator : IntentIntegrator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentScanqrBinding.inflate(layoutInflater)
+        binding = FragmentAdminScanQrBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this,ScanQrViewModelFactory(requireContext(),this.activity)).get(ScanQrViewModel::class.java)
+        viewModel = ViewModelProvider(this,AdminScanQrViewModelFactory(requireContext()))[(AdminScanQrViewModel::class.java)]
         qrScanIntegrator = IntentIntegrator.forSupportFragment(this)
 
-        val sharedPreferences = this.activity?.getSharedPreferences("myPref", Context.MODE_PRIVATE)
-        ID = sharedPreferences?.getString("teamId","")
-
+        viewModel.setupScanner(qrScanIntegrator)
+        viewModel.performAction(qrScanIntegrator)
         binding.scanQrButton.setOnClickListener {
             viewModel.setupScanner(qrScanIntegrator)
             viewModel.performAction(qrScanIntegrator)
         }
-
-
-
-
     }
 
     @Deprecated("Deprecated in Java")
@@ -62,8 +58,9 @@ class ScanQrFragment : Fragment() {
                     // Converting the data to json format
                     val url = result.contents.toString()
                     Log.d("Scan Qr", url)
-                    viewModel.markAttendance(url,ID,binding)
-                    binding.loadingCard.visibility = View.VISIBLE
+                    viewModel.markInOut(url)
+                    viewModel.setupScanner(qrScanIntegrator)
+                    viewModel.performAction(qrScanIntegrator)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                     Toast.makeText(activity, result.contents, Toast.LENGTH_LONG).show()
@@ -73,4 +70,6 @@ class ScanQrFragment : Fragment() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+
 }

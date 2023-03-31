@@ -22,7 +22,6 @@ class AboutUsFragment : Fragment() {
     private lateinit var binding : FragmentAboutUsBinding
     private lateinit var viewModel: AboutUsViewModel
     private lateinit var progressDialog: ProgressDialog
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,19 +32,21 @@ class AboutUsFragment : Fragment() {
         return binding.root
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        progressDialog.show()
-        viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api)))
-            .get(AboutUsViewModel::class.java)
+        val progress = binding.loadingCard
+        progress.visibility = View.VISIBLE
+        viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api)))[AboutUsViewModel::class.java]
         binding.recyclerView.adapter = adapter
+
 
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getAllOrganizers()
             this.launch(Dispatchers.Main) {
                 adapter.setorganizerList(viewModel.organizerList)
-                progressDialog.dismiss()
+                progress.visibility = View.GONE
             }
         }
     }
