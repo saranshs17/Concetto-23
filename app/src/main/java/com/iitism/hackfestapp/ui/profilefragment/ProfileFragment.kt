@@ -2,6 +2,7 @@ package com.iitism.hackfestapp.ui.profilefragment
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iitism.hackfestapp.R
-import com.iitism.hackfestapp.auth.authActivity
+import com.iitism.hackfestapp.WebViewActivity
 import com.iitism.hackfestapp.databinding.FragmentProfileBinding
 
 
@@ -32,23 +33,18 @@ class ProfileFragment : Fragment() {
 
 
         val sharedPref=this.activity?.getSharedPreferences("myPref",Context.MODE_PRIVATE)
-        binding.teamName.text=sharedPref?.getString("teamName","")
+        binding.nameText.text=sharedPref?.getString("teamName","")
         Log.d("sharedPref",sharedPref?.getString("teamName","").toString())
         binding.Email.text=sharedPref?.getString("email","")
         binding.Organization.text=sharedPref?.getString("playerOrganization","")
         binding.Mobile.text=sharedPref?.getLong("playerMobile",0).toString()
-        binding.position.text=sharedPref?.getString("playerType","").toString()
-        binding.nameText.text=sharedPref?.getString("playerName","").toString()
+        binding.Problem.text=sharedPref?.getString("problemStatement","")
+        binding.PlayerType.text=sharedPref?.getString("playerType","").toString()
+        binding.PlayerName.text=sharedPref?.getString("playerName","").toString()
 
-        binding.logout.setOnClickListener {
-            val edit=sharedPref?.edit()
-            edit?.clear()
-            edit?.apply()
-            startActivity(Intent(this.context,authActivity::class.java))
-            this.activity?.finish()
-
-        }
-
+//        binding.Problem.setOnClickListener {
+//            startActivity(Intent(context,WebViewActivity::class.java))
+//        }
 
         return view
     }
