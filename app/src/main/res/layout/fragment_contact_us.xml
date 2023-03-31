@@ -5,19 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".ui.contactus.ContactUsFragment">
+    tools:context=".ui.contactus.ContactUsFragment"
+    android:backgroundTint="@color/black"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="80dp"
+        android:gravity="center_horizontal"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
-            android:layout_marginTop="100dp"
             android:text="HACKFEST"
+            android:layout_marginTop="40dp"
             android:textColor="@color/white"
             android:textSize="50dp"
             android:textStyle="bold" />
@@ -27,21 +31,23 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="40dp"
-            app:cardCornerRadius="10dp"
+            android:layout_marginTop="80dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/qr_card">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/baseline_call_24" />
+                    android:src="@drawable/baseline_call_24"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -49,6 +55,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
+                    android:textColor="@color/white"
                     android:text="+91 98718 42597" />
 
             </LinearLayout>
@@ -62,19 +69,22 @@
             android:layout_height="90dp"
             android:layout_marginHorizontal="100dp"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/qr_card"
+                >
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    app:tint = "@color/white"
                     android:src="@drawable/ic_baseline_location_on_24" />
 
                 <TextView
@@ -83,6 +93,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
+                    android:textColor="@color/white"
                     android:text="NVCTI IIT Dhanbad" />
 
             </LinearLayout>
@@ -96,15 +107,17 @@
             android:layout_height="90dp"
             android:layout_marginHorizontal="100dp"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/qr_card">
 
                 <ImageView
+                    app:tint="@color/white"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -117,6 +130,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
+                    android:textColor="@color/white"
                     android:text="hackfest@iitism.ac.in" />
 
             </LinearLayout>
@@ -132,8 +146,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/linkedin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="10dp">
@@ -146,7 +160,8 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/linked_b_n_w" />
+                        android:src="@drawable/linked_b_n_w"
+                        app:tint="@color/pitchblack" />
 
                 </LinearLayout>
 
@@ -154,8 +169,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/instagram"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="10dp">
@@ -163,12 +178,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:gravity="center"
+                    >
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/insta_b_n_w" />
+                        android:src="@drawable/insta_b_n_w"
+                        app:tint="@color/pitchblack" />
 
                 </LinearLayout>
 
@@ -176,8 +193,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/facebook"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="10dp">
@@ -190,7 +207,8 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/fb_b_n_w" />
+                        android:src="@drawable/fb_b_n_w"
+                        app:tint="@color/pitchblack" />
 
                 </LinearLayout>
 

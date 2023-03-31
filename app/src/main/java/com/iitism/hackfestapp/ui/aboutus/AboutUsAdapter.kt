@@ -8,18 +8,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.hackfestapp.R
 import com.iitism.hackfestapp.databinding.AboutUsCardViewBinding
+import com.iitism.hackfestapp.retrofit.Resource
 
 class AboutUsAdapter : RecyclerView.Adapter<AboutUsAdapter.AboutUsViewHolder>() {
 
     private lateinit var context: Context
     var organizerList = mutableListOf<AboutUsModel>()
+
     @SuppressLint("NotifyDataSetChanged")
-    fun setorganizerList(organizerList : MutableLiveData<List<AboutUsModel>>){
+    fun setorganizerList(organizerList: LiveData<List<AboutUsModel>>){
         this.organizerList = organizerList.value!!.toMutableList()
         Log.d("tag","organizerlist --> ${this.organizerList}")
         notifyDataSetChanged()

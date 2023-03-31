@@ -1,7 +1,7 @@
 package com.iitism.hackfestapp.retrofit
 
-import android.text.format.Time
 import com.iitism.hackfestapp.BuildConfig
+import android.text.format.Time
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,21 +17,14 @@ class RemoteData {
     ):Api{
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(OkHttpClient.Builder().also { client ->
+            .client(OkHttpClient.Builder().also { client->
                 client.connectTimeout(30, TimeUnit.SECONDS)
-                client.readTimeout(30, TimeUnit.SECONDS)
-                if (BuildConfig.DEBUG) {
-                    val login = HttpLoggingInterceptor()
-                    login.setLevel(HttpLoggingInterceptor.Level.BODY)
-                    client.addInterceptor(login)
+                client.readTimeout(30,TimeUnit.SECONDS)
+                if(BuildConfig.DEBUG){
+                    val loggin= HttpLoggingInterceptor();
+                    loggin.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    client.addInterceptor(loggin)
                 }
             }.build()).addConverterFactory(GsonConverterFactory.create()).build().create(api)
-
-//            .baseUrl(BASE_URL)
-//            .client(OkHttpClient.Builder().build())
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(api)
-
-            }
+    }
 }

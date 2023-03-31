@@ -34,7 +34,7 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
             startActivity(intent)
             this.activity?.finish()
         }
-        val progressBar=binding.loginProgressBar
+        val progressBar=binding.loadingCard
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
@@ -52,11 +52,10 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
                         putString("playerOrganization",it.value.data.Player_Organisation)
                         apply()
                     }
-                    startActivity(intent)
                     val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
                     else View.GONE
                     progressBar.visibility=visibility
-
+                    startActivity(intent)
                     Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_SHORT).show()
 
 
@@ -81,9 +80,18 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
 
             val teamName=binding.teamNameEditTextLogin.text.toString()
             val password=binding.passwordLogin.text.toString()
+            val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
+            else View.GONE
+            progressBar.visibility=visibility
             if(teamName.isEmpty()){
+                if(progressBar.visibility == View.VISIBLE) {
+                    progressBar.visibility = View.GONE
+                }
                 Toast.makeText(context,"Player Email is required",Toast.LENGTH_LONG).show()
             }else if(password.isEmpty()){
+                if(progressBar.visibility == View.VISIBLE) {
+                    progressBar.visibility = View.GONE
+                }
                 Toast.makeText(context,"Password is required",Toast.LENGTH_LONG).show()
             }else{
                 viewModel.login(teamName,password)
