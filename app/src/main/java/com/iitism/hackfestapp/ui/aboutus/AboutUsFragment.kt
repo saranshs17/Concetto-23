@@ -48,8 +48,6 @@ class AboutUsFragment : Fragment() {
                 progressDialog.dismiss()
             }
         }
-
-
     }
 
 }

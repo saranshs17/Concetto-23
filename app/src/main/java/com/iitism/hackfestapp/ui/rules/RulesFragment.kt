@@ -6,27 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import com.iitism.hackfestapp.R
+import com.iitism.hackfestapp.databinding.FragmentRulesBinding
 
 class RulesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RulesFragment()
-    }
-
-    private lateinit var viewModel: RulesViewModel
+    private lateinit var binding: FragmentRulesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_rules, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RulesViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding = FragmentRulesBinding.inflate(inflater)
+
+        binding.webview.webViewClient = WebViewClient()
+        binding.webview.settings.javaScriptEnabled = true
+        binding.webview.settings.setSupportZoom(true)
+        binding.webview.loadUrl("https://drive.google.com/file/d/1pb0pkA_juRKUedm5yUAlnxtYC1H6AmRA/view?usp=share_link")
+
+        return binding.root
     }
 
 }

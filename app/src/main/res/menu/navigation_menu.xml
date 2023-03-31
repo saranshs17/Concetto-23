@@ -15,7 +15,6 @@
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/baseline_person_24"
-                    android:visible="false"
                     android:title="@string/menu_profile" />
                 <item
                     android:id="@+id/nav_scanqr"
@@ -24,18 +23,15 @@
                     android:title="@string/menu_qrscan"/>
                 <item
                     android:id="@+id/nav_timeline"
-                    android:visible="false"
                     android:icon="@drawable/baseline_access_time_filled_24"
                     android:title="@string/menu_timeline" />
                 <item
                     android:id="@+id/nav_problemstatement"
-                    android:visible="false"
                     android:icon="@drawable/baseline_view_list_24"
                     android:title="@string/menu_problemstatement"/>
 
                 <item
                     android:id="@+id/nav_noticeboard"
-                    android:visible="false"
                     android:icon="@drawable/baseline_notifications_24"
                     android:title="@string/menu_noticeboard" />
             </group>
@@ -48,13 +44,11 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_rules"
-                    android:visible="false"
                     android:icon="@drawable/baseline_rule_24"
                     android:title="@string/menu_rules"/>
 
                 <item
                     android:id="@+id/nav_contactus"
-                    android:visible="false"
                     android:icon="@drawable/baseline_call_24"
                     android:title="@string/menu_contactus"/>
                 <item
