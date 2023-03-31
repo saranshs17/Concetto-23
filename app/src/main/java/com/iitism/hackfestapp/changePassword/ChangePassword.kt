@@ -22,18 +22,26 @@ class ChangePassword :BaseFragment<ChangeViewModel,FragmentChangePasswordBinding
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val intent=Intent(this.context, MainActivity::class.java)
+        val progressBar=binding.changepasswordProgressBar
 
         viewModel.changeResponse.observe(viewLifecycleOwner,Observer {
             when(it){
                 is Resource.Success->{
                     Log.d("ChangePassword", it.value.message.toString())
-
-                    Toast.makeText(requireContext(),"Password Changed",
-                        Toast.LENGTH_LONG).show()
-                    startActivity(Intent(context, MainActivity::class.java))
+                    Toast.makeText(requireContext(),"Password Changed Successfully", Toast.LENGTH_LONG).show()
+                    val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
+                    else View.GONE
+                    progressBar.visibility=visibility
+                    startActivity(intent)
+                    this.activity?.finish()
                 }
                 is Resource.Failure->{
-                    Toast.makeText(requireContext(), it.errorBody.toString(), Toast.LENGTH_SHORT).show()
+                    Log.d("ChangePassword", it.toString())
+                    Toast.makeText(requireContext(), it.errorCode.toString(), Toast.LENGTH_LONG).show()
+                    val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
+                    else View.GONE
+                    progressBar.visibility=visibility
                 }
             }
         })
@@ -41,10 +49,10 @@ class ChangePassword :BaseFragment<ChangeViewModel,FragmentChangePasswordBinding
             val email=binding.changePasswordEmailEdit.text.toString()
             val oldPassword=binding.OldPasswordEdit.text.toString()
             val newPassword=binding.NewPasswordEdit.text.toString()
-            val progressBar=binding.changepasswordProgressBar
             val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
             else View.GONE
             progressBar.visibility=visibility
+
 
             if(email.isEmpty()){
                 Toast.makeText(context,"Player Email is required",Toast.LENGTH_LONG).show()

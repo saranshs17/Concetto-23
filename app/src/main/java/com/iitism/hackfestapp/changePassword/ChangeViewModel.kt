@@ -1,5 +1,6 @@
 package com.iitism.hackfestapp.changePassword
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +18,8 @@ class ChangeViewModel(
     fun changepassword(
         teamName:String,
         oldpassword:String,
-    newpassword:String)=viewModelScope.launch {
+        newpassword:String)=viewModelScope.launch {
         _changeResponse.value=changePassRespo?.changePassword(teamName,oldpassword,newpassword)
+        Log.d("ChangePassword","ChangeViewModel->${_changeResponse}")
     }
 }
