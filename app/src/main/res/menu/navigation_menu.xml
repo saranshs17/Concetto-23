@@ -29,7 +29,7 @@
                     android:title="@string/menu_timeline" />
                 <item
                     android:id="@+id/nav_problemstatement"
-                    android:visible="false"
+                    android:visible="true"
                     android:icon="@drawable/baseline_view_list_24"
                     android:title="@string/menu_problemstatement"/>
 

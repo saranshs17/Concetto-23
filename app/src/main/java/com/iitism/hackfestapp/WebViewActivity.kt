@@ -19,7 +19,7 @@ class WebViewActivity:AppCompatActivity() {
         val sharedPreferences=getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val url=sharedPreferences.getString("problemStatement",null).toString()
         Log.d("web",url)
-        webView.loadUrl(url)
+        webView.loadUrl("https://drive.google.com/file/d/1pb0pkA_juRKUedm5yUAlnxtYC1H6AmRA/view?usp=share_link"+url)
         webView.clearSslPreferences()
     }
 }

@@ -40,9 +40,9 @@ class ProfileFragment : Fragment() {
         binding.Mobile.text=sharedPref?.getLong("playerMobile",0).toString()
         binding.Problem.text=sharedPref?.getString("problemStatement","")
 
-        binding.Problem.setOnClickListener {
-            startActivity(Intent(context,WebViewActivity::class.java))
-        }
+//        binding.Problem.setOnClickListener {
+//            startActivity(Intent(context,WebViewActivity::class.java))
+//        }
 
         return view
     }
