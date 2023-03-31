@@ -32,7 +32,9 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
         val teamId=sharedPreferences?.getString("teamId","")
         if(teamId!=""){
             startActivity(intent)
+            this.activity?.finish()
         }
+        val progressBar=binding.loginProgressBar
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when(it){
@@ -43,17 +45,25 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
                         putString("teamId",it.value.data.Team_Id.toString())
                         putString("email",it.value.data.Player_Email.toString())
                         putString("teamName",it.value.data.Team_Name)
+                        putString("playerName",it.value.data.Player_Name)
+                        putString("playerType",it.value.data.Player_Type)
                         putLong("playerMobile",it.value.data.Player_Mobile)
                         putString("problemStatement",it.value.data.problem_statement_and_solution)
                         putString("playerOrganization",it.value.data.Player_Organisation)
                         apply()
                     }
-
-                    Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_LONG).show()
                     startActivity(intent)
+                    val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
+                    else View.GONE
+                    progressBar.visibility=visibility
+
+                    Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_SHORT).show()
+
+
+                    this.activity?.finish()
                 }
                 is Resource.Failure->{
-                    Toast.makeText(requireContext(), it.errorBody.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Please Try Again!", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -67,10 +77,8 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
 
         }
         binding.LoginButton.setOnClickListener{
-            val progressBar=binding.loginProgressBar
-            val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
-            else View.GONE
-            progressBar.visibility=visibility
+
+
             val teamName=binding.teamNameEditTextLogin.text.toString()
             val password=binding.passwordLogin.text.toString()
             if(teamName.isEmpty()){

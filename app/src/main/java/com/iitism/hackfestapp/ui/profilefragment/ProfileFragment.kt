@@ -39,6 +39,8 @@ class ProfileFragment : Fragment() {
         binding.Organization.text=sharedPref?.getString("playerOrganization","")
         binding.Mobile.text=sharedPref?.getLong("playerMobile",0).toString()
         binding.Problem.text=sharedPref?.getString("problemStatement","")
+        binding.PlayerType.text=sharedPref?.getString("playerType","").toString()
+        binding.PlayerName.text=sharedPref?.getString("playerName","").toString()
 
 //        binding.Problem.setOnClickListener {
 //            startActivity(Intent(context,WebViewActivity::class.java))
