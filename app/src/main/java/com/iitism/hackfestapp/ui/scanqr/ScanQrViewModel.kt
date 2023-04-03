@@ -15,30 +15,29 @@ import com.iitism.hackfestapp.databinding.FragmentScanqrBinding
 import com.iitism.hackfestapp.ui.scanqr.retrofit.AttendanceResponse
 import com.iitism.hackfestapp.ui.scanqr.retrofit.ScanQrRetrofitInstance
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class ScanQrViewModel (val context:Context, val activity : FragmentActivity?): ViewModel() {
 
     private var attendanceResponse = MutableLiveData<AttendanceResponse>()
+    var attendance_count  = MutableLiveData<Int>(0);
 
 
+    suspend fun markAttendance(id : String?,baseurl : String) : Response<AttendanceResponse>{
 
-    fun markAttendance(url : String?, id : String?, binding:FragmentScanqrBinding){
-        viewModelScope.launch(){
-            val scanQrRetrofitInstance = ScanQrRetrofitInstance(url)
-                val response = scanQrRetrofitInstance.api.markAttendance(id)
-                if(response.isSuccessful){
-                    attendanceResponse.postValue(response.body());
-                    Log.d("Scan qr","${response.body()}")
-                    binding.notmarkedcard.visibility = View.GONE
-                    binding.markedcard.visibility = View.VISIBLE
-                    binding.loadingCard.visibility = View.GONE
-                    Toast.makeText(context,"Attendance Marked",Toast.LENGTH_LONG).show()
-                }
-                else{
-                    binding.loadingCard.visibility= View.GONE
-                    Log.d("Scan qr","Failed ")
-                }
+        val scanQrRetrofitInstance = ScanQrRetrofitInstance(baseurl)
+        val response : Response<AttendanceResponse> = scanQrRetrofitInstance.api.markAttendance(id)
+        if(response.isSuccessful){
+            attendanceResponse.postValue(response.body());
+            Log.d("Scan qr","${response.body()}")
+            attendance_count.value = attendance_count.value?.plus(1)
         }
+        else{
+//           binding.loadingCard.visibility= View.GONE
+            Log.d("Scan qr","Failed ")
+        }
+        return response
+
     }
 
 

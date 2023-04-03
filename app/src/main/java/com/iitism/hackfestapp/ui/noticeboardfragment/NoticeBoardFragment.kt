@@ -41,7 +41,8 @@ class NoticeBoardFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        progressDialog.show()
+//        progressDialog.show()
+        binding.loadingCard.loadingCard.visibility = View.VISIBLE
         viewModel = ViewModelProvider(
             this, NoticeBoardViewModelFactory(
                 AboutUsRepository(
@@ -55,8 +56,10 @@ class NoticeBoardFragment : Fragment() {
             viewModel.getAllOrganizers()
             this.launch(Dispatchers.Main) {
                 adapter.setNotices(viewModel.list)
-                progressDialog.dismiss()
+//                progressDialog.dismiss()
+                binding.loadingCard.loadingCard.visibility = View.GONE
             }
+
         }
     }
 
