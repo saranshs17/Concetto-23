@@ -100,39 +100,13 @@
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:elevation="30dp"
-            app:cardCornerRadius="20dp"
-            android:layout_gravity="center"
-            android:id="@+id/loading_card"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            android:background="@color/cardview_shadow_end_color">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:padding="30dp"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-                <pl.droidsonroids.gif.GifImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo_animated"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Loading..."
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+    <include layout="@layout/loading_screen"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/loading_card"
+        />
 
     </RelativeLayout>
 
