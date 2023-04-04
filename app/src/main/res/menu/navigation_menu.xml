@@ -57,8 +57,7 @@
                 <item
                     android:id = "@+id/nav_aboutus"
                     android:icon="@drawable/baseline_description_24"
-                    android:title="@string/menu_aboutus"
-                    />
+                    android:title="@string/menu_aboutus" />
 
                 <item
                     android:id="@+id/nav_contactus"
