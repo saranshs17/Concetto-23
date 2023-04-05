@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:text="Loading..."
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="25dp"
+            android:fontFamily="@font/genos_bold"
             />
 
     </LinearLayout>

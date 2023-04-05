@@ -28,7 +28,7 @@ class AdminRetrofitInstance() {
                     client.addInterceptor(markattendance)
                 }
             }.build())
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(AdminScanQrApi::class.java)
     }

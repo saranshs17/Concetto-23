@@ -12,6 +12,9 @@ import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
 import com.iitism.hackfestapp.R
 import com.iitism.hackfestapp.databinding.FragmentAdminScanQrBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONException
 
 class AdminScanQrFragment : Fragment() {
@@ -37,8 +40,6 @@ class AdminScanQrFragment : Fragment() {
         viewModel = ViewModelProvider(this,AdminScanQrViewModelFactory(requireContext()))[(AdminScanQrViewModel::class.java)]
         qrScanIntegrator = IntentIntegrator.forSupportFragment(this)
 
-        viewModel.setupScanner(qrScanIntegrator)
-        viewModel.performAction(qrScanIntegrator)
         binding.scanQrButton.setOnClickListener {
             viewModel.setupScanner(qrScanIntegrator)
             viewModel.performAction(qrScanIntegrator)
@@ -58,9 +59,27 @@ class AdminScanQrFragment : Fragment() {
                     // Converting the data to json format
                     val url = result.contents.toString()
                     Log.d("Scan Qr", url)
-                    viewModel.markInOut(url)
-                    viewModel.setupScanner(qrScanIntegrator)
-                    viewModel.performAction(qrScanIntegrator)
+//                    viewModel.markInOut(url)
+//                    viewModel.setupScanner(qrScanIntegrator)
+//                    viewModel.performAction(qrScanIntegrator)
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = viewModel.markInOut(scannedtext = url)
+                        if(response.isSuccessful){
+                            Log.d("AdminScanQR","Gate Pass : ${response.body()?.message}")
+                            GlobalScope.launch (Dispatchers.Main){
+                                Toast.makeText(getContext(), "Gate Pass : ${response.body()?.message}\"", Toast.LENGTH_SHORT).show()
+                            }
+                            viewModel.setupScanner(qrScanIntegrator)
+                            viewModel.performAction(qrScanIntegrator)
+                        }
+                        else{
+                            GlobalScope.launch(Dispatchers.Main) {
+                                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show()
+                            }
+                            viewModel.setupScanner(qrScanIntegrator)
+                            viewModel.performAction(qrScanIntegrator)
+                        }
+                    }
                 } catch (e: JSONException) {
                     e.printStackTrace()
                     Toast.makeText(activity, result.contents, Toast.LENGTH_LONG).show()

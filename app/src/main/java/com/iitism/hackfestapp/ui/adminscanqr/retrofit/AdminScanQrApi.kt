@@ -9,7 +9,7 @@ import retrofit2.http.Url
 interface AdminScanQrApi {
     @GET("{endpoint}")
     suspend fun takeAttendance (
-        @Path(value = "endpoint",encoded = true)endpoint:String
-    ): Response<String>
+        @Path(value = "endpoint",encoded = true)endpoint:String?
+    ): Response<adminScanResponse>
 
 }

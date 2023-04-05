@@ -50,7 +50,7 @@
                     android:layout_centerInParent="true"
                     android:textSize="20sp"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/inter_bold"
+                    android:fontFamily="@font/genos_bold"
                     android:textStyle="bold"
                     />
 

@@ -58,6 +58,14 @@ class HomeFragment : Fragment() {
         countDownHackfestStart()
     }
 
+
+
+    override fun onResume() {
+
+        videoView.start()
+        super.onResume()
+    }
+
      fun countDownHackfestStart(){
         val handler = android.os.Handler()
         val runnable = object : java.lang.Runnable {
@@ -97,6 +105,7 @@ class HomeFragment : Fragment() {
     }
 
 
+
     fun countDownHackfestEnd(){
         val handler = android.os.Handler()
         val runnable = object : java.lang.Runnable {
@@ -128,6 +137,7 @@ class HomeFragment : Fragment() {
         }
         handler.postDelayed(runnable, 1 * 1000)
     }
+
 
 
 

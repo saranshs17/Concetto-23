@@ -20,6 +20,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="NavigationDrawerTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/genos_light</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
+
 
     <style name="Theme.HackfestApp.AppBarOverlay" parent = "Theme.Material3.Dark">
         <item name="colorPrimary">@color/black</item>

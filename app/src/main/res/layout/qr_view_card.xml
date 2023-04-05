@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:text="Check IN/OUT"
                 android:textColor="@color/white"
-                android:textSize="40dp"
+                android:textSize="35dp"
+                android:fontFamily="@font/genos_bold"
                 android:layout_marginTop="20dp"
                 />
 

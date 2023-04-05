@@ -2,21 +2,23 @@ package com.iitism.hackfestapp.ui.scanqr
 
 import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
-import com.iitism.hackfestapp.databinding.FragmentScanqrBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.zxing.integration.android.IntentIntegrator
+import com.iitism.hackfestapp.databinding.FragmentScanqrBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 import org.json.JSONException
+
 
 class ScanQrFragment : Fragment() {
 
@@ -26,7 +28,8 @@ class ScanQrFragment : Fragment() {
     private lateinit var qrScanIntegrator: IntentIntegrator
     private var ID : String? = null
     private val attendanceBaseURL = "https://hackfest-backend-3y92.onrender.com/attendance/"
-    private val refreshmentBaseURL = ""
+    private val refreshmentOneBaseURL = "https://hackfest-backend-3y92.onrender.com/refreshment_counter/"
+    private val refreshmentTwoBaseURL = "https://hackfest-backend-3y92.onrender.com/refreshment_counter_two/"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,11 @@ class ScanQrFragment : Fragment() {
             viewModel.performAction(qrScanIntegrator)
         }
 
+        binding.dismissButton.setOnClickListener{
+            binding.refreshmentCard.visibility = View.GONE
+            binding.notmarkedcard.visibility = View.VISIBLE
+
+        }
 
 
     }
@@ -72,36 +80,88 @@ class ScanQrFragment : Fragment() {
                             val response =viewModel.markAttendance(ID,attendanceBaseURL)
                             if(response.isSuccessful){
                                 GlobalScope.launch(Dispatchers.Main) {
-                                    Toast.makeText(context,"Attendance Marked",Toast.LENGTH_LONG).show()
-                                    binding.markedcard.visibility = View.VISIBLE
                                     binding.loadingCard.loadingCard.visibility = View.GONE
+                                    binding.markedcard.visibility = View.VISIBLE
+                                    Toast.makeText(getContext(),"Attendance Marked"+response.body()?.message.toString() ,Toast.LENGTH_LONG).show()
                                     binding.markedcard.visibility = View.GONE
                                 }
+                            }
+                            else{
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    Toast.makeText(getContext(),"Too many members",Toast.LENGTH_LONG).show()
+                                    binding.loadingCard.loadingCard.visibility = View.GONE
+                                }
+
                             }
                         }
                     }
                     else if(result.equals("https://www.hackfestiitism.com/refreshment")){
                         binding.loadingCard.loadingCard.visibility = View.VISIBLE
                         GlobalScope.launch(Dispatchers.IO) {
-                            val response =viewModel.markAttendance(ID,refreshmentBaseURL)
+                            val response =viewModel.markAttendance(ID,refreshmentOneBaseURL)
                             if(response.isSuccessful){
                                 GlobalScope.launch(Dispatchers.Main) {
-                                    Toast.makeText(context,"Refreshment Marked",Toast.LENGTH_LONG).show()
-                                    binding.markedcard.visibility = View.VISIBLE
                                     binding.loadingCard.loadingCard.visibility = View.GONE
-                                    binding.markedcard.visibility = View.GONE
+                                    binding.notmarkedcard.visibility = View.GONE
+                                    binding.refreshmentCard.visibility = View.VISIBLE
+                                    countdown()
                                 }
                             }
+                            else{
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    Toast.makeText(getContext(),"The team limit has been reached.",Toast.LENGTH_LONG).show()
+                                    binding.loadingCard.loadingCard.visibility = View.GONE
+                                }
+                            }
+                        }
+                    }
+                    else if (result.equals("https://www.hackfestiitism.com/refreshment_two")){
+                        binding.loadingCard.loadingCard.visibility = View.VISIBLE
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val response =viewModel.markAttendance(ID,refreshmentTwoBaseURL)
+                            if(response.isSuccessful){
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    binding.loadingCard.loadingCard.visibility = View.GONE
+                                    binding.notmarkedcard.visibility = View.GONE
+                                    binding.refreshmentCard.visibility = View.VISIBLE
+                                    countdown()
+                                }
+                            }
+                            else{
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    Toast.makeText(getContext(),"The team limit has been reached.",Toast.LENGTH_LONG).show()
+                                    binding.loadingCard.loadingCard.visibility = View.GONE
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        GlobalScope.launch (Dispatchers.Main){
+                            Toast.makeText(getContext(), "Scanned Wrong Qr",Toast.LENGTH_LONG).show()
                         }
                     }
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
-//                    Toast.makeText(activity, result.contents, Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, result.contents, Toast.LENGTH_LONG).show()
                 }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    fun countdown(){
+        object : CountDownTimer(120000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                var second = millisUntilFinished/1000
+                binding.txtSecond.text = second.toString()
+            }
+            override fun onFinish() {
+                binding.refreshmentCard.visibility = View.GONE
+                binding.notmarkedcard.visibility = View.VISIBLE
+            }
+        }.start()
+
     }
 }

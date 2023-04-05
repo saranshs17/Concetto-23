@@ -41,11 +41,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/inter_bold"
+                android:fontFamily="@font/genos_bold"
                 android:text="@string/hackfest"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="50sp" />
+                android:textSize="60sp"
+                />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -88,9 +89,10 @@
                 android:layout_marginBottom="10dp"
                 android:text="Days Left"
                 android:textColor="@color/white"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 android:id="@+id/textcounterdown"
+                android:fontFamily="@font/genos_bold"
                 />
 
             <TextView
@@ -101,8 +103,9 @@
                 android:textColor="@color/white"
                 android:text="Finished"
                 android:textSize="30dp"
-                android:fontFamily="@font/inter_bold"
+                android:fontFamily="@font/genos_bold"
                 android:textAlignment="center"
+
                 />
 
 
@@ -131,7 +134,8 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
 
                     <TextView
                         android:id="@+id/txt_Day"
@@ -140,7 +144,8 @@
                         android:gravity="center_horizontal"
                         android:text="@string/days"
                         android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,7 +165,8 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
 
                     <TextView
                         android:id="@+id/txt_Hour"
@@ -171,7 +177,8 @@
                         android:text="@string/hours"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#fff"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,7 +200,8 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
 
                     <TextView
                         android:id="@+id/txt_Minute"
@@ -202,7 +210,8 @@
                         android:gravity="center_horizontal"
                         android:text="@string/minutes"
                         android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -223,7 +232,9 @@
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"
+                        />
 
                     <TextView
                         android:id="@+id/txt_Second"
@@ -234,7 +245,8 @@
                         android:text="@string/seconds"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#fff"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/genos_light"/>
                 </LinearLayout>
             </LinearLayout>
 

@@ -14,8 +14,8 @@ class ScanQrRetrofitInstance(var Base_url : String?) {
         Retrofit.Builder()
             .baseUrl(Base_url)
             .client(OkHttpClient.Builder().also { client ->
-                client.connectTimeout(60, TimeUnit.SECONDS)
-                client.readTimeout(60, TimeUnit.SECONDS)
+                client.connectTimeout(30, TimeUnit.SECONDS)
+                client.readTimeout(30, TimeUnit.SECONDS)
                 if (BuildConfig.DEBUG) {
                     val interceptor = HttpLoggingInterceptor()
                     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)

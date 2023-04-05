@@ -11,7 +11,8 @@
                 <item
                     android:id="@+id/nav_home"
                     android:icon="@drawable/baseline_home_24"
-                    android:title="@string/menu_home" />
+                    android:title="@string/menu_home"
+                    />
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/baseline_person_24"
@@ -27,7 +28,9 @@
                 <item
                     android:id="@+id/nav_gatepass"
                     android:icon="@drawable/baseline_door_sliding_24"
-                    android:title="Gate Pass"/>
+                    android:title="Gate Pass"
+
+                    />
                 <item
                     android:id="@+id/nav_timeline"
                     android:icon="@drawable/baseline_access_time_filled_24"
@@ -46,7 +49,8 @@
     </item>
 
     <item
-        android:title="@string/menu_supportsection">
+        android:title="@string/menu_supportsection"
+        >
         <menu>
             <group android:checkableBehavior="single">
                 <item
