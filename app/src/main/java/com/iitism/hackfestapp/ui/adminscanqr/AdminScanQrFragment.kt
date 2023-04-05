@@ -63,21 +63,28 @@ class AdminScanQrFragment : Fragment() {
 //                    viewModel.setupScanner(qrScanIntegrator)
 //                    viewModel.performAction(qrScanIntegrator)
                     GlobalScope.launch(Dispatchers.IO) {
-                        val response = viewModel.markInOut(scannedtext = url)
-                        if(response.isSuccessful){
-                            Log.d("AdminScanQR","Gate Pass : ${response.body()?.message}")
-                            GlobalScope.launch (Dispatchers.Main){
-                                Toast.makeText(getContext(), "Gate Pass : ${response.body()?.message}\"", Toast.LENGTH_SHORT).show()
+                        if(viewModel.isNetworkAvailable()){
+                            val response = viewModel.markInOut(scannedtext = url)
+                            if(response.isSuccessful){
+                                Log.d("AdminScanQR","Gate Pass : ${response.body()?.message}")
+                                GlobalScope.launch (Dispatchers.Main){
+                                    Toast.makeText(getContext(), "Gate Pass : ${response.body()?.message}\"", Toast.LENGTH_SHORT).show()
+                                }
+                                viewModel.setupScanner(qrScanIntegrator)
+                                viewModel.performAction(qrScanIntegrator)
                             }
-                            viewModel.setupScanner(qrScanIntegrator)
-                            viewModel.performAction(qrScanIntegrator)
+                            else{
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show()
+                                }
+                                viewModel.setupScanner(qrScanIntegrator)
+                                viewModel.performAction(qrScanIntegrator)
+                            }
                         }
                         else{
                             GlobalScope.launch(Dispatchers.Main) {
-                                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(getContext(),"No Network",Toast.LENGTH_SHORT).show()
                             }
-                            viewModel.setupScanner(qrScanIntegrator)
-                            viewModel.performAction(qrScanIntegrator)
                         }
                     }
                 } catch (e: JSONException) {
@@ -89,6 +96,8 @@ class AdminScanQrFragment : Fragment() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+
 
 
 }

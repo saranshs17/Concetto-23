@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.iitism.hackfestapp.databinding.FragmentAboutUsBinding
 import com.iitism.hackfestapp.ui.aboutus.retrofit.AboutUsViewModelFactoy
 import com.iitism.hackfestapp.ui.aboutus.retrofit.RetrofitInstance
@@ -22,6 +23,7 @@ class AboutUsFragment : Fragment() {
     private lateinit var binding : FragmentAboutUsBinding
     private lateinit var viewModel: AboutUsViewModel
     private lateinit var progressDialog: ProgressDialog
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,17 +38,27 @@ class AboutUsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val progress = binding.loadingCard
-        progress.visibility = View.VISIBLE
-        viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api)))[AboutUsViewModel::class.java]
+        binding.loadingCard.visibility = View.VISIBLE
+        viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api),requireContext()))[AboutUsViewModel::class.java]
         binding.recyclerView.adapter = adapter
 
+        if(viewModel.isNetworkAvailable()){
+            getAllOrganizers()
+        }
+        else{
+            Toast.makeText(context, "Network Error",Toast.LENGTH_SHORT).show()
+            binding.loadingCard.visibility = View.GONE
+        }
+    }
 
+
+
+    fun getAllOrganizers(){
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getAllOrganizers()
             this.launch(Dispatchers.Main) {
                 adapter.setorganizerList(viewModel.organizerList)
-                progress.visibility = View.GONE
+                binding.loadingCard.visibility = View.GONE
             }
         }
     }
