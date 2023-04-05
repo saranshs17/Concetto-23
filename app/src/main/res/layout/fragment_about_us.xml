@@ -54,4 +54,18 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Refresh"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,19 +41,30 @@ class AboutUsFragment : Fragment() {
         binding.loadingCard.visibility = View.VISIBLE
         viewModel = ViewModelProvider(this,AboutUsViewModelFactoy(AboutUsRepository(RetrofitInstance.api),requireContext()))[AboutUsViewModel::class.java]
         binding.recyclerView.adapter = adapter
+        networkCheckAndRun()
+        binding.retryButton.setOnClickListener {
+            networkCheckAndRun()
+        }
 
+
+    }
+
+
+    fun networkCheckAndRun(){
         if(viewModel.isNetworkAvailable()){
+            binding.loadingCard.visibility = View.VISIBLE
             getAllOrganizers()
         }
         else{
             Toast.makeText(context, "Network Error",Toast.LENGTH_SHORT).show()
             binding.loadingCard.visibility = View.GONE
+            binding.retryButton.visibility = View.VISIBLE
         }
     }
 
 
-
     fun getAllOrganizers(){
+        binding.retryButton.visibility = View.GONE
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getAllOrganizers()
             this.launch(Dispatchers.Main) {

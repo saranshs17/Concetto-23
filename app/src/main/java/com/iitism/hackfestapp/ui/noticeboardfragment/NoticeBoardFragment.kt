@@ -54,21 +54,32 @@ class NoticeBoardFragment : Fragment() {
         adapter = NoticeBoardAdapter()
         binding.recyclerView.adapter = adapter
 
+        networkCheckAndRun()
+        binding.retryButton.setOnClickListener {
+            networkCheckAndRun()
+        }
+
+
+
+    }
+
+    fun networkCheckAndRun(){
         if(viewModel.isNetworkAvailable()){
+            binding.retryButton.visibility = View.GONE
+            binding.loadingCard.loadingCard.visibility = View.VISIBLE
             GlobalScope.launch(Dispatchers.IO) {
                 viewModel.getAllOrganizers()
                 this.launch(Dispatchers.Main) {
                     adapter.setNotices(viewModel.list)
-//                progressDialog.dismiss()
                     binding.loadingCard.loadingCard.visibility = View.GONE
                 }
             }
         }
         else{
+            binding.retryButton.visibility = View.VISIBLE
             Toast.makeText(context, "Network Error", Toast.LENGTH_SHORT).show()
             binding.loadingCard.loadingCard.visibility = View.GONE
         }
-
     }
 
 }

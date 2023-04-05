@@ -20,5 +20,16 @@
         android:layout_marginTop="80dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Refresh"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        />
+
 
 </RelativeLayout>
