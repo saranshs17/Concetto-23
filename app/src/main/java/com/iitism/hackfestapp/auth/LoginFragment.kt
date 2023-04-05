@@ -26,7 +26,7 @@ import java.util.prefs.Preferences
 class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRepository>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val intent=Intent(this.context,MainActivity::class.java)
+        val intent=Intent(context,MainActivity::class.java)
         val sharedPreferences=this.activity?.getSharedPreferences("myPref",Context.MODE_PRIVATE)
         val editor=sharedPreferences?.edit()
         val teamId=sharedPreferences?.getString("teamId","")
@@ -36,7 +36,8 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
         }
         val progressBar=binding.loadingCard.loadingCard
 
-        viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
+        viewModel.loginResponse.observe(viewLifecycleOwner, Observer { it ->
+            Log.d("hhhhhh" , it.toString());
             when(it){
                 is Resource.Success->{
                     Log.d("Login", it.value.data.toString())
@@ -55,10 +56,8 @@ class loginFragment : BaseFragment<LoginViewModel,FragmentLoginBinding, LoginRep
                     val visibility=if(progressBar.visibility==View.GONE) View.VISIBLE
                     else View.GONE
                     progressBar.visibility=visibility
-                    startActivity(intent)
                     Toast.makeText(requireContext(),"Welcome Back to ${it.value.data.Team_Name}",Toast.LENGTH_SHORT).show()
-
-
+                    startActivity(intent)
                     this.activity?.finish()
                 }
                 is Resource.Failure->{

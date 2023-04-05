@@ -19,6 +19,7 @@
                 <item
                     android:id="@+id/nav_adminscanqr"
                     android:icon="@drawable/baseline_qr_code_scanner_24"
+                    android:visible="false"
                     android:title="Admin Scan Qr"/>
                 <item
                     android:id="@+id/nav_scanqr"
@@ -27,6 +28,7 @@
                 <item
                     android:id="@+id/nav_gatepass"
                     android:icon="@drawable/baseline_door_sliding_24"
+                    android:visible="false"
                     android:title="Gate Pass"/>
                 <item
                     android:id="@+id/nav_timeline"
