@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HackfestApp</string>
+    <string name="app_name">Concetto\'23</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
@@ -12,7 +12,8 @@
     <string name="menu_contactus">Contact Us</string>
     <string name="menu_aboutus">About Us</string>
     <string name="menu_qrscan">Scan QR</string>
-    <string name="hackfest">HACKFEST</string>
+    <string name="hackfest">Concetto\'23</string>
+    <string name="welcome">We are Back !</string>
     <string name="days">DAYS</string>
     <string name="hours">HOURS</string>
     <string name="minutes">MINUTES</string>

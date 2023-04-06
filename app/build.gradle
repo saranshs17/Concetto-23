@@ -6,26 +6,26 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('C:\\Users\\Ansh\\Desktop\\hackfest.jks')
-            storePassword 'hackfest'
-            keyAlias 'key0'
-            keyPassword 'hackfest'
-        }
-    }
-    namespace 'com.iitism.hackfestapp'
+//    signingConfigs {
+//        release {
+//            storeFile file('C:\\Users\\Ansh\\Desktop\\hackfest.jks')
+//            storePassword 'hackfest'
+//            keyAlias 'key0'
+//            keyPassword 'hackfest'
+//        }
+//    }
+    namespace 'com.iitism.concetto'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.iitism.hackfestapp"
+        applicationId "com.iitism.concetto"
         minSdk 21
         targetSdk 33
         versionCode 4
         versionName "2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.release
+//        signingConfig signingConfigs.release
     }
     buildFeatures{
         viewBinding true

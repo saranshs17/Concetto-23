@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.iitism.hackfestapp.auth.loginFragment"
+        android:name="com.iitism.concetto.auth.loginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePassword"
-        android:name="com.iitism.hackfestapp.changePassword.ChangePassword"
+        android:name="com.iitism.concetto.changePassword.ChangePassword"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <include app:graph="@navigation/nav_graph" />

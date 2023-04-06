@@ -11,63 +11,64 @@
                 <item
                     android:id="@+id/nav_home"
                     android:icon="@drawable/baseline_home_24"
-                    android:title="@string/menu_home" />
-                <item
-                    android:id="@+id/nav_profile"
-                    android:icon="@drawable/baseline_person_24"
-                    android:title="@string/menu_profile" />
-                <item
-                    android:id="@+id/nav_adminscanqr"
-                    android:icon="@drawable/baseline_qr_code_scanner_24"
-                    android:visible="false"
-                    android:title="Admin Scan Qr"/>
-                <item
-                    android:id="@+id/nav_scanqr"
-                    android:icon="@drawable/baseline_qr_code_scanner_24"
-                    android:title="@string/menu_qrscan"/>
-                <item
-                    android:id="@+id/nav_gatepass"
-                    android:icon="@drawable/baseline_door_sliding_24"
-                    android:visible="false"
-                    android:title="Gate Pass"/>
-                <item
-                    android:id="@+id/nav_timeline"
-                    android:icon="@drawable/baseline_access_time_filled_24"
-                    android:title="@string/menu_timeline" />
-                <item
-                    android:id="@+id/nav_problemstatement"
-                    android:icon="@drawable/baseline_view_list_24"
-                    android:title="@string/menu_problemstatement"/>
+                    android:title="@string/menu_home"
+                    />
+<!--                <item-->
+<!--                    android:id="@+id/nav_profile"-->
+<!--                    android:icon="@drawable/baseline_person_24"-->
+<!--                    android:title="@string/menu_profile" />-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_adminscanqr"-->
+<!--                    android:icon="@drawable/baseline_qr_code_scanner_24"-->
+<!--                    android:visible="false"-->
+<!--                    android:title="Admin Scan Qr"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_scanqr"-->
+<!--                    android:icon="@drawable/baseline_qr_code_scanner_24"-->
+<!--                    android:title="@string/menu_qrscan"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_gatepass"-->
+<!--                    android:icon="@drawable/baseline_door_sliding_24"-->
+<!--                    android:title="Gate Pass"/>-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_timeline"-->
+<!--                    android:icon="@drawable/baseline_access_time_filled_24"-->
+<!--                    android:title="@string/menu_timeline" />-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_problemstatement"-->
+<!--                    android:icon="@drawable/baseline_view_list_24"-->
+<!--                    android:title="@string/menu_problemstatement"/>-->
 
-                <item
-                    android:id="@+id/nav_noticeboard"
-                    android:icon="@drawable/baseline_notifications_24"
-                    android:title="@string/menu_noticeboard" />
+<!--                <item-->
+<!--                    android:id="@+id/nav_noticeboard"-->
+<!--                    android:icon="@drawable/baseline_notifications_24"-->
+<!--                    android:title="@string/menu_noticeboard" />-->
             </group>
         </menu>
     </item>
 
-    <item
-        android:title="@string/menu_supportsection">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_rules"
-                    android:icon="@drawable/baseline_rule_24"
-                    android:title="@string/menu_rules"/>
+<!--    <item-->
+<!--        android:title="@string/menu_supportsection"-->
+<!--        >-->
+<!--        <menu>-->
+<!--            <group android:checkableBehavior="single">-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_rules"-->
+<!--                    android:icon="@drawable/baseline_rule_24"-->
+<!--                    android:title="@string/menu_rules"/>-->
 
-                <item
-                    android:id = "@+id/nav_aboutus"
-                    android:icon="@drawable/baseline_description_24"
-                    android:title="@string/menu_aboutus" />
+<!--                <item-->
+<!--                    android:id = "@+id/nav_aboutus"-->
+<!--                    android:icon="@drawable/baseline_description_24"-->
+<!--                    android:title="@string/menu_aboutus" />-->
 
-                <item
-                    android:id="@+id/nav_contactus"
-                    android:icon="@drawable/baseline_call_24"
-                    android:title="@string/menu_contactus"/>
+<!--                <item-->
+<!--                    android:id="@+id/nav_contactus"-->
+<!--                    android:icon="@drawable/baseline_call_24"-->
+<!--                    android:title="@string/menu_contactus"/>-->
 
-            </group>
-        </menu>
-    </item>
+<!--            </group>-->
+<!--        </menu>-->
+<!--    </item>-->
 
 </menu>
