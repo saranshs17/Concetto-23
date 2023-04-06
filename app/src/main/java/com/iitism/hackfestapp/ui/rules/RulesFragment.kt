@@ -24,7 +24,7 @@ class RulesFragment : Fragment() {
         binding.webview.webViewClient = WebViewClient()
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.settings.setSupportZoom(true)
-        binding.webview.loadUrl("https://drive.google.com/file/d/1pb0pkA_juRKUedm5yUAlnxtYC1H6AmRA/view?usp=share_link")
+        binding.webview.loadUrl("https://drive.google.com/file/d/1oDBDm6A_WH420O46QHPTVK80wgHXgX9x/view?usp=share_link")
 
         return binding.root
     }

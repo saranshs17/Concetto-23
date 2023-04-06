@@ -6,12 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.problemstatement.ProblemStatementFragment">
 
-   <WebView
-       android:background="@drawable/border"
-       android:id="@+id/WebView"
-       android:layout_marginTop="80dp"
+   <include
+       android:id="@+id/loading_card"
+       layout="@layout/loading_screen"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recycler_view"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+       android:layout_height="match_parent"
+       android:layout_marginTop="80dp"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

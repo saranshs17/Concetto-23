@@ -8,4 +8,6 @@ class AboutUsRepository constructor(private val api: AboutUsApi) {
 
     suspend fun getAllNotices() = api.getAllNotices()
 
+    suspend fun getAllProblems() = api.getAllProblems()
+
 }
