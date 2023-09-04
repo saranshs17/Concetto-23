@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/nav_problemstatement"
         android:name="com.iitism.concetto.ui.problemstatement.ProblemStatementFragment"
-        android:label="@string/menu_problemstatement"
+        android:label="@string/menu_sponsors"
         tools:layout="@layout/fragment_problem_statement"/>
 
     <fragment
