@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +25,7 @@ class PastSponsorsFragment : Fragment() {
         fun newInstance() = PastSponsorsFragment()
     }
 
-    private lateinit var viewModel: PastSponsorsViewModel
+    private lateinit var vm: viewmodel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,21 +36,22 @@ class PastSponsorsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PastSponsorsViewModel::class.java)
-        // TODO: Use the ViewModel
+        vm = viewmodel(requireContext())
+
     }
 
 }
 
 
+
 @Composable
 fun UI(vm: viewmodel){
-    vm.getUserList()
+    vm.getSponsorList()
 
     Scaffold (
         topBar = {
             TopAppBar(
-                title = { Text(text = "Sponsors")}
+                title = { Text("Sponsors") }
             )
         },
         bottomBar = {}
@@ -57,7 +61,7 @@ fun UI(vm: viewmodel){
             LazyColumn(
                 modifier = Modifier.padding(paddingValues)
             ) {
-                items(vm.userList){ user ->
+                items(vm.sponsorList){ sponsor ->
                     UserWidget(sponsor)
 
                 }
@@ -66,7 +70,7 @@ fun UI(vm: viewmodel){
             LazyColumn(
                 modifier = Modifier.padding(paddingValues)
             ) {
-                items(vm.userList){ user ->
+                items(vm.sponsorList){ user ->
                     UserWidget(sponsor)
 
                 }
@@ -82,10 +86,11 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     API_jetpack_composeTheme {
         Greeting("Android")
     }
-}
+}*/
