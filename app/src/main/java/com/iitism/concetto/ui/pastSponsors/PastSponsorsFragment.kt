@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
@@ -46,20 +47,32 @@ fun UI(vm: viewmodel){
     Scaffold (
         topBar = {
             TopAppBar(
-                title = { Text(text = "Users")}
+                title = { Text(text = "Sponsors")}
             )
         },
         bottomBar = {}
     )
     { paddingValues ->
-        LazyColumn(
-            modifier = Modifier.padding(paddingValues)
-        ) {
-            items(vm.userList){ user ->
-                UserWidget(user)
+        Row {
+            LazyColumn(
+                modifier = Modifier.padding(paddingValues)
+            ) {
+                items(vm.userList){ user ->
+                    UserWidget(sponsor)
 
+                }
+            }
+
+            LazyColumn(
+                modifier = Modifier.padding(paddingValues)
+            ) {
+                items(vm.userList){ user ->
+                    UserWidget(sponsor)
+
+                }
             }
         }
+
 
     }
 }
