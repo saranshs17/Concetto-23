@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding : FragmentHomeBinding
     private lateinit var videoView: VideoView
-    private val path = "android.resource://com.iitism.hackfestapp/"+R.raw.back4
+    private val path = "android.resource://com.iitism.concetto/"+R.raw.back4
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
