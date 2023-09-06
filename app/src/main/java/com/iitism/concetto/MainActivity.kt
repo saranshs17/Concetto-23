@@ -1,18 +1,18 @@
 package com.iitism.concetto
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
-import com.iitism.concetto.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.iitism.concetto.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_scanqr,
 //                R.id.nav_gatepass,
 //                R.id.nav_adminscanqr
+                R.id.nav_sponsors
             ),
             drawerLayout
         )
@@ -68,13 +69,16 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_scanqr -> "SCAN QR"
                 R.id.nav_home -> "HOME"
 //                R.id.nav_gatepass -> "GATE PASS"
+                R.id.nav_sponsors -> "SPONSORS"
                 else -> "Concetto'23"
             }
+
 
         }
         navView.setupWithNavController(navController)
         navView.setCheckedItem(R.id.nav_home)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

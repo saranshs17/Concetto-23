@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.pastSponsors
+package com.iitism.concetto.ui.sponsors
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
@@ -10,9 +10,9 @@ import java.io.InputStream
 
 class viewmodel(private val context: Context): ViewModel() {
 
-    private val _sponsorList = mutableStateListOf<sponsor>()
+    private val _sponsorList = mutableStateListOf<Sponsor>()
 
-    val sponsorList : List<sponsor>
+    val sponsorList : List<Sponsor>
         get() = _sponsorList
     var error: String?=null
 
@@ -33,7 +33,7 @@ class viewmodel(private val context: Context): ViewModel() {
                 val json = String(buffer, Charsets.UTF_8)
 
                 val gson = Gson()
-                val sponsors = gson.fromJson(json, Array<sponsor>::class.java)
+                val sponsors = gson.fromJson(json, Array<Sponsor>::class.java)
                 _sponsorList.addAll(sponsors)
 
             } catch (e:Exception){
