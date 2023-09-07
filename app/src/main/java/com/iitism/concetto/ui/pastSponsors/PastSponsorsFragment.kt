@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.camera.core.Preview
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -44,6 +45,7 @@ class PastSponsorsFragment : Fragment() {
 
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UI(vm: viewmodel){
     vm.getSponsorList()
@@ -67,14 +69,14 @@ fun UI(vm: viewmodel){
                 }
             }
 
-            LazyColumn(
-                modifier = Modifier.padding(paddingValues)
-            ) {
-                items(vm.sponsorList){ user ->
-                    UserWidget(sponsor)
-
-                }
-            }
+//            LazyColumn(
+//                modifier = Modifier.padding(paddingValues)
+//            ) {
+//                items(vm.sponsorList){ sponsor ->
+//                    UserWidget(sponsor)
+//
+//                }
+//            }
         }
 
 
@@ -86,11 +88,12 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-/*
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    API_jetpack_composeTheme {
-        Greeting("Android")
-    }
-}*/
+
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//   // API_jetpack_composeTheme
+//    Concetto-23Theme{
+//        Greeting("Android")
+//    }
+//}
