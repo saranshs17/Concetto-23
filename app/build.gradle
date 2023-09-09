@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
 }
-
 android {
 //    signingConfigs {
 //        release {
@@ -114,6 +113,5 @@ dependencies {
 //    implementation 'androidx.compose.material:material:1.2.0'
 
     implementation 'com.squareup.picasso:picasso:2.8'
-
-
+    implementation 'com.airbnb.android:lottie:3.4.1'
 }

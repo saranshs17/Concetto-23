@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,16 +7,19 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="30dp"
     android:layout_margin="16dp"
-    android:background="@drawable/sponsor_border"
+    android:elevation="20dp"
     app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:padding="4dp"
         android:orientation="vertical"
+        android:background="@drawable/sponsor_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
             <ImageView
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
                 android:id="@+id/sponsorImage"
                 android:scaleType="fitCenter"
                 android:layout_width="wrap_content"
@@ -34,12 +37,5 @@
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
-
-
-
     </LinearLayout>
-
-
-
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
