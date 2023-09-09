@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_rules,
 //                R.id.nav_scanqr,
 //                R.id.nav_gatepass,
-//                R.id.nav_adminscanqr
+//                R.id.nav_adminscanqr,
+                R.id.nav_sponsors
             ),
             drawerLayout
         )
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_timeline -> "TIMELINE"
 //                R.id.nav_scanqr -> "SCAN QR"
                 R.id.nav_home -> "HOME"
+                R.id.nav_sponsors -> "Our Sponsors"
 //                R.id.nav_gatepass -> "GATE PASS"
                 else -> "Concetto'23"
             }
@@ -74,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
         navView.setupWithNavController(navController)
         navView.setCheckedItem(R.id.nav_home)
+
     }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
