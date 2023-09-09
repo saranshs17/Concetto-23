@@ -1,6 +1,6 @@
-package com.iitism.concetto.ui.pastSponsors
+package com.iitism.concetto.ui.sponsors
 
-data class sponsor(
+data class Sponsor(
     var img: String,
     var is_title: Boolean,
     var link: String,
