@@ -16,6 +16,7 @@
         android:background="@drawable/sponsor_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
             <ImageView
                 android:paddingTop="4dp"
                 android:paddingEnd="4dp"
@@ -37,5 +38,12 @@
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+
+
+
     </LinearLayout>
+
+
+
 </com.google.android.material.card.MaterialCardView>
