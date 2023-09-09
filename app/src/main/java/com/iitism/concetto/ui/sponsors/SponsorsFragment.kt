@@ -15,7 +15,7 @@ import com.example.letmeknow.Adapters.SponsorsAdapter
 import com.iitism.concetto.R
 
 
-class SponsorsFragment : Fragment(R.layout.fragment_past_sponsors) {
+class SponsorsFragment : Fragment(R.layout.fragment_sponsors) {
 
     private lateinit var vm: viewmodel
 
@@ -33,7 +33,7 @@ class SponsorsFragment : Fragment(R.layout.fragment_past_sponsors) {
 //                UI(vm)
 //            }
 //        }
-        return inflater.inflate(R.layout.fragment_past_sponsors, container, false)
+        return inflater.inflate(R.layout.fragment_sponsors, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -23,10 +23,10 @@
         android:label="@string/menu_timeline"
         tools:layout="@layout/fragment_timeline" />
     <fragment
-        android:id="@+id/nav_problemstatement"
-        android:name="com.iitism.concetto.ui.problemstatement.ProblemStatementFragment"
+        android:id="@+id/nav_sponsors"
+        android:name="com.iitism.concetto.ui.sponsors.SponsorsFragment"
         android:label="@string/menu_sponsors"
-        tools:layout="@layout/fragment_problem_statement"/>
+        tools:layout="@layout/fragment_sponsors"/>
 
     <fragment
         android:id="@+id/nav_noticeboard"
