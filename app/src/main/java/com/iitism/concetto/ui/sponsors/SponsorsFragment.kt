@@ -44,6 +44,7 @@ class SponsorsFragment : Fragment(R.layout.fragment_sponsors) {
         SponsorsRecyclerView.setHasFixedSize(true)
 
         vm = viewmodel(requireContext())
+        vm.getSponsorList()
 
         val itemAdapter = SponsorsAdapter(vm.sponsorList)
         SponsorsRecyclerView.adapter = itemAdapter
