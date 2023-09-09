@@ -1,6 +1,7 @@
 package com.example.letmeknow.Adapters
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
 
 
     override fun getItemCount(): Int {
+        Log.i("Data",DataList.size.toString())
         return DataList.size
     }
 
@@ -54,7 +56,6 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val ivSponsorImg : ImageView = view.findViewById(R.id.sponsorImage)
         val tvSponsortype : TextView = view.findViewById(R.id.sponsorType)
-
     }
 
 }
