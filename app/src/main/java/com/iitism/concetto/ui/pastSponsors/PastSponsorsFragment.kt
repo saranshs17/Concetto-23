@@ -10,6 +10,9 @@ import androidx.camera.core.Preview
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -45,6 +48,7 @@ class PastSponsorsFragment : Fragment() {
 
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UI(vm: viewmodel){
@@ -59,15 +63,16 @@ fun UI(vm: viewmodel){
         bottomBar = {}
     )
     { paddingValues ->
-        Row {
-            LazyColumn(
-                modifier = Modifier.padding(paddingValues)
-            ) {
-                items(vm.sponsorList){ sponsor ->
-                    UserWidget(sponsor)
 
-                }
+        LazyVerticalGrid(
+            modifier = Modifier.padding(paddingValues),
+            columns = GridCells.Fixed(2)
+        ) {
+            items(vm.sponsorList){ sponsor ->
+                UserWidget(sponsor)
+
             }
+        }
 
 //            LazyColumn(
 //                modifier = Modifier.padding(paddingValues)
@@ -77,7 +82,7 @@ fun UI(vm: viewmodel){
 //
 //                }
 //            }
-        }
+
 
 
     }
