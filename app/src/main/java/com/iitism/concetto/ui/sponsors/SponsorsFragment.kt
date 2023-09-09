@@ -1,14 +1,19 @@
 package com.iitism.concetto.ui.sponsors
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.letmeknow.Adapters.SponsorsAdapter
 import com.iitism.concetto.R
+
 
 class SponsorsFragment : Fragment(R.layout.fragment_past_sponsors) {
 
@@ -45,6 +50,16 @@ class SponsorsFragment : Fragment(R.layout.fragment_past_sponsors) {
 
         itemAdapter.setOnItemClickListener(object: SponsorsAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
+                try {
+                    val url = vm.sponsorList[position].link
+                    val i = Intent()
+                    i.setPackage("com.android.chrome")
+                    i.action = Intent.ACTION_VIEW
+                    i.data = Uri.parse(url)
+                    startActivity(i)
+                } catch (e: ActivityNotFoundException){
+                    Toast.makeText(context,"Chrome not Installed",Toast.LENGTH_SHORT).show()
+                }
 
             }
 
