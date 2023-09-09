@@ -4,30 +4,53 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.letmeknow.Adapters.SponsorsAdapter
+import com.iitism.concetto.R
 
-class SponsorsFragment : Fragment() {
+class SponsorsFragment : Fragment(R.layout.fragment_past_sponsors) {
 
     private lateinit var vm: viewmodel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return ComposeView(requireContext()).apply {
-            vm = viewmodel(requireContext())
-            setContent {
-                UI(vm)
+//        return ComposeView(requireContext()).apply {
+//            vm = viewmodel(requireContext())
+//            setContent {
+//                UI(vm)
+//            }
+//        }
+        return inflater.inflate(R.layout.fragment_past_sponsors, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val SponsorsRecyclerView: RecyclerView = view.findViewById(R.id.recycler_view_sponsors)
+        SponsorsRecyclerView.layoutManager = LinearLayoutManager(context)
+        SponsorsRecyclerView.setHasFixedSize(true)
+
+        vm = viewmodel(requireContext())
+
+        val itemAdapter = SponsorsAdapter(vm.sponsorList)
+        SponsorsRecyclerView.adapter = itemAdapter
+
+        itemAdapter.setOnItemClickListener(object: SponsorsAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+
             }
-        }
+
+        })
+
+
     }
 
 
@@ -36,7 +59,7 @@ class SponsorsFragment : Fragment() {
 
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+/*@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UI(vm: viewmodel){
     vm.getSponsorList()
@@ -57,7 +80,7 @@ fun UI(vm: viewmodel){
         ) {
             items(vm.sponsorList){ sponsor ->
                 UserWidget(sponsor)
-                /*Card (
+                *//*Card (
                     modifier = Modifier.padding(10.dp)
                 ){
                     Column(modifier = Modifier.fillMaxWidth()) {
@@ -72,13 +95,13 @@ fun UI(vm: viewmodel){
 
                     }
 
-                }*/
+                }*//*
 
             }
         }
 
     }
-}
+}*/
 
 /*@Composable
 fun Greeting(name: String) {

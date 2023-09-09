@@ -1,5 +1,6 @@
 package com.iitism.concetto.ui.sponsors
 
+/*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -28,6 +29,7 @@ fun UserWidget (sponsor: Sponsor) {
 
     }
 }
+*/
 
 
 

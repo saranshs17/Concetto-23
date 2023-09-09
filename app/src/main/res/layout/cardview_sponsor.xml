@@ -16,13 +16,13 @@
         android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/fileImg"
+                android:id="@+id/sponsorImage"
                 android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
                 android:layout_height="140dp"
                 android:layout_gravity="center"/>
             <TextView
-                android:id="@+id/fileName"
+                android:id="@+id/sponsorType"
                 android:textColor="@color/darkest_green"
                 android:textSize="20sp"
                 android:gravity="center"
