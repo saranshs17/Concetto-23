@@ -12,11 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lottie"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:lottie_rawRes="@raw/splash"
         app:lottie_autoPlay="true"
         android:layout_centerInParent="true" />
-
-
-
 </RelativeLayout>
