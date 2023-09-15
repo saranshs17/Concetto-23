@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2023-10-15 00:00:00")
+                    val futureDate: Date = dateFormat.parse("2023-10-13 00:00:00")
                     if (!currentDate.after(futureDate)) {
                         var diff: Long = (futureDate.getTime()
                                 - currentDate.getTime())
