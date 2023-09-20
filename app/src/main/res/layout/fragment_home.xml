@@ -23,7 +23,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,7 @@
                 android:fontFamily="@font/genos_bold"
                 android:text="@string/hackfest"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/buttonColor"
                 android:textSize="60sp"
                 />
 
@@ -60,7 +59,7 @@
                 android:fontFamily="@font/genos_bold"
                 android:text="@string/welcome"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/buttonColor"
                 android:textSize="60sp"
                 />
 

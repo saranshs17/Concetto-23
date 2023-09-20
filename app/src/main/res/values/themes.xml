@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.HackfestApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/pitchblack</item>
+        <item name="android:colorPrimary">@color/darkest_green</item>
+        <item name="colorPrimaryVariant">@color/darkest_green</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/buttonColor</item>
         <item name="colorSecondaryVariant">@color/darkest_green</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/darkest_green</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
@@ -29,10 +29,10 @@
 
 
     <style name="Theme.HackfestApp.AppBarOverlay" parent = "Theme.Material3.Dark">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/pitchblack</item>
+        <item name="colorPrimary">@color/darkest_green</item>
+        <item name="colorPrimaryVariant">@color/darkest_green</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@color/black</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@color/darkest_green</item>
     </style>
 
     <style name="Theme.HackfestApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
