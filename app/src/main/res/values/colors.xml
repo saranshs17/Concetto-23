@@ -11,13 +11,15 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="pitchblack">#222222</color>
     <color name="border">#04F8F8</color>
-    <color name="dark_translucent">#16000000</color>
+    <color name="text_color">#52F575</color>
+    <color name="dark_translucent">#16221313</color>
     <color name="snackbarbackground">#14213d</color>
     <color name="snackbarTextColor">#edf2f4</color>
     <color name="background_color">#edf2f4</color>
     <color name="light_green">#08400B</color>
     <color name="darker_green">#00823d</color>
     <color name="darkest_green">#042616</color>
+    <color name="icon_background">#000000</color>
     <color name="gray">#808080</color>
     <color name="magenta">#B200D1</color>
 </resources>

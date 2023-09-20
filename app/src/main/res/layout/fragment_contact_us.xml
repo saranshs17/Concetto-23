@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".ui.contactus.ContactUsFragment"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/darkest_green"
     >
 
     <LinearLayout

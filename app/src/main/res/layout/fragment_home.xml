@@ -23,7 +23,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,7 @@
                 android:fontFamily="@font/genos_bold"
                 android:text="@string/hackfest"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="60sp"
                 />
 
@@ -53,43 +52,44 @@
 <!--                android:layout_height="200dp"-->
 <!--                android:src="@drawable/launching_logo" />-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/genos_bold"
-                android:text="@string/welcome"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="60sp"
-                />
-
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:layout_width="wrap_content"-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center_horizontal"-->
-<!--                android:layout_marginStart="18dp"-->
-<!--                android:layout_marginEnd="18dp"-->
-<!--                android:layout_weight="0"-->
-<!--                android:background="@drawable/border">-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="@font/genos_bold"-->
+<!--                android:text="@string/welcome"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/buttonColor"-->
+<!--                android:textSize="60sp"-->
+<!--                />-->
 
-<!--                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
-<!--                    android:id="@+id/youtube_player"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="20dp"-->
-<!--                    android:layout_marginTop="3dp"-->
-<!--                    android:layout_marginEnd="20dp"-->
-<!--                    android:layout_marginBottom="3dp"-->
-<!--                    app:autoPlay="false"-->
-<!--                    app:enableAutomaticInitialization="true"-->
-<!--                    app:handleNetworkEvents="true"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:videoId="QuSiHxNCjyA" />-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_weight="0"
+                android:background="@drawable/border">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtube_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="3dp"
+                    app:autoPlay="false"
+                    app:enableAutomaticInitialization="true"
+                    app:handleNetworkEvents="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:videoId="bzAVJPYarbA" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView
@@ -99,7 +99,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:text="Days Left"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 android:id="@+id/textcounterdown"
