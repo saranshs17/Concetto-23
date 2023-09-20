@@ -48,7 +48,6 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
 
 
     override fun getItemCount(): Int {
-        Log.i("Data",DataList.size.toString())
         return DataList.size
     }
 
