@@ -39,7 +39,7 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
             //holder.ivSponsorImg.layoutParams.height = 200
         }
 
-        holder.tvSponsortype.text = currentData.cat.toString()
+//        holder.tvSponsortype.text = currentData.cat.toString()
 
         holder.ivSponsorImg.setOnClickListener{
             mListener.onItemClick(position)
@@ -54,7 +54,6 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val ivSponsorImg : ImageView = view.findViewById(R.id.sponsorImage)
-        val tvSponsortype : TextView = view.findViewById(R.id.sponsorType)
     }
 
 }
