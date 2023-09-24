@@ -65,13 +65,13 @@ class MerchandiseFragment : Fragment() {
         val view = binding.root
         val viewPager = binding.viewPagerCorousel
 
-//        viewPager.apply {
-//            clipChildren = false  // No clipping the left and right items
-//            clipToPadding = false  // Show the viewpager in full width without clipping the padding
-//            offscreenPageLimit = 3  // Render the left and right items
-//            (getChildAt(0) as RecyclerView).overScrollMode =
-//                RecyclerView.OVER_SCROLL_NEVER // Remove the scroll effect
-//        }
+        viewPager.apply {
+            clipChildren = false  // No clipping the left and right items
+            clipToPadding = false  // Show the viewpager in full width without clipping the padding
+            offscreenPageLimit = 3  // Render the left and right items
+            (getChildAt(0) as RecyclerView).overScrollMode =
+                RecyclerView.OVER_SCROLL_NEVER // Remove the scroll effect
+        }
 
         val merchandise_images_data = arrayListOf(
             R.drawable.merchandise_1 , R.drawable.merchandise_2,
@@ -87,7 +87,7 @@ class MerchandiseFragment : Fragment() {
         }
         viewPager.setPageTransformer(compositePageTransformer)
         binding.chooseSize.setOnClickListener { showSizeMenu(view)
-        isSizeSelected = 1}
+            isSizeSelected = 1}
         binding.choosePaymentSs.setOnClickListener { opeinImageChooser()
             isImageUploaded=1}
 
@@ -100,7 +100,7 @@ class MerchandiseFragment : Fragment() {
     fun showSizeMenu(view: View)
     {
         val t_shirt_size = arrayOf("XS","S","M","L","XL","2XL","3XL")
-         selectedSize = t_shirt_size[selectedSizeIndex]
+        selectedSize = t_shirt_size[selectedSizeIndex]
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Choose Size")
             .setSingleChoiceItems(t_shirt_size, selectedSizeIndex){ dialog, which ->
@@ -109,7 +109,7 @@ class MerchandiseFragment : Fragment() {
             }
             .setPositiveButton("OK"){dialog,which ->
                 showSnackBar("$selectedSize selected")
-               //implement here the size part
+                //implement here the size part
             }
             .setNeutralButton("Cancel"){dialog,which ->
                 Toast.makeText(requireContext(),"Size is required",Toast.LENGTH_LONG).show()
@@ -146,7 +146,7 @@ class MerchandiseFragment : Fragment() {
 //            chooseImage()
         } else {
             Toast.makeText(context,"Permission Granted",Toast.LENGTH_SHORT).show()
-          chooseImage()
+            chooseImage()
         }
 
     }
@@ -197,7 +197,7 @@ class MerchandiseFragment : Fragment() {
 
     private  fun placeOrder()
     {
-       dataModel = DetailsDataModel(binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
+        dataModel = DetailsDataModel(binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
 
         dataModel.name = binding.editName.text.toString()
         dataModel.admno = binding.editAdmNo.text.toString()
@@ -213,7 +213,7 @@ class MerchandiseFragment : Fragment() {
         var flag = 1
         if(dataModel.name.isEmpty()){
             binding.editName.error = "Name can't be empty"
-            Log.d("Field1",binding.editName.text.toString())
+            Log.d("Field1",dataModel.name)
             flag = 0
         }
         if(dataModel.admno.isEmpty()){
@@ -271,6 +271,7 @@ class MerchandiseFragment : Fragment() {
             val call = networkService.merchandiseApiService.uploadData(dataModel)
             call.enqueue(dataModel)
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
