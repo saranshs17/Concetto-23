@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_aboutus -> "ABOUT US"
                 R.id.nav_contactus -> "CONTACT US"
                 R.id.nav_noticeboard -> "NOTICE BOARD"
-                R.id.nav_rules -> "RULES"
                 R.id.nav_timeline -> "TIMELINE"
                 R.id.nav_scanqr -> "SCAN QR"
                 R.id.nav_home -> "HOME"
@@ -85,6 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+        binding.navView.setCheckedItem(R.id.nav_home)
         if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
