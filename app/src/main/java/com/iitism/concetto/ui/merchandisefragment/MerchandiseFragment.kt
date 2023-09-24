@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material3.Snackbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -47,6 +48,9 @@ class MerchandiseFragment : Fragment() {
         const val REQUEST_CODE_IMAGE = 101
     }
 
+
+    var isSizeSelected = 0
+    var isImageUploaded = 0
     private var selectedImagebase64: String? = null
     private lateinit var viewModel: MerchandiseViewModel
     private lateinit var dataModel: DetailsDataModel
@@ -82,8 +86,10 @@ class MerchandiseFragment : Fragment() {
             page.scaleY = (0.80f + r * 0.20f)
         }
         viewPager.setPageTransformer(compositePageTransformer)
-        binding.chooseSize.setOnClickListener { showSizeMenu(view)}
-        binding.choosePaymentSs.setOnClickListener { opeinImageChooser() }
+        binding.chooseSize.setOnClickListener { showSizeMenu(view)
+        isSizeSelected = 1}
+        binding.choosePaymentSs.setOnClickListener { opeinImageChooser()
+            isImageUploaded=1}
 
         binding.placeOrderButton.setOnClickListener { placeOrder()}
         return  view
@@ -127,10 +133,19 @@ class MerchandiseFragment : Fragment() {
             Log.i("text","ButtonClicked")
             ActivityCompat.requestPermissions(
                 requireActivity(),
-                arrayOf(android.Manifest.permission.CAMERA), READ_EXTERNAL_STORAGE_REQUEST
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), READ_EXTERNAL_STORAGE_REQUEST
             )
-            chooseImage()
+
+            if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED) {
+                chooseImage()
+            } else {
+                Toast.makeText(requireContext(), "Permissions not granted by the user A",
+                    Toast.LENGTH_SHORT).show()
+            }
+//            chooseImage()
         } else {
+            Toast.makeText(context,"Permission Granted",Toast.LENGTH_SHORT).show()
           chooseImage()
         }
 
@@ -140,9 +155,10 @@ class MerchandiseFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.CAMERA) ==
             PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(context,"Asking Permission 1 st Time",Toast.LENGTH_SHORT).show()
             chooseImage()
         } else {
-            Toast.makeText(requireContext(), "Permissions not granted by the user",
+            Toast.makeText(requireContext(), "Permissions not granted by the user B",
                 Toast.LENGTH_SHORT).show()
         }
     }
@@ -181,20 +197,80 @@ class MerchandiseFragment : Fragment() {
 
     private  fun placeOrder()
     {
-        dataModel = DetailsDataModel(binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
-//        dataModel.name = binding.editName.text.toString()
-//        dataModel.admno = binding.editAdmNo.text.toString()
-//        dataModel.email = binding.editEdmail.text.toString()
-//        dataModel.branch = binding.editBranch.text.toString()
-//        dataModel.hostel = binding.editHostel.text.toString()
-//        dataModel.phnno = binding.editPhnNo.text.toString()
-//        dataModel.roomno = binding.editRoomNo.text.toString()
-//        dataModel.transactionId = binding.editTransactionId.text.toString()
-//        dataModel.size = selectedSize.toString()
-//        dataModel.payementUri = selectedImagebase64.toString()
+       dataModel = DetailsDataModel(binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
 
-        val call = networkService.merchandiseApiService.uploadData(dataModel)
-        call.enqueue(dataModel)
+        dataModel.name = binding.editName.text.toString()
+        dataModel.admno = binding.editAdmNo.text.toString()
+        dataModel.email = binding.editEdmail.text.toString()
+        dataModel.branch = binding.editBranch.text.toString()
+        dataModel.hostel = binding.editHostel.text.toString()
+        dataModel.phnno = binding.editPhnNo.text.toString()
+        dataModel.roomno = binding.editRoomNo.text.toString()
+        dataModel.transactionId = binding.editTransactionId.text.toString()
+        dataModel.size = selectedSize.toString()
+        dataModel.payementUri = selectedImagebase64.toString()
+
+        var flag = 1
+        if(dataModel.name.isEmpty()){
+            binding.editName.error = "Name can't be empty"
+            Log.d("Field1",binding.editName.text.toString())
+            flag = 0
+        }
+        if(dataModel.admno.isEmpty()){
+            binding.editAdmNo.error = "Admission no. can't be empty"
+            Log.d("Field1",dataModel.admno)
+            flag = 0
+        }
+        if(dataModel.email.isEmpty()){
+            binding.editEdmail.error = "Email can't be empty"
+            Log.d("Field1",dataModel.email)
+            flag = 0
+        }
+        if(dataModel.branch.isEmpty()){
+
+            binding.editBranch.error = "Branch can't be empty"
+            Log.d("Field1",dataModel.branch)
+            flag = 0
+        }
+        if(dataModel.hostel.isEmpty()){
+
+            binding.editHostel.error = "Hostel name can't be empty"
+            Log.d("Field1",dataModel.hostel)
+            flag = 0
+        }
+        if(dataModel.phnno.isEmpty()){
+
+            binding.editPhnNo.error = "Phone no. can't be empty"
+            Log.d("Field1",dataModel.phnno)
+            flag = 0
+        }
+        if(dataModel.roomno.isEmpty()){
+
+            binding.editRoomNo.error = "Room no. can't be empty"
+            Log.d("Field1",dataModel.roomno)
+            flag = 0
+        }
+        if(dataModel.transactionId.isEmpty()){
+
+            binding.editTransactionId.error = "Transaction ID can't be empty"
+            Log.d("Field1",dataModel.transactionId)
+            flag = 0
+        }
+
+        if(isSizeSelected==0){
+            flag = 0
+            Toast.makeText(context,"Size not Selected!!",Toast.LENGTH_SHORT).show()
+        }
+        if(selectedImagebase64 == null){
+            flag = 0
+            Toast.makeText(context,"Image not Uploaded!!",Toast.LENGTH_SHORT).show()
+        }
+
+        if(flag == 1 && isSizeSelected==1 && selectedImagebase64!=null){
+            Toast.makeText(context,"Placed!!",Toast.LENGTH_SHORT).show()
+            val call = networkService.merchandiseApiService.uploadData(dataModel)
+            call.enqueue(dataModel)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
