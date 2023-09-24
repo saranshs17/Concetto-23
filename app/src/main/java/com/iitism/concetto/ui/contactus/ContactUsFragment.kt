@@ -39,32 +39,32 @@ class ContactUsFragment : Fragment(), View.OnClickListener {
             R.id.facebook -> {
                 startActivity(Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.facebook.com/hackfestiitism?mibextid=ZbWKwL")))
+                    Uri.parse("https://www.facebook.com/Concettoiitdhanbad/")))
             }
             R.id.instagram -> {
                 startActivity(Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://instagram.com/hackfestiitism?igshid=YmMyMTA2M2Y=")))
+                    Uri.parse("https://www.instagram.com/concetto.iitism/?hl=en")))
             }
             R.id.linkedin -> {
                 startActivity(Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.linkedin.com/company/hackfest-iit-ism-dhanbad/")))
+                    Uri.parse("https://www.linkedin.com/company/concetto-iitism-dhanbad/?originalSubdomain=in")))
             }
             R.id.number -> {
                 startActivity(Intent(
                     Intent.ACTION_DIAL,
-                    Uri.parse("tel:+91 98718 42597")))
+                    Uri.parse("tel:+91 79998 19086")))
             }
             R.id.mail -> {
                 startActivity(Intent(
                     Intent.ACTION_SENDTO,
-                    Uri.fromParts("mailto", "hackfest@iitism.ac.in", null)))
+                    Uri.fromParts("mailto", "concetto@iitism.ac.in", null)))
             }
             R.id.location -> {
                 startActivity(Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?q=loc:23.81124781385419, 86.44006961857158 ( NVCTI )")))
+                    Uri.parse("https://www.google.com/maps/contrib/114792556265173640054/photos/@23.8144169,86.441249,17z/data=!3m1!4b1!4m3!8m2!3m1!1e1?entry=ttu")))
 
             }
         }

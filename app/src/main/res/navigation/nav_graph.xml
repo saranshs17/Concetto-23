@@ -43,12 +43,6 @@
         tools:layout="@layout/fragment_notice_board"/>
 
     <fragment
-        android:id="@+id/nav_rules"
-        android:label="@string/menu_rules"
-        android:name="com.iitism.concetto.ui.rules.RulesFragment"
-        tools:layout="@layout/fragment_rules"/>
-
-    <fragment
         android:id="@+id/nav_aboutus"
         android:label="@string/menu_aboutus"
         android:name="com.iitism.concetto.ui.aboutus.AboutUsFragment"

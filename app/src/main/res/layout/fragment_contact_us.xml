@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".ui.contactus.ContactUsFragment"
     android:backgroundTint="@color/darkest_green"
     >
@@ -20,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HACKFEST"
+            android:text="CONCETTO'23"
             android:layout_marginTop="40dp"
             android:textColor="@color/white"
             android:textSize="50dp"
@@ -59,7 +58,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="+91 98718 42597"
+                    android:text="+91 79998 19086"
                     android:fontFamily="@font/genos_light"
                     android:textSize="20dp"/>
 
@@ -99,7 +98,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="NVCTI IIT Dhanbad"
+                    android:text="IIT (ISM) Dhanbad"
                     android:fontFamily="@font/genos_light"
                     android:textSize="20dp"/>
 
@@ -138,7 +137,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="hackfest@iitism.ac.in"
+                    android:text="concetto@iitism.ac.in"
                     android:fontFamily="@font/genos_light"
                     android:textSize="20dp"/>
 
