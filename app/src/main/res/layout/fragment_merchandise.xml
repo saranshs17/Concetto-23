@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".ui.merchandisefragment.MerchandiseFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager_corousel"
+                android:layout_width="320dp"
+                android:layout_height="260dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/enter_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/teal_700"
+                android:text="Enter Your Information"
+                android:textSize="30dp"
+                android:fontFamily="@font/inter_bold"
+                android:textAlignment="center"
+                />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:hint="Name*"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:inputType = "text"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_admNo"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Admission Number*"
+                android:inputType = "text"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_edmail"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:inputType = "textEmailAddress"
+                android:hint="Email*"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_phnNo"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Phone Number*"
+                android:inputType = "number"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_branch"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Branch*"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_transactionId"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:inputType = "text"
+                android:hint="Transaction ID*"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_hostel"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Hostel*"
+                android:inputType = "text"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_roomNo"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Room No*"
+                android:inputType = "text"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/choose_size"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background1"
+                android:fontFamily="@font/genos_light"
+                android:onClick="showSizeMenu"
+                android:padding="10dp"
+                android:text="Choose Size"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/choose_payment_ss"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background1"
+                android:fontFamily="@font/genos_light"
+                android:onClick="showSizeMenu"
+                android:padding="10dp"
+                android:text="Payment Screenshot"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/place_order_button"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/genos_light"
+                android:onClick="showSizeMenu"
+                android:padding="10dp"
+                android:text="Place Order"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Phone Number*"
+                android:inputType = "number"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

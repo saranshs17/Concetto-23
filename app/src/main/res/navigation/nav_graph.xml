@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.iitism.concetto.ui.homefragment.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_sponsors"
+            app:destination="@id/nav_sponsors" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
@@ -26,7 +30,11 @@
         android:id="@+id/nav_sponsors"
         android:name="com.iitism.concetto.ui.sponsors.SponsorsFragment"
         android:label="@string/menu_sponsors"
-        tools:layout="@layout/fragment_sponsors"/>
+        tools:layout="@layout/fragment_sponsors">
+        <action
+            android:id="@+id/action_nav_sponsors_to_nav_merchandise"
+            app:destination="@id/nav_merchandise" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_noticeboard"
@@ -56,6 +64,11 @@
         android:label="@string/menu_qrscan"
         android:name="com.iitism.concetto.ui.scanqr.ScanQrFragment"
         tools:layout="@layout/fragment_scanqr"/>
+    <fragment
+        android:id="@+id/nav_merchandise"
+        android:label="@string/menu_merchandise"
+        android:name="com.iitism.concetto.ui.merchandisefragment.MerchandiseFragment"
+        tools:layout="@layout/fragment_merchandise"/>
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->
 <!--        android:label="Gate Pass"-->

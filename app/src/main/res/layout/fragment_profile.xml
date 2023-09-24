@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#E2032C04"
+    android:background="#E2010701"
     android:paddingTop="80dp"
     tools:context=".ui.profilefragment.ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E2032C04"
+        android:background="#E2010901"
         >
 
         <LinearLayout
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E2032C04"
+            android:background="#000000"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="20dp">
@@ -31,7 +31,7 @@
                 android:fontFamily="@font/genos_bold"
                 android:text="Participant Details"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="35dp"
                 android:textStyle="bold" />
             <!--                <ImageView-->
@@ -50,7 +50,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/genos_light"
                 android:text="Vishal Shrivastava"
-                android:textColor="@color/white"
+                android:textColor="@color/teal_700"
                 android:textSize="35dp" />
 
 
@@ -70,7 +70,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/genos_light"
                     android:text="B.TECH"
-                    android:textColor="@color/white"
+                    android:textColor="@color/teal_700"
                     android:textSize="25dp" />
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:layout_weight="0.5"
                     android:fontFamily="@font/genos_light"
                     android:text="Passing out: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/teal_700"
                     android:textSize="25dp" />
 
                 <TextView
@@ -92,7 +92,7 @@
                     android:layout_weight="0.5"
                     android:fontFamily="@font/genos_light"
                     android:text="2025"
-                    android:textColor="@color/white"
+                    android:textColor="@color/teal_700"
                     android:textSize="25dp" />
 
             </LinearLayout>
@@ -102,12 +102,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
-                app:cardCornerRadius="30dp">
+                app:cardCornerRadius="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/pitchblack"
+                    android:background="@drawable/qr_card"
                     android:padding="15dp">
 
                     <ImageView
@@ -133,12 +133,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
-                app:cardCornerRadius="30dp">
+                app:cardCornerRadius="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/pitchblack"
+                    android:background="@drawable/qr_card"
                     android:padding="15dp">
 
                     <ImageView
@@ -164,12 +164,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
-                app:cardCornerRadius="30dp">
+                app:cardCornerRadius="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/pitchblack"
+                    android:background="@drawable/qr_card"
                     android:gravity="center_horizontal"
                     android:padding="15dp">
 
