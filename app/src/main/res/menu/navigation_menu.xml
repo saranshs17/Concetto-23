@@ -57,11 +57,6 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_rules"
-                    android:icon="@drawable/baseline_rule_24"
-                    android:title="@string/menu_rules"/>
-
-                <item
                     android:id = "@+id/nav_aboutus"
                     android:icon="@drawable/baseline_description_24"
                     android:title="@string/menu_aboutus" />
