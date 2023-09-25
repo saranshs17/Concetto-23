@@ -10,6 +10,7 @@ class NetworkService {
 
 
     val client = OkHttpClient.Builder()
+        .callTimeout(30,TimeUnit.SECONDS)
         .connectTimeout(5, TimeUnit.MINUTES) // Increase the connect timeout
         .readTimeout(5, TimeUnit.MINUTES)    // Increase the read timeout
         .writeTimeout(5, TimeUnit.MINUTES)   // Increase the write timeout
