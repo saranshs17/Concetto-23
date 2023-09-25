@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_noticeboard,
                 R.id.nav_aboutus,
                 R.id.nav_contactus,
+                R.id.nav_events,
 //                R.id.nav_rules,
                 R.id.nav_scanqr,
 //                R.id.nav_gatepass,
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_scanqr -> "SCAN QR"
                 R.id.nav_home -> "HOME"
                 R.id.nav_merchandise -> "MERCHANDISE"
+                R.id.nav_events -> "EVENTS"
 //                R.id.nav_gatepass -> "GATE PASS"
                 R.id.nav_sponsors -> "PAST SPONSORS"
                 else -> "Concetto'23"

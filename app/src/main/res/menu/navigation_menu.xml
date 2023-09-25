@@ -14,14 +14,14 @@
                     android:title="@string/menu_home"
                     />
                 <item
+                    android:id="@+id/nav_events"
+                    android:icon="@drawable/baseline_emoji_events_24"
+                    android:title="@string/menu_events"
+                    />
+                <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/baseline_person_24"
                     android:title="@string/menu_profile" />
-<!--                <item-->
-<!--                    android:id="@+id/nav_adminscanqr"-->
-<!--                    android:icon="@drawable/baseline_qr_code_scanner_24"-->
-<!--                    android:visible="false"-->
-<!--                    android:title="Admin Scan Qr"/>-->
                 <item
                     android:id="@+id/nav_scanqr"
                     android:icon="@drawable/baseline_qr_code_scanner_24"

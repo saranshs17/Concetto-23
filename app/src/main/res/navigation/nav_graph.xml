@@ -63,6 +63,11 @@
         android:label="@string/menu_merchandise"
         android:name="com.iitism.concetto.ui.merchandisefragment.MerchandiseFragment"
         tools:layout="@layout/fragment_merchandise"/>
+    <fragment
+        android:id="@+id/nav_events"
+        android:label="@string/menu_events"
+        android:name="com.iitism.concetto.ui.events.EventsFragment"
+        tools:layout="@layout/fragment_events"/>
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->
 <!--        android:label="Gate Pass"-->

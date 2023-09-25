@@ -1,6 +1,6 @@
 package com.iitism.concetto.ui.merchandisefragment
 
-import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +8,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.concetto.R
-import com.squareup.picasso.Picasso
 
-class CorouselAdapter(private val corouselDataList: ArrayList<Int>) : RecyclerView.Adapter<CorouselAdapter.CarouselItemViewHolder>()
+class CorouselAdapter(private val corouselDataList: Array<Int>) : RecyclerView.Adapter<CorouselAdapter.CarouselItemViewHolder>()
 {
     class CarouselItemViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -26,6 +25,7 @@ class CorouselAdapter(private val corouselDataList: ArrayList<Int>) : RecyclerVi
 
     override fun onBindViewHolder(holder: CarouselItemViewHolder, position: Int) {
         val imageView = holder.itemView.findViewById<ImageView>(R.id.image_merchandise)
+        Log.i("src",corouselDataList[position].toString())
         Glide.with(holder.itemView.context)
             .load(corouselDataList[position])
             .placeholder(R.drawable.merchandise_2)
