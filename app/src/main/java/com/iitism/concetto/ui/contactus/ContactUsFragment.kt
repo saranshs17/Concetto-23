@@ -53,8 +53,8 @@ class ContactUsFragment : Fragment(), View.OnClickListener {
             }
             R.id.number -> {
                 startActivity(Intent(
-                    Intent.ACTION_DIAL,
-                    Uri.parse("tel:+91 79998 19086")))
+                    Intent.ACTION_DIAL,//79998 19086
+                    Uri.parse("tel:+91 76809 09881")))
             }
             R.id.mail -> {
                 startActivity(Intent(

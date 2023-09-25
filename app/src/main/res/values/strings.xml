@@ -2,6 +2,7 @@
     <string name="app_name">Concetto\'23</string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_events">Events</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_timeline">Timeline</string>
     <string name="menu_sponsors">Past Sponsors</string>
