@@ -231,16 +231,6 @@ class MerchandiseFragment : Fragment() {
 
 
     }
-    // Function to read an image from gallery and return a Bitmap
-//    private fun readImageFromGallery(context: Context, imageUri: Uri?): Bitmap? {
-//        val contentResolver: ContentResolver = context.contentResolver
-//        return try {
-//            MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            null
-//        }
-//    }
 
     fun generateRandomId(): String {
         val uuid = UUID.randomUUID()
@@ -253,7 +243,6 @@ class MerchandiseFragment : Fragment() {
        dataModel = DetailsDataModel(generateRandomId(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
 
         dataModel.name = binding.editName.text.toString()
-//        Log.i("input",dataModel.name)
         dataModel.admissionNumber = binding.editAdmNo.text.toString()
         dataModel.branch = binding.editBranch.text.toString()
         dataModel.hostel = binding.editHostel.text.toString()
@@ -263,7 +252,27 @@ class MerchandiseFragment : Fragment() {
         dataModel.tshirtSize = selectedSize.toString()
         dataModel.email = binding.editEdmail.text.toString()
 
+        var fl = 0;
+        var st : String = ""
+        for (char in dataModel.email)
+        {
+             if(fl == 1)
+             {
+                 st += char
+             }
+            if(char == '@')
+                fl = 1;
+        }
+
+
         var flag = 1
+
+        if(st == "iitism.ac.in")
+        {
+            binding.editEdmail.error = "Use personal email id"
+            Log.d("Field1",binding.editEdmail.text.toString())
+            flag = 0
+        }
         if(dataModel.name.isEmpty()){
             binding.editName.error = "Name can't be empty"
             Log.d("Field1",binding.editName.text.toString())
@@ -274,11 +283,11 @@ class MerchandiseFragment : Fragment() {
             Log.d("Field1",dataModel.admissionNumber)
             flag = 0
         }
-//        if(dataModel.email.isEmpty()){
-//            binding.editEdmail.error = "Email can't be empty"
-//            Log.d("Field1",dataModel.email)
-//            flag = 0
-//        }
+        if(dataModel.email.isEmpty()){
+            binding.editEdmail.error = "Email can't be empty"
+            Log.d("Field1",dataModel.email)
+            flag = 0
+        }
         if(dataModel.branch.isEmpty()){
 
             binding.editBranch.error = "Branch can't be empty"
