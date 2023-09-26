@@ -17,7 +17,7 @@ class NetworkService {
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://concetto-23-nuc1.onrender.com/")
+        .baseUrl("https://concetto-backend-4t49.onrender.com/")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

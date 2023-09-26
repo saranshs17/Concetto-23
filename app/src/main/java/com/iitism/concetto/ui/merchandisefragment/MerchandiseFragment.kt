@@ -5,10 +5,12 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,21 +20,27 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.FragmentMerchandiseBinding
-import com.google.android.material.snackbar.Snackbar
 import com.iitism.concetto.ui.merchandisefragment.retrofit.ApiResponse
 import com.iitism.concetto.ui.merchandisefragment.retrofit.DetailsDataModel
 import com.iitism.concetto.ui.merchandisefragment.retrofit.NetworkService
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
-import java.io.ByteArrayOutputStream
+import java.io.File
+import java.util.UUID
 import kotlin.math.abs
 
 
@@ -46,7 +54,8 @@ class MerchandiseFragment : Fragment() {
 
     var isSizeSelected = 0
     var isImageUploaded = 0
-    private var selectedImagebase64: String? = null
+    private var selectedImageUri: Uri? = null
+    var imageBase64 : String? = null
     private lateinit var viewModel: MerchandiseViewModel
     private lateinit var dataModel: DetailsDataModel
     private lateinit var binding: FragmentMerchandiseBinding
@@ -172,19 +181,60 @@ class MerchandiseFragment : Fragment() {
                     // Check if data is not null and contains the image URI
                     if (data != null && data.data != null) {
                         val imageUri = data.data
-                        val imageBitmap = readImageFromGallery(requireContext(), imageUri)
-                        if (imageBitmap != null) {
-                            selectedImagebase64 = encodeImageToBase64(imageBitmap).toString()
-                            Log.i("URL",selectedImagebase64.toString())
-                        } else {
-                            // Handle the case where imageBitmap is null (e.g., failed to decode the image)
-                        }
+                        selectedImageUri = imageUri
+
+                        val imageBase64 = MyFileHandler(requireContext()).handleFile(selectedImageUri!!)
+                        var imageName = MyFileHandler(requireContext()).getFileName(selectedImageUri!!)
+                        Log.i("image",imageBase64.toString())
+
+                        binding.choosePaymentSs.text = imageName
                     }
                 }
             }
         }
     }
+    class MyFileHandler(private val context: Context) {
+        fun handleFile(imageUri: Uri): String?{
+            val inputStream = context.contentResolver.openInputStream(imageUri)
+            val imageBytes = inputStream?.readBytes()
+            inputStream?.close()
 
+            if (imageBytes != null) {
+                val base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+                Log.i("Base64Image", base64Image)
+                return base64Image
+            }
+            return ""
+        }
+        val resolver = context.contentResolver
+
+       fun getFileName(uri: Uri): String {
+            val returnCursor: Cursor = resolver.query(uri, null, null, null, null)!!
+            val nameIndex: Int = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            returnCursor.moveToFirst()
+            val name: String = returnCursor.getString(nameIndex)
+            returnCursor.close()
+            return name
+        }
+
+        fun getFilePathFromContentUri(context: Context, contentUri: Uri): String? {
+            var filePath: String? = null
+            val projection = arrayOf(MediaStore.Images.Media.DATA)
+
+            val cursor = context.contentResolver.query(contentUri, projection, null, null, null)
+
+            cursor?.use {
+                if (it.moveToFirst()) {
+                    val columnIndex = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                    filePath = it.getString(columnIndex)
+                }
+            }
+
+            return filePath
+        }
+
+
+    }
     // Function to read an image from gallery and return a Bitmap
     private fun readImageFromGallery(context: Context, imageUri: Uri?): Bitmap? {
         val contentResolver: ContentResolver = context.contentResolver
@@ -196,16 +246,15 @@ class MerchandiseFragment : Fragment() {
         }
     }
 
-    private fun encodeImageToBase64(bitmap: Bitmap): Any {
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val byteArray = byteArrayOutputStream.toByteArray()
-        return Base64.encodeToString(byteArray, Base64.DEFAULT)
+    fun generateRandomId(): String {
+        val uuid = UUID.randomUUID()
+        return uuid.toString()
     }
+
 
     private  fun placeOrder()
     {
-       dataModel = DetailsDataModel(binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
+       dataModel = DetailsDataModel(generateRandomId(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
 
         dataModel.name = binding.editName.text.toString()
 //        Log.i("input",dataModel.name)
@@ -216,7 +265,7 @@ class MerchandiseFragment : Fragment() {
         dataModel.roomNumber = binding.editRoomNo.text.toString()
         dataModel.transactionID = binding.editTransactionId.text.toString()
         dataModel.tshirtSize = selectedSize.toString()
-        dataModel.imageURL = selectedImagebase64.toString()
+
 
         var flag = 1
         if(dataModel.name.isEmpty()){
@@ -269,22 +318,38 @@ class MerchandiseFragment : Fragment() {
             flag = 0
             Toast.makeText(context,"Size not Selected!!",Toast.LENGTH_SHORT).show()
         }
-        if(selectedImagebase64 == null){
+        if(selectedImageUri == null){
             flag = 0
             Toast.makeText(context,"Image not Uploaded!!",Toast.LENGTH_SHORT).show()
         }
 
-        if(flag == 1 && isSizeSelected==1 && selectedImagebase64!=null){
+        if(flag == 1 && isSizeSelected==1 && selectedImageUri !=null){
             binding.loadingCard.visibility = View.VISIBLE
             binding.scrollViewMerchandise.visibility = View.INVISIBLE
-            val call = networkService.merchandiseApiService.uploadData(dataModel)
+
+
+
+            //api hit
+            Log.i("ImageUri",selectedImageUri.toString())
+
+            var imageFile : File = File(MyFileHandler(requireContext()).getFilePathFromContentUri(requireContext(),selectedImageUri!!))
+//
+            Log.i("Data",dataModel.toString())
+            Log.i("file",imageFile.toString())
+
+
+            val fileRequestBody = RequestBody.create("*/*".toMediaTypeOrNull(), imageFile)
+            val filePart = MultipartBody.Part.createFormData("image", imageFile.name, fileRequestBody)
+            val call = networkService.merchandiseApiService.uploadData(dataModel, filePart)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     Log.i("Tag", response.toString())
                     binding.loadingCard.visibility = View.INVISIBLE
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-//                    if(response.body() == null) Toast.makeText(context,"Something went wrong!",Toast.LENGTH_SHORT).show()
-//                    else
+
+                    Log.i("response",response.body().toString())
+                    if(response.body() == null) Toast.makeText(context,"Something went wrong!",Toast.LENGTH_SHORT).show()
+                    else
                         Toast.makeText(context,"Order is succesfully placed!!",Toast.LENGTH_SHORT).show()
                 }
 
