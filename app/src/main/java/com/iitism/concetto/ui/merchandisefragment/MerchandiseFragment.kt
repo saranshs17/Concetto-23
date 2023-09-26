@@ -326,6 +326,17 @@ class MerchandiseFragment : Fragment() {
 
 
             //api hit
+            val orderID = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.orderID)
+            val name = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.name)
+            val admissionNumber = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.admissionNumber)
+            val mobileNumber = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.mobileNumber)
+            val branch = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.branch)
+            val tshirtSize = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.tshirtSize)
+            val transactionID = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.transactionID)
+            val hostel = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.hostel)
+            val roomNumber = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.roomNumber)
+            val email  = RequestBody.create("text/plain".toMediaTypeOrNull(), dataModel.email)
+
             Log.i("ImageUri",selectedImageUri.toString())
 
             var imageFile : File = File(MyFileHandler(requireContext()).getFilePathFromContentUri(requireContext(),selectedImageUri!!))
@@ -336,7 +347,7 @@ class MerchandiseFragment : Fragment() {
 
             val fileRequestBody = RequestBody.create("*/*".toMediaTypeOrNull(), imageFile)
             val filePart = MultipartBody.Part.createFormData("image", imageFile.name, fileRequestBody)
-            val call = networkService.merchandiseApiService.uploadData(dataModel, filePart)
+            val call = networkService.merchandiseApiService.uploadData(orderID,name,admissionNumber,mobileNumber,branch,tshirtSize,transactionID,hostel,roomNumber,email,filePart)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     Log.i("Tag", response.toString())
