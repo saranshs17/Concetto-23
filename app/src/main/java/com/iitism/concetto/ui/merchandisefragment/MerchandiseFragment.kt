@@ -55,7 +55,6 @@ class MerchandiseFragment : Fragment() {
     var isSizeSelected = 0
     var isImageUploaded = 0
     private var selectedImageUri: Uri? = null
-    var imageBase64 : String? = null
     private lateinit var viewModel: MerchandiseViewModel
     private lateinit var dataModel: DetailsDataModel
     private lateinit var binding: FragmentMerchandiseBinding
@@ -85,9 +84,6 @@ class MerchandiseFragment : Fragment() {
             R.drawable.size_chart,R.drawable.merchandise_5,R.drawable.merchandise_6)
         viewPager.adapter = CorouselAdapter(merchandise_images_data)
 
-
-//          adapter = ImageSliderAdapter(requireContext(),merchandise_images_data)
-//         viewPager.adapter = adapter
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
         compositePageTransformer.addTransformer { page, position ->
@@ -236,15 +232,15 @@ class MerchandiseFragment : Fragment() {
 
     }
     // Function to read an image from gallery and return a Bitmap
-    private fun readImageFromGallery(context: Context, imageUri: Uri?): Bitmap? {
-        val contentResolver: ContentResolver = context.contentResolver
-        return try {
-            MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
-    }
+//    private fun readImageFromGallery(context: Context, imageUri: Uri?): Bitmap? {
+//        val contentResolver: ContentResolver = context.contentResolver
+//        return try {
+//            MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            null
+//        }
+//    }
 
     fun generateRandomId(): String {
         val uuid = UUID.randomUUID()
@@ -254,7 +250,7 @@ class MerchandiseFragment : Fragment() {
 
     private  fun placeOrder()
     {
-       dataModel = DetailsDataModel(generateRandomId(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
+       dataModel = DetailsDataModel(generateRandomId(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString(),binding.editName.text.toString())
 
         dataModel.name = binding.editName.text.toString()
 //        Log.i("input",dataModel.name)
@@ -265,7 +261,7 @@ class MerchandiseFragment : Fragment() {
         dataModel.roomNumber = binding.editRoomNo.text.toString()
         dataModel.transactionID = binding.editTransactionId.text.toString()
         dataModel.tshirtSize = selectedSize.toString()
-
+        dataModel.email = binding.editEdmail.text.toString()
 
         var flag = 1
         if(dataModel.name.isEmpty()){

@@ -5,6 +5,7 @@ import java.io.File
 data class  DetailsDataModel(
     var orderID:String,
     var name: String,
+    var email: String,
     var admissionNumber: String,
     var mobileNumber: String,
     var branch: String,
