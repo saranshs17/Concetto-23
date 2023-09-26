@@ -11,9 +11,9 @@ class NetworkService {
 
     val client = OkHttpClient.Builder()
         .callTimeout(30,TimeUnit.SECONDS)
-        .connectTimeout(5, TimeUnit.MINUTES) // Increase the connect timeout
-        .readTimeout(5, TimeUnit.MINUTES)    // Increase the read timeout
-        .writeTimeout(5, TimeUnit.MINUTES)   // Increase the write timeout
+        .connectTimeout(30, TimeUnit.SECONDS) // Increase the connect timeout
+        .readTimeout(30, TimeUnit.SECONDS)    // Increase the read timeout
+        .writeTimeout(30, TimeUnit.SECONDS)   // Increase the write timeout
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()

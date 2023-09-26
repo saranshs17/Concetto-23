@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.concetto.R
+import com.squareup.picasso.Picasso
 
 class CorouselAdapter(private val corouselDataList: Array<Int>) : RecyclerView.Adapter<CorouselAdapter.CarouselItemViewHolder>()
 {

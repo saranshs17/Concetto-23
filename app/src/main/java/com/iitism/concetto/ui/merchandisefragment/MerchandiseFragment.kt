@@ -283,8 +283,9 @@ class MerchandiseFragment : Fragment() {
                     Log.i("Tag", response.toString())
                     binding.loadingCard.visibility = View.INVISIBLE
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-                    if(response.body() == null) Toast.makeText(context,"Something went wrong!",Toast.LENGTH_SHORT).show()
-                    else Toast.makeText(context,"Order is succesfully placed!!",Toast.LENGTH_SHORT).show()
+//                    if(response.body() == null) Toast.makeText(context,"Something went wrong!",Toast.LENGTH_SHORT).show()
+//                    else
+                        Toast.makeText(context,"Order is succesfully placed!!",Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
