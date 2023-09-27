@@ -365,7 +365,7 @@ class MerchandiseFragment : Fragment() {
                     binding.loadingCard.visibility = View.INVISIBLE
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
 
-                    Log.i("response",response.body().toString())
+                    Log.i("response",response.body()?.msg.toString())
                     if(response.body() == null) Toast.makeText(context,"Something went wrong!",Toast.LENGTH_SHORT).show()
                     else
                         Toast.makeText(context,"Order is succesfully placed!!",Toast.LENGTH_SHORT).show()
