@@ -139,6 +139,7 @@ class MerchandiseFragment : Fragment() {
     var selectedSize : String? = null
     fun showSizeMenu(view: View)
     {
+
         val t_shirt_size = arrayOf("XS","S","M","L","XL","2XL","3XL")
          selectedSize = t_shirt_size[selectedSizeIndex]
         MaterialAlertDialogBuilder(requireContext())
@@ -149,6 +150,8 @@ class MerchandiseFragment : Fragment() {
             }
             .setPositiveButton("OK"){dialog,which ->
                 showSnackBar("$selectedSize selected")
+                binding.chooseSize.text = t_shirt_size[selectedSizeIndex]
+
                //implement here the size part
             }
             .setNeutralButton("Cancel"){dialog,which ->
@@ -160,7 +163,7 @@ class MerchandiseFragment : Fragment() {
 
     private fun showSnackBar(msg : String)
     {
-        Snackbar.make(binding.root,msg,Snackbar.LENGTH_LONG)
+        Snackbar.make(binding.root,msg,Snackbar.LENGTH_SHORT).show()
     }
 
     private fun selectImage() {
@@ -178,11 +181,10 @@ class MerchandiseFragment : Fragment() {
                     if (data != null && data.data != null) {
                         val imageUri = data.data
                         selectedImageUri = imageUri
-
                         val imageBase64 = MyFileHandler(requireContext()).handleFile(selectedImageUri!!)
                         var imageName = MyFileHandler(requireContext()).getFileName(selectedImageUri!!)
                         Log.i("image",imageBase64.toString())
-
+                        showSnackBar("$imageName is selected")
                         binding.choosePaymentSs.text = imageName
                     }
                 }
@@ -373,9 +375,14 @@ class MerchandiseFragment : Fragment() {
                    Log.i("Tag",t.toString())
                     binding.loadingCard.visibility = View.INVISIBLE
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-                    Toast.makeText(context,"Connection failed.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"Try again !!, It may happen first time",Toast.LENGTH_SHORT).show()
                 }
             })
+
+            binding.chooseSize.text = "Choose Size"
+            binding.choosePaymentSs.text ="Payement Screenshot"
+            selectedSizeIndex = 0;
+            selectedImageUri = null
         }
     }
 
