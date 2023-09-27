@@ -382,6 +382,15 @@ class MerchandiseFragment : Fragment() {
             binding.chooseSize.text = "Choose Size"
             binding.choosePaymentSs.text ="Payement Screenshot"
             selectedSizeIndex = 0;
+
+            binding.editEdmail.text.clear()
+            binding.editName.text.clear()
+            binding.editAdmNo.text.clear()
+            binding.editBranch.text.clear()
+            binding.editHostel.text.clear()
+            binding.editTransactionId.text.clear()
+            binding.editRoomNo.text.clear()
+            binding.editPhnNo.text.clear()
             selectedImageUri = null
         }
     }
