@@ -18,14 +18,14 @@
                     android:icon="@drawable/baseline_emoji_events_24"
                     android:title="@string/menu_events"
                     />
-                <item
-                    android:id="@+id/nav_profile"
-                    android:icon="@drawable/baseline_person_24"
-                    android:title="@string/menu_profile" />
-                <item
-                    android:id="@+id/nav_scanqr"
-                    android:icon="@drawable/baseline_qr_code_scanner_24"
-                    android:title="@string/menu_qrscan"/>
+<!--                <item-->
+<!--                    android:id="@+id/nav_profile"-->
+<!--                    android:icon="@drawable/baseline_person_24"-->
+<!--                    android:title="@string/menu_profile" />-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_scanqr"-->
+<!--                    android:icon="@drawable/baseline_qr_code_scanner_24"-->
+<!--                    android:title="@string/menu_qrscan"/>-->
                 <item
                     android:id="@+id/nav_merchandise"
                     android:icon="@drawable/ic_baseline_merchandise"
@@ -34,18 +34,18 @@
 <!--                    android:id="@+id/nav_gatepass"-->
 <!--                    android:icon="@drawable/baseline_door_sliding_24"-->
 <!--                    android:title="Gate Pass"/>-->
-                <item
-                    android:id="@+id/nav_timeline"
-                    android:icon="@drawable/baseline_access_time_filled_24"
-                    android:title="@string/menu_timeline" />
+<!--                <item-->
+<!--                    android:id="@+id/nav_timeline"-->
+<!--                    android:icon="@drawable/baseline_access_time_filled_24"-->
+<!--                    android:title="@string/menu_timeline" />-->
                 <item
                     android:id="@+id/nav_sponsors"
                     android:icon="@drawable/baseline_view_list_24"
                     android:title="@string/menu_sponsors"/>
-                <item
-                    android:id="@+id/nav_noticeboard"
-                    android:icon="@drawable/baseline_notifications_24"
-                    android:title="@string/menu_noticeboard" />
+<!--                <item-->
+<!--                    android:id="@+id/nav_noticeboard"-->
+<!--                    android:icon="@drawable/baseline_notifications_24"-->
+<!--                    android:title="@string/menu_noticeboard" />-->
 
             </group>
         </menu>
@@ -56,10 +56,10 @@
         >
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:id = "@+id/nav_aboutus"
-                    android:icon="@drawable/baseline_description_24"
-                    android:title="@string/menu_aboutus" />
+<!--                <item-->
+<!--                    android:id = "@+id/nav_aboutus"-->
+<!--                    android:icon="@drawable/baseline_description_24"-->
+<!--                    android:title="@string/menu_aboutus" />-->
 
                 <item
                     android:id="@+id/nav_contactus"

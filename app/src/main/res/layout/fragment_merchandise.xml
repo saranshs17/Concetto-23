@@ -76,7 +76,7 @@
                 android:background="@drawable/border1"
                 android:layout_margin="10dp"
                 android:inputType = "textEmailAddress"
-                android:hint="Email*"
+                android:hint="Personal Email*"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
