@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.aboutus
+package com.iitism.concetto.ui.aboutUs
 
 import android.app.ProgressDialog
 import androidx.lifecycle.ViewModelProvider
@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.iitism.concetto.databinding.FragmentAboutUsBinding
-import com.iitism.concetto.ui.aboutus.retrofit.AboutUsViewModelFactoy
-import com.iitism.concetto.ui.aboutus.retrofit.RetrofitInstance
+import com.iitism.concetto.ui.aboutUs.retrofit.AboutUsViewModelFactoy
+import com.iitism.concetto.ui.aboutUs.retrofit.RetrofitInstance
 import kotlinx.coroutines.*
 
 class AboutUsFragment : Fragment() {

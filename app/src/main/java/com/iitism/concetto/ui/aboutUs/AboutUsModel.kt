@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.aboutus
+package com.iitism.concetto.ui.aboutUs
 
 data class AboutUsModel(
     val _id: String,

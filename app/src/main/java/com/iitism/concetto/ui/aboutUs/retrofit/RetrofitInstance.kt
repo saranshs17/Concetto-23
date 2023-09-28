@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.aboutus.retrofit
+package com.iitism.concetto.ui.aboutUs.retrofit
 
 import com.iitism.concetto.BuildConfig
 import okhttp3.OkHttpClient

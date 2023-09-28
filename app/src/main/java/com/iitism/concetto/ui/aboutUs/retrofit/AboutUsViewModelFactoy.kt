@@ -1,10 +1,10 @@
-package com.iitism.concetto.ui.aboutus.retrofit
+package com.iitism.concetto.ui.aboutUs.retrofit
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.iitism.concetto.ui.aboutus.AboutUsRepository
-import com.iitism.concetto.ui.aboutus.AboutUsViewModel
+import com.iitism.concetto.ui.aboutUs.AboutUsRepository
+import com.iitism.concetto.ui.aboutUs.AboutUsViewModel
 
 class AboutUsViewModelFactoy constructor(
     private val repository: AboutUsRepository,

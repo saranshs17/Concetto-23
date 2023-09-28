@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/nav_aboutus"
         android:label="@string/menu_aboutus"
-        android:name="com.iitism.concetto.ui.aboutus.AboutUsFragment"
+        android:name="com.iitism.concetto.ui.aboutUs.AboutUsFragment"
         tools:layout="@layout/fragment_about_us"/>
 
     <fragment

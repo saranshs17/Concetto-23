@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.iitism.concetto.databinding.FragmentNoticeBoardBinding
-import com.iitism.concetto.ui.aboutus.AboutUsRepository
-import com.iitism.concetto.ui.aboutus.retrofit.RetrofitInstance
+import com.iitism.concetto.ui.aboutUs.AboutUsRepository
+import com.iitism.concetto.ui.aboutUs.retrofit.RetrofitInstance
 import com.iitism.concetto.ui.noticeboardfragment.retrofit.NoticeBoardViewModelFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

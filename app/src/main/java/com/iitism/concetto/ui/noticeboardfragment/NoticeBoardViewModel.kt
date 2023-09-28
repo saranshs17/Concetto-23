@@ -7,7 +7,7 @@ import android.os.Build
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.iitism.concetto.ui.aboutus.AboutUsRepository
+import com.iitism.concetto.ui.aboutUs.AboutUsRepository
 
 class NoticeBoardViewModel(private val repository: AboutUsRepository,
                            private val context: Context

@@ -1,6 +1,6 @@
-package com.iitism.concetto.ui.aboutus
+package com.iitism.concetto.ui.aboutUs
 
-import com.iitism.concetto.ui.aboutus.retrofit.AboutUsApi
+import com.iitism.concetto.ui.aboutUs.retrofit.AboutUsApi
 
 class AboutUsRepository constructor(private val api: AboutUsApi) {
     suspend fun getAllOrganizers() = api.getAllOrganizers()

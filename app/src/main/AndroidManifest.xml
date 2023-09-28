@@ -12,7 +12,7 @@
         android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/concetto_logo"
-        android:roundIcon="@drawable/concetto_logo"
+        android:roundIcon="@drawable/concetto_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.HackfestApp"

@@ -3,7 +3,7 @@ package com.iitism.concetto.ui.noticeboardfragment.retrofit
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.iitism.concetto.ui.aboutus.AboutUsRepository
+import com.iitism.concetto.ui.aboutUs.AboutUsRepository
 import com.iitism.concetto.ui.noticeboardfragment.NoticeBoardViewModel
 
 class NoticeBoardViewModelFactory constructor(

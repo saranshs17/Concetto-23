@@ -27,12 +27,6 @@ class SponsorsFragment : Fragment(R.layout.fragment_sponsors) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return ComposeView(requireContext()).apply {
-//            vm = viewmodel(requireContext())
-//            setContent {
-//                UI(vm)
-//            }
-//        }
         return inflater.inflate(R.layout.fragment_sponsors, container, false)
     }
 
@@ -71,64 +65,3 @@ class SponsorsFragment : Fragment(R.layout.fragment_sponsors) {
 
 
 }
-
-
-
-
-/*@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun UI(vm: viewmodel){
-    vm.getSponsorList()
-
-    Scaffold (
-        topBar = {
-            TopAppBar(
-                title = { Text("Sponsors") }
-            )
-        },
-        bottomBar = {}
-    )
-    { paddingValues ->
-
-        LazyVerticalGrid(
-            modifier = Modifier.padding(paddingValues),
-            columns = GridCells.Fixed(2)
-        ) {
-            items(vm.sponsorList){ sponsor ->
-                UserWidget(sponsor)
-                *//*Card (
-                    modifier = Modifier.padding(10.dp)
-                ){
-                    Column(modifier = Modifier.fillMaxWidth()) {
-
-                        AsyncImage(
-                            model = sponsor.img,
-                            contentDescription = "Image of the Sponsor"
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        Text(text =sponsor.cat)
-
-                    }
-
-                }*//*
-
-            }
-        }
-
-    }
-}*/
-
-/*@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}*/
-
-/*
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    API_jetpack_composeTheme {
-        Greeting("Android")
-    }
-}*/

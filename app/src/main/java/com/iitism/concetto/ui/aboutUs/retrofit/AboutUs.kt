@@ -1,6 +1,6 @@
-package com.iitism.concetto.ui.aboutus.retrofit
+package com.iitism.concetto.ui.aboutUs.retrofit
 
-import com.iitism.concetto.ui.aboutus.AboutUsModel
+import com.iitism.concetto.ui.aboutUs.AboutUsModel
 import com.iitism.concetto.ui.noticeboardfragment.NoticeBoardModel
 import retrofit2.Response
 import retrofit2.http.GET

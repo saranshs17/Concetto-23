@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.aboutus
+package com.iitism.concetto.ui.aboutUs
 
 import android.annotation.SuppressLint
 import android.content.Context
