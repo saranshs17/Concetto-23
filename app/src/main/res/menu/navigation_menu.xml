@@ -42,6 +42,11 @@
                     android:id="@+id/nav_sponsors"
                     android:icon="@drawable/baseline_view_list_24"
                     android:title="@string/menu_sponsors"/>
+                <item
+                    android:id = "@+id/nav_coreTeam"
+                    android:icon="@drawable/baseline_description_24"
+                    android:title="@string/menu_coreTeam" />
+
 <!--                <item-->
 <!--                    android:id="@+id/nav_noticeboard"-->
 <!--                    android:icon="@drawable/baseline_notifications_24"-->

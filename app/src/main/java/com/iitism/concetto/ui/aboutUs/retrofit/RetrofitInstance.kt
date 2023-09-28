@@ -28,5 +28,4 @@ object RetrofitInstance {
             .create(AboutUsApi::class.java)
     }
 
-
 }
