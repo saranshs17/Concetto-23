@@ -4,12 +4,12 @@ import android.net.Uri
 import java.text.FieldPosition
 
 data class CoreTeamDataModel (
-    var imageUri: String,
+    var image: String,
     var name:String,
     var position: String,
     var team: String,
-    var linkedInUrl : String,
-    var instaUrl : String,
+    var linkedin_url : String,
+    var insta_url : String,
 )
 
 

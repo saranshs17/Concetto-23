@@ -1,12 +1,17 @@
 package com.iitism.concetto.ui.coreteam
 
 import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.letmeknow.Adapters.SponsorsAdapter
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.FragmentCoreTeamBinding
@@ -33,9 +38,17 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         val currentData = dataList[position]
-        if(currentData.imageUri != null)
+//        Log.i("data",currentData.toString())
+        if(currentData.image != null)
         {
-            Picasso.get().load(currentData.imageUri).into(holder.image_c)
+//            Picasso.get().load(currentData.imageUri).into(holder.image_c)
+
+            Glide.with(holder.itemView)
+                .load(currentData.image)
+                .placeholder(R.drawable.concetto_full_logo)
+                .centerCrop()
+                .circleCrop()
+                .into(holder.image_c)
         }
 
         holder.name_c.text = currentData.name
@@ -50,18 +63,30 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
         else
             holder.position_c.text = "Postion"
 
-        holder.insta_c.setOnClickListener()
+
+        if(currentData.linkedin_url != null)
         {
-            mListener.onItemClick(position)
+            Log.i("linkedInUrl",currentData.linkedin_url)
+            holder.linkedIn_c.setOnClickListener()
+            {
+                    val url = currentData.linkedin_url
+                val i = Intent()
+                i.setPackage("com.android.chrome")
+                i.action = Intent.ACTION_VIEW
+                i.data = Uri.parse(url)
+                startActivity(it.context,i,null)
+            }
         }
 
-        holder.linkedIn_c.setOnClickListener()
+        if(currentData.insta_url!= null)
         {
-            mListener.onItemClick(position)
+            holder.insta_c.setOnClickListener()
+            {
+                val url = currentData.insta_url
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                ContextCompat.startActivity(it.context, intent, null)
+            }
         }
-
-
-
     }
 
     override fun getItemCount(): Int {

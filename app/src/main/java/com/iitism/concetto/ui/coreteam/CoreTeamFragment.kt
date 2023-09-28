@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,21 +44,6 @@ class CoreTeamFragment : Fragment() {
 
         val itemAdapter = CoreTeamAdapter(viewModel.coreTeamList)
         CoreTeamRecyclerView.adapter = itemAdapter
-
-        itemAdapter.setOnItemClickListener(object : CoreTeamAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                try {
-                    val url = viewModel.coreTeamList[position].instaUrl
-                    val i = Intent()
-                    i.setPackage("com.android.chrome")
-                    i.action = Intent.ACTION_VIEW
-                    i.data = Uri.parse(url)
-                    startActivity(i)
-                } catch (e: ActivityNotFoundException){
-                    Toast.makeText(context,"Chrome not Installed", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
 
     }
 
