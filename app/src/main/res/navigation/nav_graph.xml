@@ -45,7 +45,14 @@
         android:id="@+id/nav_coreTeam"
         android:label="@string/menu_coreTeam"
         android:name="com.iitism.concetto.ui.coreteam.CoreTeamFragment"
-        tools:layout="@layout/fragment_core_team"/>
+        tools:layout="@layout/fragment_core_team">
+        <action
+            android:id="@+id/action_nav_coreTeam_to_nav_clubEvents"
+            app:destination="@id/nav_clubEvents" />
+        <action
+            android:id="@+id/action_nav_coreTeam_to_nav_departementEvents"
+            app:destination="@id/nav_departementEvents" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_aboutus"
@@ -75,8 +82,28 @@
     <fragment
         android:id="@+id/nav_allEvents"
         android:label="@string/menu_events"
-        android:name="com.iitism.concetto.ui."
-        tools:layout="@layout/fragment_events"/>
+        android:name="com.iitism.concetto.ui.allevents.AllEventsFragment"
+        tools:layout="@layout/fragment_all_events"/>
+
+    <fragment
+        android:id="@+id/nav_clubEvents"
+        android:label="@string/menu_club_events"
+        android:name="com.iitism.concetto.ui.clubevents.ClubEventsFragment"
+        tools:layout="@layout/fragment_club_events">
+        <action
+            android:id="@+id/action_nav_clubEvents_to_nav_departementEvents"
+            app:destination="@id/nav_departementEvents" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_departementEvents"
+        android:label="@string/menu_department_events"
+        android:name="com.iitism.concetto.ui.departmentevents.DepartmentEventsFragment"
+        tools:layout="@layout/fragment_department_events">
+        <action
+            android:id="@+id/action_nav_departementEvents_to_nav_allEvents"
+            app:destination="@id/nav_allEvents" />
+    </fragment>
+
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->
 <!--        android:label="Gate Pass"-->
