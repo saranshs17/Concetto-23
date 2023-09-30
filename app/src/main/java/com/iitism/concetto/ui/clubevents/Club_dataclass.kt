@@ -11,7 +11,7 @@ data class Club_dataclass(
     var descriptionOrganizer: String,
     var type: Int,
     var oraganizer: String,
-    var rules: List<String>,
+    var rules: ArrayList<String>,
     var prizes: String,
     var contacts: List<Contact>,
     var pdfLink: String,
@@ -21,4 +21,6 @@ data class Club_dataclass(
     var extraDetails: List<ExtraDetail>,
     var teams: List<String>,
     var stages: List<Stage>
-)
+) {
+
+}

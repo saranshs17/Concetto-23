@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="30dp"
+    android:layout_margin="16dp"
+    android:elevation="20dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sponsor_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+           android:layout_marginEnd="4dp"
+          android:src="@drawable/rule_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"/>
+
+       <TextView
+           android:id="@+id/tvRules"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"
+           android:text="This is Rule n"
+           android:textColor="@color/darkest_green"
+           android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

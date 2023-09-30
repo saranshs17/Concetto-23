@@ -1,75 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.allevents.RulesFragment">
+    tools:context=".ui.allevents.RulesFragment"
+    android:orientation="vertical">
 
-    <ScrollView
+
+
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_rules"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="30dp"
+          tools:listitem="@layout/card_rules_fragment"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:padding="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="Rules : "
-                android:textColor="@color/teal_200"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/eventRules"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/genos_light"
-                android:text="Rule1\nRule2\nRule3"
-                android:textColor="@color/teal_200"
-                android:textSize="20sp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/inter_bold"
-
-                    android:text="For more details, Refer : "
-                    android:textColor="@color/teal_200"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/event_pdfLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/genos_light"
-                    android:text="PDF link"
-                    android:textColor="@color/teal_200"
-                    android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="For more info:"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:layout_marginEnd="9dp"/>
+    <TextView
+        android:id="@+id/pdfLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PDF link"
+        android:textSize="30dp"
+        android:textColor="#0000EE"/>
 
 
-
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-    </ScrollView>
-
-</FrameLayout>
+</LinearLayout>
+</LinearLayout>
