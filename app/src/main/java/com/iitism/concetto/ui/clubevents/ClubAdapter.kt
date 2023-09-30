@@ -16,7 +16,7 @@ class ClubAdapter(private val eventList:List<Club_dataclass>): RecyclerView.Adap
         var eventName:TextView=itemView.findViewById(R.id.event_tv)
         var clubname:TextView=itemView.findViewById(R.id.clubname_tv)
         var venue:TextView=itemView.findViewById(R.id.tv_venue)
-        var price:TextView=itemView.findViewById(R.id.tv_price)
+        var price:TextView=itemView.findViewById(R.id.tv_prize)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.event_list_item,parent,false)

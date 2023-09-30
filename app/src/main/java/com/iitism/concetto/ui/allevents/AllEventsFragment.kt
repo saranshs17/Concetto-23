@@ -39,6 +39,7 @@ class AllEventsFragment : Fragment() {
         val itemAdapter = AllEventsAdapter(viewModel.EventsList)
         binding.rvEvents.adapter = itemAdapter
         binding.rvEvents.setHasFixedSize(true)
+        itemAdapter.notifyDataSetChanged()
         return binding.root
     }
 
