@@ -1,7 +1,10 @@
-package com.iitism.concetto.ui.clubevents
+package com.iitism.concetto.ui.allevents.retrofit
 
+import com.iitism.concetto.ui.clubevents.Contact
+import com.iitism.concetto.ui.clubevents.ExtraDetail
+import com.iitism.concetto.ui.clubevents.Stage
 
-data class Club_dataclass(
+data class AllEventsDataModel (
     var _id: String,
     var posterMobile: String,
     var posterWeb: String,
@@ -21,6 +24,5 @@ data class Club_dataclass(
     var extraDetails: List<ExtraDetail>,
     var teams: List<String>,
     var stages: List<Stage>
-) {
+)
 
-}
