@@ -32,16 +32,13 @@
                 <ImageView
                     android:id="@+id/event_img"
                     android:outlineProvider="background"
-                    android:outlineAmbientShadowColor="?attr/colorPrimaryInverse"
-                    android:outlineSpotShadowColor="?attr/colorPrimaryInverse"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
                     android:layout_height="200dp"
-                    android:elevation="50dp"
-                    android:src="@drawable/concetto_logo"
-                    ></ImageView>
+                    android:elevation="50dp" />
 
             </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:id="@+id/event_tv"
                 android:layout_width="match_parent"
@@ -53,7 +50,7 @@
                 android:layout_marginRight="32dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                ></TextView>
+                />
             <TextView
                 android:id="@+id/clubname_tv"
                 android:layout_width="match_parent"
@@ -66,7 +63,7 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
                 android:gravity="center"
-                ></TextView>
+                />
             <LinearLayout
                 android:padding="8dp"
                 android:layout_marginLeft="32dp"
@@ -84,9 +81,7 @@
                         android:textColor="@color/black"
                         android:text="Venue: "
                         android:textSize="15sp"
-                        android:textStyle="bold">
-
-                    </TextView>
+                        android:textStyle="bold"/>
                     <TextView
                         android:id="@+id/tv_venue"
                         android:layout_width="wrap_content"
@@ -116,7 +111,9 @@
                         android:text="tv_price"/>
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_viewmore"
             android:layout_marginLeft="32dp"

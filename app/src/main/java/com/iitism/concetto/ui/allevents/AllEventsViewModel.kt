@@ -3,6 +3,7 @@ package com.iitism.concetto.ui.allevents
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
 import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
 import retrofit2.Response
@@ -33,4 +34,6 @@ class AllEventsViewModel : ViewModel() {
             Log.e("Error", e.toString())
         }
     }
+
+
 }
