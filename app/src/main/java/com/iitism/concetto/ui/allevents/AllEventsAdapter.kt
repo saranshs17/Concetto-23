@@ -60,7 +60,11 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
                 .into(holder.eventIV)
 
             holder.eventName.text = event.name
-            holder.clubname.text = event.oraganizer
+            if(event.organizer != null)
+            holder.clubname.text = event.organizer
+            else
+                holder.clubname.text = "Club Name"
+
             holder.prize.text = event.prizes
             val stages : List<com.iitism.concetto.ui.clubevents.Stage> = event.stages
             if(stages.size > 0)

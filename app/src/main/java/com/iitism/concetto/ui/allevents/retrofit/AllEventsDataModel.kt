@@ -13,7 +13,7 @@ data class AllEventsDataModel (
     var descripationEvent: String,
     var descriptionOrganizer: String,
     var type: Int,
-    var oraganizer: String,
+    var organizer: String,
     var rules: List<String>,
     var prizes: String,
     var contacts: List<Contact>,
