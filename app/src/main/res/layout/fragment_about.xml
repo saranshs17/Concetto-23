@@ -12,36 +12,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+
             android:layout_marginStart="10dp"
-            android:gravity="center_horizontal"
+
             android:orientation="vertical"
             android:padding="10dp">
 
             <ImageView
                 android:id="@+id/event_image"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:background="@color/black"
                 android:contentDescription="image"
-                android:src="@drawable/baseline_person_24_white" />
+                android:src="@drawable/concetto_full_logo" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/event_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_bold"
+                android:text="Event Name  "
+                android:layout_gravity="center"
+                android:textColor="@color/teal_700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/event_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Event Name  "
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/teal_700"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+
+
+
 
                 <TextView
                     android:id="@+id/eventType"
@@ -52,7 +51,7 @@
                     android:textAlignment="viewStart"
                     android:textColor="@color/teal_700" />
 
-            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,13 +59,25 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/event_date"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/inter_bold"
-                    android:text="Event date "
-                    android:textAlignment="viewEnd"
+                    android:text="Fee : "
+
+                    android:textColor="@color/teal_700"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Fee : "
+
                     android:textColor="@color/teal_700"
                     android:textSize="24sp"
                     android:textStyle="bold" />

@@ -1,5 +1,6 @@
 package com.iitism.concetto.ui.homefragment
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +11,9 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.iitism.concetto.R
+import com.iitism.concetto.databinding.ActivityViewerBinding
 import com.iitism.concetto.databinding.FragmentHomeBinding
+import com.iitism.concetto.ui.allevents.ViewerActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,6 +42,11 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        binding.viewerActivityButton.setOnClickListener {
+            val intent = Intent(context, ViewerActivity::class.java)
+            startActivity(intent)
+        }
 
         videoView = binding.videoview
         videoView.setVideoPath(path)

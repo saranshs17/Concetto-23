@@ -12,12 +12,21 @@
     app:cardElevation="10dp">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/action_bar"
+        android:elevation="6dp"
+        app:tabIndicator="@drawable/button_background"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@null"
+        app:tabIndicatorGravity="stretch"
+        app:tabSelectedTextAppearance="@color/teal_200"
+        />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_marginTop="60dp"
+        android:id="@+id/viewPager2"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="fill"/>
