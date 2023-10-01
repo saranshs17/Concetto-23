@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.allevents
+package com.iitism.concetto.ui.singleevent
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

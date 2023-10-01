@@ -44,10 +44,14 @@ class AllEventsFragment : Fragment() {
 
 
         binding.rvEvents.layoutManager = LinearLayoutManager(requireContext())
+
         // itemAdapter = AllEventsAdapter()
+
         binding.rvEvents.adapter = itemAdapter
-          binding.rvEvents.setHasFixedSize(true)
+        binding.rvEvents.setHasFixedSize(true)
+
         // itemAdapter.notifyDataSetChanged()
+
         getEvents()
     }
 

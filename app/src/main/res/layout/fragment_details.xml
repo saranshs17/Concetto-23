@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.allevents.DetailsFragment">
+    tools:context=".ui.singleevent.DetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40sp"
-                android:layout_margin="4dp">
+                android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
                     android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
-                android:layout_margin="4dp">
+                android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
                     android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
-                android:layout_margin="4dp">
+                android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
                     android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
-                android:layout_margin="4dp">
+                android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
                     android:layout_width="match_parent"
