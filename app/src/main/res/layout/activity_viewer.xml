@@ -31,6 +31,15 @@
         android:layout_height="match_parent"
         android:layout_gravity="fill"/>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:text="REGISTER"
+
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+
 
 <!--    <ScrollView-->
 <!--        android:layout_width="match_parent"-->
