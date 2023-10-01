@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.allevents.AboutFragment">
+    tools:context=".ui.singleevent.AboutFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_marginStart="10dp"
-
             android:orientation="vertical"
             android:padding="10dp">
+
 
             <ImageView
                 android:id="@+id/event_image"
@@ -30,113 +30,200 @@
                 android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-18dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_bold"
                 android:text="Event Name  "
-                android:layout_gravity="center"
-                android:textColor="@color/teal_700"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-
-
-
-
-
-                <TextView
-                    android:id="@+id/eventType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="online"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/teal_700" />
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
-                <TextView
-
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Fee : "
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-                    android:textColor="@color/teal_700"
-                    android:textSize="24sp"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Fee : "
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_green"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/eventFee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textAlignment="center"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+
+                <View
+
+                    android:layout_width="2dp"
+                    android:layout_height="65dp"
+                    android:background="@color/background_color"
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Mode of Conducting: "
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_green"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/eventMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Online"
+                        android:textAlignment="center"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Organizer: "
+                    android:textAlignment="center"
+                    android:textColor="@color/darker_green"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-
-                    android:layout_width="wrap_content"
+                    android:id="@+id/event_organizer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Fee : "
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/genos_light"
+                    android:text="CyberLabs "
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
-                    android:textColor="@color/teal_700"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/eventTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="time"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/teal_700" />
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/event_organizer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/genos_light"
-                android:text="Organizer "
-                android:textColor="@color/teal_200"
-                android:textSize="20sp" />
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Event Description: "
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/event_description"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/genos_light"
-                android:text="Description"
-                android:textColor="@color/teal_200"
+                android:text="Teams have to build an autonomous bot that can follow a black line over a contrasting surface to move between the different zones and perform the required tasks. The line may have discontinuities."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+
                 android:textSize="20sp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Organizer Description: "
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_organizerDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/genos_light"
+                android:text="We create products that solve real problems! Whatever your major is, whatever your age be, whatever you do, doesn't matter! Hop on, if you have that keeda of invention."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Prizes: "
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/event_prizes"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/genos_light"
-                android:text="Prizes"
-                android:textColor="@color/teal_200"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/event_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/genos_light"
-                android:text="Fee : Free"
-                android:textColor="@color/teal_200"
+                android:text="1) 80k\n2)50k\n3)20k"
+                android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
 
         </LinearLayout>
 
     </ScrollView>
-
 </FrameLayout>
