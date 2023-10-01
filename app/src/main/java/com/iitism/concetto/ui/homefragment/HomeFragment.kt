@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.ActivityViewerBinding
 import com.iitism.concetto.databinding.FragmentHomeBinding
-import com.iitism.concetto.ui.allevents.ViewerActivity
+import com.iitism.concetto.ui.singleevent.ViewerActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
