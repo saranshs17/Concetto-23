@@ -21,7 +21,7 @@ class AllEventsViewModel : ViewModel() {
                 val data = response.body()
                 if (data != null) {
                     // Data fetched successfully
-                    Log.d("Data", data.toString())
+//                    Log.d("Data", data.toString())
                     EventsList.postValue(data)
 
                     val filteredData = data.filter { it.type == 2 }

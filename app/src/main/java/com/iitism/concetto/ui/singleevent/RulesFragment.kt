@@ -1,4 +1,4 @@
-package com.iitism.concetto.ui.allevents
+package com.iitism.concetto.ui.singleevent
 
 import android.content.Intent
 import android.os.Bundle
