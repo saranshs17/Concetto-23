@@ -32,7 +32,6 @@ class RulesAdapter(private val ruleList : ArrayList<String>) : RecyclerView.Adap
     class MyViewHolder(ruleView : View) : RecyclerView.ViewHolder(ruleView){
 
         val rule : TextView = ruleView.findViewById(R.id.tvRules)
-
     }
 }
 

@@ -1,9 +1,11 @@
 package com.iitism.concetto.ui.singleevent
 
 import android.content.Intent
+import android.graphics.PointF
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,38 +16,41 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
 
-class RulesFragment : Fragment(R.layout.fragment_rules) {
+class RulesFragment(
+    val RulesList : List<String>?,
+    val Pdflink : String?
+) : Fragment(R.layout.fragment_rules) {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var rulesArrayList : ArrayList<String>
-    private lateinit var arrayList: List<String>
-    private lateinit var viewModel: MyViewModel
     private lateinit var pdfLink : TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
         recyclerView = view.findViewById(R.id.rvRules)
         pdfLink = view.findViewById(R.id.pdfLink)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
 
+//        arrayList = ViewerActivity().getRules()
 
-        arrayList = viewModel.EventsList.value?.flatMap { it.rules } ?: emptyList()
+
         //  List                               get the rules list from Club_dataclass
-      rulesArrayList =   ArrayList(arrayList)              // put the list in rules array list
+      rulesArrayList =   ArrayList(RulesList)
+        if(rulesArrayList.isNotEmpty())
+            Log.i("Rules",rulesArrayList.toString())
+
+        // put the list in rules array list
         recyclerView.adapter = RulesAdapter(rulesArrayList)
 
-        pdfLink.setOnClickListener { val singleEventModel = viewModel.EventsList.value ?: SingleEventModel()
-            if (singleEventModel.isNotEmpty()) {
 
-                val url = singleEventModel[0].pdfLink
+        pdfLink.setOnClickListener {
+            if (Pdflink != null) {
+                val url = Pdflink
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
-
-
                 if (intent.resolveActivity(requireContext().packageManager) != null) {
                     startActivity(intent)
                 } else {
