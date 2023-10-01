@@ -73,7 +73,7 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
 
             holder.prize.text = event.prizes
             val stages : List<com.iitism.concetto.ui.clubevents.Stage> = event.stages
-            if(stages.size > 0)
+            if(stages.isNotEmpty())
             holder.venue.text = stages[0].venue
 
             holder.buttonViewMore.setOnClickListener {
