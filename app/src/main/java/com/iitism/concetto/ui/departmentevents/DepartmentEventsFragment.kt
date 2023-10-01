@@ -2,6 +2,7 @@ package com.iitism.concetto.ui.departmentevents
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,69 +10,65 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
+import com.iitism.concetto.databinding.FragmentClubEventsBinding
+import com.iitism.concetto.databinding.FragmentDepartmentEventsBinding
+import com.iitism.concetto.ui.aboutUs.retrofit.RetrofitInstance
+import com.iitism.concetto.ui.allevents.AllEventsFragment
+import com.iitism.concetto.ui.allevents.AllEventsViewModel
+import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
+import com.iitism.concetto.ui.clubevents.ClubAdapter
+import com.iitism.concetto.ui.clubevents.ClubEventsViewModel
+import com.iitism.concetto.ui.clubevents.RetrofitInstanceClubEvents
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 class DepartmentEventsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = DepartmentEventsFragment()
+        fun newInstance() = AllEventsFragment()
+
     }
 
-    private lateinit var viewModel: DepartmentEventsViewModel
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter:DepartmentAdapter
-    private lateinit var  posterMobile: String
-    private lateinit var posterWeb: String
-    private lateinit var name: String
-    private lateinit var mode: String
-    private lateinit var descriptionEvent: String
-    private lateinit var descriptionOrganizer: String
-    private var type by Delegates.notNull<Int>()
-    private lateinit var organizer: String
-    private lateinit var rules: List<String>
-    private lateinit var prizes: String
-    private lateinit var contacts: List<String>
-    private var fees by Delegates.notNull<Int>()
-    private lateinit var pdfLink: String
-    private var minTeamSize by Delegates.notNull<Int>()
-    private var maxTeamSize by Delegates.notNull<Int>()
-    private lateinit var problemStatements: String
-    private lateinit var extraDetails: List<String>
-    private lateinit var teams: List<String>
-    private lateinit var stages: List<String>
-
+    private val clubAdapter = DepartmentAdapter()
+    private lateinit var viewModel: AllEventsViewModel
+    lateinit var retrofitInstance : RetrofitInstanceEvents
+    private lateinit var binding : FragmentDepartmentEventsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view=inflater.inflate(R.layout.fragment_department_events, container, false)
-        recyclerView = view.findViewById(R.id.rv_departments)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-
-
-        adapter=DepartmentAdapter(posterMobile,
-            posterWeb,
-            name,
-            mode,
-            descriptionEvent,
-            descriptionOrganizer,
-            type,
-            organizer,
-            rules,
-        prizes,
-        contacts,
-        fees,
-        pdfLink,
-        minTeamSize,
-        maxTeamSize,
-        problemStatements,
-        extraDetails,
-        teams,
-        stages)
-
-        recyclerView.adapter = adapter
-
-        return view
+    ): View
+    {
+        binding = FragmentDepartmentEventsBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        retrofitInstance = RetrofitInstanceEvents()
+        viewModel = ViewModelProvider(this)[AllEventsViewModel::class.java]
+
+
+        binding.rvDepartments.layoutManager = LinearLayoutManager(requireContext())
+        // itemAdapter = AllEventsAdapter()
+        binding.rvDepartments.adapter = clubAdapter
+        binding.rvDepartments.setHasFixedSize(true)
+        // itemAdapter.notifyDataSetChanged()
+        getEvents()
+    }
+
+    private fun getEvents()
+    {
+        GlobalScope.launch(Dispatchers.IO) {
+            viewModel.getAllEvents()
+
+            this.launch(Dispatchers.Main) {
+                clubAdapter.seteventList(viewModel.DepartmentEventList)
+                Log.i("Data",viewModel.DepartmentEventList.toString())
+            }
+        }
+    }
+
+
 }

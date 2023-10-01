@@ -1,13 +1,12 @@
-package com.iitism.concetto.ui.allevents.retrofit
+package com.iitism.concetto.ui.clubevents
 
-import com.iitism.concetto.ui.merchandisefragment.retrofit.MerchandiseApiService
+import com.iitism.concetto.ui.allevents.retrofit.AllEventsApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitInstanceEvents {
-
+class RetrofitInstanceClubEvents {
 
     val client = OkHttpClient.Builder()
         .callTimeout(30, TimeUnit.SECONDS)
@@ -21,5 +20,5 @@ class RetrofitInstanceEvents {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val allEventService : AllEventsApiService = retrofit.create(AllEventsApiService::class.java)
+    val clubEventService : ClubEventAPIService = retrofit.create(ClubEventAPIService::class.java)
 }

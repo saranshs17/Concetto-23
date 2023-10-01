@@ -10,6 +10,7 @@ import retrofit2.Response
 
 class AllEventsViewModel : ViewModel() {
     var EventsList = MutableLiveData<List<AllEventsDataModel>?>()
+    var DepartmentEventList = MutableLiveData<List<AllEventsDataModel>?>()
     private val retrofit: RetrofitInstanceEvents = RetrofitInstanceEvents() // Initialize Retrofit here
 
     suspend fun getAllEvents() {
@@ -22,6 +23,9 @@ class AllEventsViewModel : ViewModel() {
                     // Data fetched successfully
                     Log.d("Data", data.toString())
                     EventsList.postValue(data)
+
+                    val filteredData = data.filter { it.type == 2 }
+                    DepartmentEventList.postValue(filteredData)
                 }
             } else {
                 // Handle API error here
@@ -34,6 +38,8 @@ class AllEventsViewModel : ViewModel() {
             Log.e("Error", e.toString())
         }
     }
+
+
 
 
 }
