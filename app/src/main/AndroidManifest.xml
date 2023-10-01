@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.allevents.ViewerActivity"
+            android:name=".ui.singleevent.ViewerActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
