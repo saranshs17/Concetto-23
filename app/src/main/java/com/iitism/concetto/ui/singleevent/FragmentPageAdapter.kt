@@ -19,7 +19,8 @@ class FragmentPageAdapter(
         return when(position){
             0 -> AboutFragment(viewModel.EventsList.value)
             1-> RulesFragment((viewModel.EventsList.value?.flatMap { it.rules }) ?: emptyList(),viewModel.EventsList.value?.get(0)?.pdfLink)
-            else -> DetailsFragment(viewModel.EventsList.value)
+            else-> DetailsFragment(viewModel.EventsList.value)
+
         }
     }
 }

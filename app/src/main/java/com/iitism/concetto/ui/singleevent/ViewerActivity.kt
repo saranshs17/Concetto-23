@@ -1,10 +1,13 @@
 package com.iitism.concetto.ui.singleevent
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.compose.runtime.traceEventEnd
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -52,38 +55,16 @@ class ViewerActivity : AppCompatActivity() {
         setContentView(binding.root)
         eventType = intent.getStringExtra("eventID").toString()
 
-        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        viewModel = ViewModelProvider(this,MyViewModelFactory(this)).get(MyViewModel::class.java)
         Log.i("type",eventType)
-
-
-        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
-        tabLayout= binding.tabLayout
-        viewPager= binding.viewPager2
-        tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
-        tabLayout.addTab(tabLayout.newTab().setText("RULES"))
-        tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
-        binding.viewPager2.adapter = adapter
-        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                if (tab!= null){
-                    viewPager.currentItem= tab.position
-                }
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
-        })
-
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                tabLayout.selectTab(tabLayout.getTabAt(position))
-            }
-        })
         if(intent != null)
-        fetchData()
+          networkCheckAndRun()
+
+        binding.retryButtonViwerActivity.setOnClickListener()
+        {
+            networkCheckAndRun()
+        }
+
     }
 
     public class RetrofitInstanceForSingleEvent {
@@ -102,21 +83,62 @@ class ViewerActivity : AppCompatActivity() {
             .build()
         val apiService : ApiService = retrofit.create(ApiService::class.java)
     }
+
+    fun networkCheckAndRun(){
+        if(viewModel.isNetworkAvailable()){
+            binding.loadingCardViewerActitivity.visibility = View.VISIBLE
+            fetchData()
+        }
+        else{
+            Toast.makeText(this, "Network Error", Toast.LENGTH_SHORT).show()
+            binding.loadingCardViewerActitivity.visibility = View.GONE
+            binding.retryButtonViwerActivity.visibility = View.VISIBLE
+        }
+    }
+
     fun fetchData()
     {
+        binding.retryButtonViwerActivity.visibility = View.GONE
          val retrofit: ViewerActivity.RetrofitInstanceForSingleEvent = ViewerActivity.RetrofitInstanceForSingleEvent()
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 eventType = "api/showEvents/" + eventType
                 val response: Response<SingleEventModel> = retrofit.apiService.getEvent(eventType)
                 if (response.isSuccessful) {
+                    binding.loadingCardViewerActitivity.visibility = View.GONE
                     val data = response.body()
                     if (data != null) {
                         // Data fetched successfully
                         Log.i("Data One Event", data.toString())
-
-                        // Now you can update the ViewModel or UI as needed
                         viewModel.EventsList.postValue(data)
+
+                        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
+                        tabLayout= binding.tabLayout
+                        viewPager= binding.viewPager2
+                        tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
+                        tabLayout.addTab(tabLayout.newTab().setText("RULES"))
+                        tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
+                        binding.viewPager2.adapter = adapter
+                        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+                            override fun onTabSelected(tab: TabLayout.Tab?) {
+                                if (tab!= null){
+                                    viewPager.currentItem= tab.position
+                                }
+                            }
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                            }
+                            override fun onTabReselected(tab: TabLayout.Tab?) {
+                            }
+
+                        })
+
+                        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+                            override fun onPageSelected(position: Int) {
+                                super.onPageSelected(position)
+                                tabLayout.selectTab(tabLayout.getTabAt(position))
+                            }
+                        })
+
                     }
                 } else {
                     Log.e("API Error", "Response code: ${response.code()}")
