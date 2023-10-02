@@ -41,11 +41,23 @@
         android:label="@string/menu_noticeboard"
         android:name="com.iitism.concetto.ui.noticeboardfragment.NoticeBoardFragment"
         tools:layout="@layout/fragment_notice_board"/>
+    <fragment
+        android:id="@+id/nav_coreTeam"
+        android:label="@string/menu_coreTeam"
+        android:name="com.iitism.concetto.ui.coreteam.CoreTeamFragment"
+        tools:layout="@layout/fragment_core_team">
+        <action
+            android:id="@+id/action_nav_coreTeam_to_nav_clubEvents"
+            app:destination="@id/nav_clubEvents" />
+        <action
+            android:id="@+id/action_nav_coreTeam_to_nav_departementEvents"
+            app:destination="@id/nav_departementEvents" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_aboutus"
         android:label="@string/menu_aboutus"
-        android:name="com.iitism.concetto.ui.aboutus.AboutUsFragment"
+        android:name="com.iitism.concetto.ui.aboutUs.AboutUsFragment"
         tools:layout="@layout/fragment_about_us"/>
 
     <fragment
@@ -62,12 +74,36 @@
         android:id="@+id/nav_merchandise"
         android:label="@string/menu_merchandise"
         android:name="com.iitism.concetto.ui.merchandisefragment.MerchandiseFragment"
-        tools:layout="@layout/fragment_merchandise"/>
+        tools:layout="@layout/fragment_merchandise">
+        <action
+            android:id="@+id/action_nav_merchandise_to_nav_coreTeam"
+            app:destination="@id/nav_coreTeam" />
+    </fragment>
     <fragment
-        android:id="@+id/nav_events"
+        android:id="@+id/nav_allEvents"
         android:label="@string/menu_events"
-        android:name="com.iitism.concetto.ui.events.EventsFragment"
-        tools:layout="@layout/fragment_events"/>
+        android:name="com.iitism.concetto.ui.allevents.AllEventsFragment"
+        tools:layout="@layout/fragment_all_events"/>
+
+    <fragment
+        android:id="@+id/nav_clubEvents"
+        android:label="@string/menu_club_events"
+        android:name="com.iitism.concetto.ui.clubevents.ClubEventsFragment"
+        tools:layout="@layout/fragment_club_events">
+        <action
+            android:id="@+id/action_nav_clubEvents_to_nav_departementEvents"
+            app:destination="@id/nav_departementEvents" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_departementEvents"
+        android:label="@string/menu_department_events"
+        android:name="com.iitism.concetto.ui.departmentevents.DepartmentEventsFragment"
+        tools:layout="@layout/fragment_department_events">
+        <action
+            android:id="@+id/action_nav_departementEvents_to_nav_allEvents"
+            app:destination="@id/nav_allEvents" />
+    </fragment>
+
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->
 <!--        android:label="Gate Pass"-->
