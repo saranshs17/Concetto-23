@@ -5,20 +5,24 @@
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/tv_contactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/genos_light"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:text="Contact Name"/>
 
     <TextView
+        android:id="@+id/tv_ContactNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/genos_light"
-        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         android:textAlignment="center"
         android:text="1234567890"/>
 
