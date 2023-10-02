@@ -7,6 +7,7 @@ import android.view.View
 import androidx.compose.runtime.traceEventEnd
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -55,7 +56,7 @@ class ViewerActivity : AppCompatActivity() {
         Log.i("type",eventType)
 
 
-        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle)
+        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
         tabLayout= binding.tabLayout
         viewPager= binding.viewPager2
         tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
@@ -128,5 +129,12 @@ class ViewerActivity : AppCompatActivity() {
         }
 
     }
+
+//    fun getRules() : List<String>
+//    {
+//        val list = viewModel.EventsList.value?.flatMap { it.rules } ?: emptyList()
+//        return list
+//    }
+
 
 }
