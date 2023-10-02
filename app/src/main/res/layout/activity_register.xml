@@ -100,6 +100,7 @@
                 android:background="@drawable/border1"
                 android:layout_margin="10dp"
                 android:hint="Bot Weight*"
+                android:visibility="gone"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
@@ -112,6 +113,7 @@
                 android:layout_margin="10dp"
                 android:inputType = "text"
                 android:hint="Drive Link*"
+                android:visibility="gone"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
@@ -124,6 +126,7 @@
                 android:layout_margin="10dp"
                 android:hint="Field Of Intrest*"
                 android:inputType = "text"
+                android:visibility="gone"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
@@ -229,6 +232,7 @@
                 android:id="@+id/member2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -325,6 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -419,6 +424,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -513,6 +519,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
