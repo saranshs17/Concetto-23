@@ -4,10 +4,12 @@ import com.iitism.concetto.ui.allevents.AllEventsAdapter
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.LiveData
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iitism.concetto.R
 import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
+import com.iitism.concetto.ui.singleevent.ViewerActivity
 import java.util.Objects
 
 class ClubAdapter: RecyclerView.Adapter<ClubAdapter.MyViewHolder>() {
@@ -37,6 +40,7 @@ class ClubAdapter: RecyclerView.Adapter<ClubAdapter.MyViewHolder>() {
         var clubname: TextView =itemView.findViewById(R.id.clubname_tv)
         var venue: TextView =itemView.findViewById(R.id.tv_venue)
         var prize: TextView =itemView.findViewById(R.id.tv_prize)
+        var buttonViewMore : Button = itemView.findViewById(R.id.btn_viewmore)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -67,6 +71,16 @@ class ClubAdapter: RecyclerView.Adapter<ClubAdapter.MyViewHolder>() {
             val stages : List<com.iitism.concetto.ui.clubevents.Stage> = event.stages
             if(stages.size > 0)
                 holder.venue.text = stages[0].venue
+
+            holder.buttonViewMore.setOnClickListener {
+                if(event._id != null) {
+                    val intent = Intent(holder.itemView.context, ViewerActivity::class.java)
+                    intent.putExtra("eventID", event._id)
+                    holder.itemView.context.startActivity(intent)
+                }
+                else
+                    Log.i("intent","No id")
+            }
         }
     }
 
