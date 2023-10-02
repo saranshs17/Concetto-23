@@ -235,8 +235,31 @@
                         android:textColor="?attr/colorSecondary"
                         android:layout_marginRight="5dp"
                         android:textSize="18sp"
-                        android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent.
-"/>
+                        android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent"
+                        />
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="Contact Name"/>-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="1234567890"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </androidx.recyclerview.widget.RecyclerView>-->
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

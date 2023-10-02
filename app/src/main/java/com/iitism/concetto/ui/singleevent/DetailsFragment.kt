@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.iitism.concetto.R
 
 class DetailsFragment(
@@ -14,6 +15,7 @@ class DetailsFragment(
 ): Fragment(R.layout.fragment_details) {
 
     private lateinit var viewModel: DetailsViewModel
+    private lateinit var tvProblemStatement : TextView
 
 //    override fun onCreateView(
 //        inflater: LayoutInflater, container: ViewGroup?,
