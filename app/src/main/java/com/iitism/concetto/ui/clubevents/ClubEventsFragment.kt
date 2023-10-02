@@ -52,6 +52,7 @@ class ClubEventsFragment : Fragment() {
         // itemAdapter = AllEventsAdapter()
         binding.rvClub.adapter = clubAdapter
         binding.rvClub.setHasFixedSize(true)
+        binding.loadingCardClubevents.visibility = View.VISIBLE
         // itemAdapter.notifyDataSetChanged()
         getEvents()
     }
@@ -60,8 +61,8 @@ class ClubEventsFragment : Fragment() {
     {
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getClubEvents()
-
             this.launch(Dispatchers.Main) {
+                binding.loadingCardClubevents.visibility = View.GONE
                 clubAdapter.seteventList(viewModel.ClubEventList)
                 Log.i("Data",viewModel.ClubEventList.toString())
             }

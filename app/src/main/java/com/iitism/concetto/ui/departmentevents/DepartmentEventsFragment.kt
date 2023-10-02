@@ -54,6 +54,7 @@ class DepartmentEventsFragment : Fragment() {
         // itemAdapter = AllEventsAdapter()
         binding.rvDepartments.adapter = clubAdapter
         binding.rvDepartments.setHasFixedSize(true)
+        binding.loadingCardDepartmentevents.visibility = View.VISIBLE
         // itemAdapter.notifyDataSetChanged()
         getEvents()
     }
@@ -64,6 +65,7 @@ class DepartmentEventsFragment : Fragment() {
             viewModel.getAllEvents()
 
             this.launch(Dispatchers.Main) {
+                binding.loadingCardDepartmentevents.visibility = View.GONE
                 clubAdapter.seteventList(viewModel.DepartmentEventList)
                 Log.i("Data",viewModel.DepartmentEventList.toString())
             }

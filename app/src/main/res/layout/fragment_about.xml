@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/event_image"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:background="@color/black"
                 android:contentDescription="image"
                 android:scaleType="fitXY"
@@ -45,13 +45,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="-15dp"
                 android:layout_marginBottom="20dp"
-
-                android:background="@drawable/border"
+                android:background="@drawable/event_card_border"
                 android:fontFamily="@font/inter_bold"
-                android:padding="5dp"
+                android:paddingTop="0dp"
+                android:padding="10dp"
                 android:text="Event Name  "
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -91,6 +91,8 @@
                         android:layout_height="wrap_content"
                         android:text="0.00"
                         android:textAlignment="center"
+                        android:fontFamily="@font/genos_light"
+                        android:textSize="20sp"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -122,6 +124,8 @@
                         android:layout_gravity="center"
                         android:text="Online"
                         android:textAlignment="center"
+                        android:fontFamily="@font/genos_light"
+                        android:textSize="20sp"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -156,6 +160,8 @@
                     android:layout_gravity="center"
                     android:text="RoboISM"
                     android:textAlignment="center"
+                    android:fontFamily="@font/genos_light"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
 
@@ -180,7 +186,7 @@
                     android:text="Event Description: "
                     android:textAlignment="center"
                     android:textColor="@color/teal_200"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -188,10 +194,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/genos_light"
+
                     android:text="Teams have to build an autonomous bot that can follow a black line over a contrasting surface to move between the different zones and perform the required tasks. The line may have discontinuities."
                     android:textAlignment="center"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/genos_light"
                     android:textSize="20sp" />
 
 
@@ -216,7 +223,7 @@
                     android:text="Organizer Description: "
                     android:textAlignment="center"
                     android:textColor="@color/teal_200"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -272,10 +279,43 @@
 
 
         </LinearLayout>
-
-
-
-
-
     </ScrollView>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:elevation="30dp"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/loading_card"
+        android:background="@color/cardview_shadow_end_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:padding="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/preloading_component"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

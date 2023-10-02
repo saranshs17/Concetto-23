@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textColor="?attr/colorSecondary"
+                        android:textColor="@color/black"
                         android:layout_marginRight="5dp"
                         android:textSize="18sp"
                         android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent.
@@ -111,19 +111,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
-
-                    <TextView
-                        android:padding="17dp"
-                        android:id="@+id/tv_extradetails"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_extraDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="?attr/colorSecondary"
-                        android:layout_marginRight="5dp"
-                        android:textSize="18sp"
-                        android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent.
-"/>
+                        />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -169,17 +162,10 @@
 
 
 
-                    <TextView
-                        android:padding="17dp"
-                        android:id="@+id/tv_stages"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_stages"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="?attr/colorSecondary"
-                        android:layout_marginRight="5dp"
-                        android:textSize="18sp"
-                        android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent.
-"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -224,23 +210,24 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
-
-                    <TextView
-                        android:padding="17dp"
-                        android:id="@+id/tv_contactDetails"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_contact"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="?attr/colorSecondary"
-                        android:layout_marginRight="5dp"
-                        android:textSize="18sp"
-                        android:text="To Build a Wired/Wireless, Manually controlled robot capable of subduing its opponent.
-"/>
+                        android:layout_height="wrap_content" />
+
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/teal_700"
+                android:text=""
+                android:layout_gravity="center"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

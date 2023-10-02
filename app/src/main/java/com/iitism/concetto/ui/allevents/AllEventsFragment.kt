@@ -49,8 +49,8 @@ class AllEventsFragment : Fragment() {
 
         binding.rvEvents.adapter = itemAdapter
         binding.rvEvents.setHasFixedSize(true)
-
-        // itemAdapter.notifyDataSetChanged()
+        // itemdapter.notifyDataSetChanged()
+        binding.loadingCardAllevents.visibility = View.VISIBLE
 
         getEvents()
     }
@@ -60,6 +60,7 @@ class AllEventsFragment : Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getAllEvents()
             this.launch(Dispatchers.Main) {
+                binding.loadingCardAllevents.visibility = View.GONE
                 itemAdapter.seteventList(viewModel.EventsList)
                 Log.i("Data",viewModel.EventsList.toString())
             }

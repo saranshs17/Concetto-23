@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description :"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_StageDescription"
+        android:fontFamily="@font/genos_light"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Objective: Test participants' financial decision-making skills. Format: Participants will be provided with a virtual case. They will bid on items or projects based on parameters set by the organizers. The teams will be qualified based on the most efficient bidding of the given cash in the given time period. The number of teams that qualify for the next round will be based on the performance of the teams. Remaining teams will be disqualified."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Timing"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_stageTiming"
+            android:fontFamily="@font/genos_light"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="10:00PM"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Venue"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:fontFamily="@font/genos_light"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:id="@+id/tv_StageVenue"
+            android:text="NLHC"/>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
