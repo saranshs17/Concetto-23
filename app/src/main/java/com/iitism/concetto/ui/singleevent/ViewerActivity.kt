@@ -152,11 +152,4 @@ class ViewerActivity : AppCompatActivity() {
 
     }
 
-//    fun getRules() : List<String>
-//    {
-//        val list = viewModel.EventsList.value?.flatMap { it.rules } ?: emptyList()
-//        return list
-//    }
-
-
 }

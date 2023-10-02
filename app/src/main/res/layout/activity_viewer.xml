@@ -21,7 +21,9 @@
         app:tabIndicatorAnimationMode="elastic"
         app:tabIndicatorColor="@null"
         app:tabIndicatorGravity="stretch"
+        app:tabTextColor="@color/white"
         app:tabSelectedTextAppearance="@color/teal_200"
+        app:tabSelectedTextColor="@color/black"
         />
 
     <androidx.viewpager2.widget.ViewPager2
@@ -36,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:text="REGISTER"
-
         android:textColor="@color/white"
         android:textAlignment="center"/>
 
