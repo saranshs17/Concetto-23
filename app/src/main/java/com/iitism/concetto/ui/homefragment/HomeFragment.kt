@@ -42,12 +42,6 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        binding.viewerActivityButton.setOnClickListener {
-            val intent = Intent(context, ViewerActivity::class.java)
-            startActivity(intent)
-        }
-
         videoView = binding.videoview
         videoView.setVideoPath(path)
         videoView.start()
