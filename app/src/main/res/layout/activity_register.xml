@@ -618,6 +618,7 @@
                 android:fontFamily="@font/genos_light"
                 android:onClick="showSizeMenu"
                 android:padding="10dp"
+                android:visibility="gone"
                 android:text="Register"
                 android:textColor="@color/black"
                 android:textSize="16sp" />

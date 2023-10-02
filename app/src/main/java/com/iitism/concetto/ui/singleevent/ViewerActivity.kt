@@ -1,6 +1,7 @@
 package com.iitism.concetto.ui.singleevent
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.ActivityViewerBinding
+import com.iitism.concetto.ui.RegisterActivity
 import com.iitism.concetto.ui.allevents.AllEventsViewModel
 import com.iitism.concetto.ui.allevents.retrofit.AllEventsApiService
 import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
@@ -41,6 +43,7 @@ class ViewerActivity : AppCompatActivity() {
     private lateinit var viewModel :MyViewModel
     public  lateinit var eventType : String
 
+
     interface ApiService {
         @GET
         suspend fun getEvent(
@@ -65,6 +68,12 @@ class ViewerActivity : AppCompatActivity() {
             networkCheckAndRun()
         }
 
+        val maxParticipants : Int = viewModel.EventsList.value?.get(0)?.maxTeamSize ?: 0
+        val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
+
+        intent = Intent(this,RegisterActivity::class.java)
+        intent.putExtra("max",maxParticipants)
+        intent.putExtra("min",minParticipants)
     }
 
     public class RetrofitInstanceForSingleEvent {
@@ -153,3 +162,4 @@ class ViewerActivity : AppCompatActivity() {
     }
 
 }
+
