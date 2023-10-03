@@ -15,10 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.iitism.concetto.R
 
-class RegisterActivity(
-    val eventID: String,
-    val posterUrl: String
-) : AppCompatActivity() {
+class RegisterActivity() : AppCompatActivity() {
 
     private lateinit var teamName : TextView
     private lateinit var teamLeader : TextView
@@ -60,6 +57,10 @@ class RegisterActivity(
         loadingComponent = findViewById(R.id.loading_card)
         refreshButton = findViewById(R.id.retry_button_register_activity)
         loadingComponent.visibility = View.VISIBLE
+
+        val eventID : String = intent.getStringExtra("id") ?: ""
+        val posterUrl : String = intent.getStringExtra("posterUrl") ?: ""
+
         viewModel = ViewModelProvider(this,RegistrationViewModelFactory(this,eventID)).get(RegisterViewModel::class.java)
 
         networkCheckAndRun()

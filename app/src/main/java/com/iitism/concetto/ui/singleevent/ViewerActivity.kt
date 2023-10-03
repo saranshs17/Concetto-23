@@ -58,11 +58,15 @@ class ViewerActivity : AppCompatActivity() {
 
         val maxParticipants : Int = viewModel.EventsList.value?.get(0)?.maxTeamSize ?: 0
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
+        val id : String = viewModel.EventsList.value?.get(0)?._id ?: ""
+        val posterMobile : String =viewModel.EventsList.value?.get(0)?.posterMobile.toString()
 
         intent = Intent(this,
-            RegisterActivity(viewModel.EventsList.value?.get(0)?._id ?: "",viewModel.EventsList.value?.get(0)?.posterMobile.toString())::class.java)
+            RegisterActivity()::class.java)
         intent.putExtra("max",maxParticipants)
         intent.putExtra("min",minParticipants)
+        intent.putExtra("id",id)
+        intent.putExtra("posterUrl",posterMobile)
     }
 
     public class RetrofitInstanceForSingleEvent {
