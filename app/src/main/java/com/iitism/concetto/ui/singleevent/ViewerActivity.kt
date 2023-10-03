@@ -1,6 +1,7 @@
 package com.iitism.concetto.ui.singleevent
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -69,6 +70,8 @@ class ViewerActivity : AppCompatActivity() {
         val id : String = viewModel.EventsList.value?.get(0)?._id.toString()
         val posterMobile : String =viewModel.EventsList.value?.get(0)?.posterMobile.toString()
         val eventName : String = viewModel.EventsList.value?.get(0)?.name.toString()
+        val registationStatus : Int = viewModel.EventsList.value?.get(0)?.registrationStatus.toString().toInt()
+        val registrationLink : String = viewModel.EventsList.value?.get(0)?.registrationLink.toString()
 //        if(flag) {
             intent = Intent(
                 this,
@@ -80,11 +83,30 @@ class ViewerActivity : AppCompatActivity() {
             intent.putExtra("posterUrl", posterMobile)
         intent.putExtra("EventName",eventName)
 
+        if (registationStatus == 1)
+        {
             binding.registerbtn.setOnClickListener()
             {
                 startActivity(intent)
             }
-//        }
+        }
+        else
+        {
+            if (registrationLink != null) {
+                val url = registrationLink
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "No web browser available", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else
+                Toast.makeText(this, "No Registration Link  available", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
     public class RetrofitInstanceForSingleEvent {
