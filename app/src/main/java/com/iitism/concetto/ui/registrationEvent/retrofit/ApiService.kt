@@ -18,7 +18,7 @@ interface ApiService {
     ): Response<ApiResponseForCriteria>
 
     @POST("api/eventRegitration")
-    fun uplaodData(@Body RegData: RegisterModel) : Call<ApiResponse>
+    fun uplaodData(@Body RegData: RegisterDataModel) : Call<ApiResponse>
 
 
 }

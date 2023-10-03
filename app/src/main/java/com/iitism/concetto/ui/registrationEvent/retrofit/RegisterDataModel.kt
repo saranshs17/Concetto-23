@@ -1,6 +1,6 @@
 package com.iitism.concetto.ui.registrationEvent.retrofit
 
-data class ResgiterDataModel(
+data class RegisterDataModel(
     val admissionNumber: String,
     val botWeight: String,
     val driveLink: String,
