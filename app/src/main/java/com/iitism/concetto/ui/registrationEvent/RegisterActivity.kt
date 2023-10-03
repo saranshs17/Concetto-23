@@ -61,17 +61,24 @@ class RegisterActivity() : AppCompatActivity() {
         val eventID : String = intent.getStringExtra("id") ?: ""
         val posterUrl : String = intent.getStringExtra("posterUrl") ?: ""
 
-        viewModel = ViewModelProvider(this,RegistrationViewModelFactory(this,eventID)).get(RegisterViewModel::class.java)
-
-        networkCheckAndRun()
+        if(eventID != null) {
+            viewModel = ViewModelProvider(this, RegistrationViewModelFactory(this, eventID)).get(
+                RegisterViewModel::class.java
+            )
+            networkCheckAndRun()
+        }
         refreshButton.setOnClickListener()
         {
             refreshButton.visibility = View.GONE
+            loadingComponent.visibility = View.VISIBLE
             networkCheckAndRun()
         }
 
-        if(posterUrl != null)
+        Log.i("URL",posterUrl)
+        Log.i("eventId",eventID)
+        if(posterUrl != "")
         {
+
             Glide.with(this)
                 .load(posterUrl)
                 .placeholder(R.drawable.concetto_full_logo)
@@ -82,7 +89,9 @@ class RegisterActivity() : AppCompatActivity() {
        val minTeamSize :Int = intent.getIntExtra("min",1)
         val maxTeamSize : Int = intent.getIntExtra("max",5)
 
-        val memberNumber : Int = noOfMembers.text.toString().toInt()
+        var memberNumber : Int = 0
+        if(noOfMembers.text.toString() != "")
+        memberNumber = noOfMembers.text.toString().toInt()
 
         if (memberNumber< minTeamSize && memberNumber > maxTeamSize)
         {
@@ -122,11 +131,14 @@ class RegisterActivity() : AppCompatActivity() {
 
             }
             registerBtn.visibility = View.VISIBLE
+
+
         }
 
     }
 
     private fun networkCheckAndRun() {
+        loadingComponent.visibility = View.GONE
        if(viewModel.isNetworkAvailable())
        {
            if(viewModel.fetchData())
@@ -136,10 +148,8 @@ class RegisterActivity() : AppCompatActivity() {
            }
            else
            {
-               refreshButton.visibility =View.VISIBLE
+//               refreshButton.visibility =View.VISIBLE
            }
        }
-        else
-            refreshButton.visibility = View.VISIBLE
     }
 }

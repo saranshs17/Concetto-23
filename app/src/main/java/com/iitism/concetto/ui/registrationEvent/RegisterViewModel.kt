@@ -20,7 +20,6 @@ class RegisterViewModel(
     private val id : String
 ) : ViewModel() {
     val retrofit = RetrofitInstance()
-
     val criterialList = MutableLiveData<ApiResponseForCriteria?>()
 
     fun fetchData() : Boolean

@@ -7,6 +7,8 @@ data class Club_dataclass(
     var posterWeb: String,
     var name: String,
     var mode: String,
+    val registrationLink:String,
+    val registrationStatus : String,
     var descripationEvent: String,
     var descriptionOrganizer: String,
     var type: Int,
