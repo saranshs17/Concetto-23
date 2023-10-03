@@ -10,7 +10,9 @@ class MyViewModelFactory constructor(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when{
-            modelClass.isAssignableFrom(MyViewModel::class.java) -> MyViewModel(this.context) as T
+            modelClass.isAssignableFrom(MyViewModel::class.java) -> MyViewModel(
+                this.context,
+            ) as T
             else->throw IllegalArgumentException("ViewModel not Found")
         }
     }

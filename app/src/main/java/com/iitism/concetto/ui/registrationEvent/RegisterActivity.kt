@@ -1,18 +1,24 @@
-package com.iitism.concetto.ui
+package com.iitism.concetto.ui.registrationEvent
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.iitism.concetto.R
-import com.iitism.concetto.ui.singleevent.SingleEventModel
-import com.iitism.concetto.ui.singleevent.SingleEventModelItem
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity(
+    val eventID: String,
+    val posterUrl: String
+) : AppCompatActivity() {
 
     private lateinit var teamName : TextView
     private lateinit var teamLeader : TextView
@@ -27,8 +33,10 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var member4layout : LinearLayout
     private lateinit var member5layout : LinearLayout
     private lateinit var registerBtn : Button
-
-
+    private lateinit var imageViewRegister: ImageView
+    private lateinit var loadingComponent: CardView
+    private lateinit var viewModel : RegisterViewModel
+    private lateinit var refreshButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +56,27 @@ class RegisterActivity : AppCompatActivity() {
         member4layout = findViewById(R.id.member4)
         member5layout = findViewById(R.id.member5)
         registerBtn = findViewById(R.id.registerbtn)
+        imageViewRegister = findViewById(R.id.ivEvent)
+        loadingComponent = findViewById(R.id.loading_card)
+        refreshButton = findViewById(R.id.retry_button_register_activity)
+        loadingComponent.visibility = View.VISIBLE
+        viewModel = ViewModelProvider(this,RegistrationViewModelFactory(this,eventID)).get(RegisterViewModel::class.java)
 
+        networkCheckAndRun()
+        refreshButton.setOnClickListener()
+        {
+            refreshButton.visibility = View.GONE
+            networkCheckAndRun()
+        }
+
+        if(posterUrl != null)
+        {
+            Glide.with(this)
+                .load(posterUrl)
+                .placeholder(R.drawable.concetto_full_logo)
+                .centerCrop()
+                .into(imageViewRegister)
+        }
 
        val minTeamSize :Int = intent.getIntExtra("min",1)
         val maxTeamSize : Int = intent.getIntExtra("max",5)
@@ -94,5 +122,23 @@ class RegisterActivity : AppCompatActivity() {
             }
             registerBtn.visibility = View.VISIBLE
         }
+
+    }
+
+    private fun networkCheckAndRun() {
+       if(viewModel.isNetworkAvailable())
+       {
+           if(viewModel.fetchData())
+           {
+               loadingComponent.visibility = View.GONE
+               Log.i("Criteria",viewModel.criterialList.value.toString())
+           }
+           else
+           {
+               refreshButton.visibility =View.VISIBLE
+           }
+       }
+        else
+            refreshButton.visibility = View.VISIBLE
     }
 }

@@ -1,27 +1,16 @@
 package com.iitism.concetto.ui.singleevent
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.compose.runtime.traceEventEnd
-import androidx.compose.ui.window.Dialog
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.iitism.concetto.R
 import com.iitism.concetto.databinding.ActivityViewerBinding
-import com.iitism.concetto.ui.RegisterActivity
-import com.iitism.concetto.ui.allevents.AllEventsViewModel
-import com.iitism.concetto.ui.allevents.retrofit.AllEventsApiService
-import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
-import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
+import com.iitism.concetto.ui.registrationEvent.RegisterActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -30,7 +19,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
 import retrofit2.http.Url
 import java.util.concurrent.TimeUnit
 
@@ -71,7 +59,8 @@ class ViewerActivity : AppCompatActivity() {
         val maxParticipants : Int = viewModel.EventsList.value?.get(0)?.maxTeamSize ?: 0
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
 
-        intent = Intent(this,RegisterActivity::class.java)
+        intent = Intent(this,
+            RegisterActivity(viewModel.EventsList.value?.get(0)?._id ?: "",viewModel.EventsList.value?.get(0)?.posterMobile.toString())::class.java)
         intent.putExtra("max",maxParticipants)
         intent.putExtra("min",minParticipants)
     }
