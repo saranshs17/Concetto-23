@@ -369,15 +369,6 @@
     "image": "https://res.cloudinary.com/dvlxqrbjm/image/upload/v1695845207/dc6sladth4jkbv4ol9bk.jpg"
   },
   {
-    "name": "Aryan Rawat",
-    "position": "Volunteer",
-    "imgDrive": "https://drive.google.com/open?id=15_I8iYcPfojS5PbQx37_wGRAYtvPiLIS",
-    "team": "Tech Team",
-    "linkedin_url": "https://www.linkedin.com/in/rahul-a-25992723a/",
-    "insta_url": "https://www.instagram.com/binaryscribe/",
-    "image": ""
-  },
-  {
     "image": "https://res.cloudinary.com/dqev44wx0/image/upload/v1696111033/img_dwjdk7.jpg",
     "name": "Saransh Shivhare",
     "position": "Volunteer",
@@ -385,5 +376,14 @@
     "team": "Tech Team",
     "linkedin_url": "https://www.linkedin.com/in/saransh-shivhare-7810aa254/",
     "insta_url": "https://www.instagram.com/saranshs17/"
+  },
+  {
+    "name": "Aryan Rawat",
+    "position": "Volunteer",
+    "imgDrive": "https://drive.google.com/open?id=15_I8iYcPfojS5PbQx37_wGRAYtvPiLIS",
+    "team": "Tech Team",
+    "linkedin_url": "https://www.linkedin.com/in/rahul-a-25992723a/",
+    "insta_url": "https://www.instagram.com/binaryscribe/",
+    "image": ""
   }
 ]
