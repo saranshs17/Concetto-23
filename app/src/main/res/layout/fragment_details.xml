@@ -22,6 +22,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40sp"
+                app:cardBackgroundColor="#F5FFF7"
                 android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
@@ -75,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="8dp"
+                app:cardBackgroundColor="#F5FFF7"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
                 android:layout_margin="10dp">
@@ -109,7 +111,11 @@
                     android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="17dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    >
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_extraDetails"
@@ -126,6 +132,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
+                app:cardBackgroundColor="#F5FFF7"
                 android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
@@ -158,12 +165,16 @@
                     android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-
+                    android:orientation="vertical"
+                    android:padding="17dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:textSize="18sp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_stages"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -175,6 +186,7 @@
                 android:elevation="8dp"
                 android:outlineProvider="background"
                 app:cardCornerRadius="40dp"
+                app:cardBackgroundColor="#F5FFF7"
                 android:layout_margin="10dp">
                 <TextView
                     android:padding="8dp"
@@ -208,7 +220,12 @@
                     android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="17dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:textSize="18sp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_contact"
