@@ -19,5 +19,5 @@ class RetrofitInstance {
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
+   public val apiService: ApiService = retrofit.create(ApiService::class.java)
 }

@@ -68,6 +68,7 @@ class ViewerActivity : AppCompatActivity() {
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
         val id : String = viewModel.EventsList.value?.get(0)?._id.toString()
         val posterMobile : String =viewModel.EventsList.value?.get(0)?.posterMobile.toString()
+        val eventName : String = viewModel.EventsList.value?.get(0)?.name.toString()
 //        if(flag) {
             intent = Intent(
                 this,
@@ -77,6 +78,7 @@ class ViewerActivity : AppCompatActivity() {
             intent.putExtra("min", minParticipants)
             intent.putExtra("id", id)
             intent.putExtra("posterUrl", posterMobile)
+        intent.putExtra("EventName",eventName)
 
             binding.registerbtn.setOnClickListener()
             {

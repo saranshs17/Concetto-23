@@ -131,9 +131,23 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/edit_admission"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:background="@drawable/border1"
+                android:layout_margin="10dp"
+                android:hint="Admission Number*"
+                android:inputType = "text"
+                android:visibility="gone"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white" />
 
 
-        <LinearLayout
+
+            <LinearLayout
             android:id="@+id/member1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

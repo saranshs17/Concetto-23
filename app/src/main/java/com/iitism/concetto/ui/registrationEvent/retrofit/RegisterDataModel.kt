@@ -1,14 +1,14 @@
 package com.iitism.concetto.ui.registrationEvent.retrofit
 
 data class RegisterDataModel(
-    val admissionNumber: String,
-    val botWeight: String,
-    val driveLink: String,
-    val eventName: String,
-    val fieldOfInterest: String,
-    val member: List<Member>,
-    val problemStatement: String,
-    val stages: List<Stage>,
-    val teamLeader: String,
-    val teamName: String
+    var admissionNumber: String,
+    var botWeight: String,
+    var driveLink: String,
+    var eventName: String,
+    var fieldOfInterest: String,
+    var member: List<Member>,
+    var problemStatement: String,
+    var stages: List<Stage>,
+    var teamLeader: String,
+    var teamName: String
 )
