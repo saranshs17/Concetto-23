@@ -2,25 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:padding="10dp"
+    android:layout_marginBottom="-10dp"
+    android:paddingBottom="0dp"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_stageNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description :"
+        android:text="Stage "
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
+        android:textAlignment="center"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_StageDescription"
         android:fontFamily="@font/genos_light"
-        android:textSize="18sp"
-        android:textColor="@color/black"
+        android:textSize="20sp"
+
+        android:textColor="@color/white"
         android:text="Objective: Test participants' financial decision-making skills. Format: Participants will be provided with a virtual case. They will bid on items or projects based on parameters set by the organizers. The teams will be qualified based on the most efficient bidding of the given cash in the given time period. The number of teams that qualify for the next round will be based on the performance of the teams. Remaining teams will be disqualified."/>
 
     <LinearLayout
@@ -32,45 +37,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="Timing : "
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Timing"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:id="@+id/tv_stageTiming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/genos_light"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:text="10:00PM"/>
+            android:text="10:00PM"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_weight="1"
+            android:text="Venue : "
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Venue"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="end"
-            android:fontFamily="@font/genos_light"
-            android:textSize="18sp"
-            android:textColor="@color/black"
             android:id="@+id/tv_StageVenue"
-            android:text="NLHC"/>
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/genos_light"
+            android:text="NLHC"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
 
 
     </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="200sp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:layout_height="1dp"/>
 
 </LinearLayout>
