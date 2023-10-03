@@ -68,7 +68,7 @@ class ViewerActivity : AppCompatActivity() {
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
         val id : String = viewModel.EventsList.value?.get(0)?._id.toString()
         val posterMobile : String =viewModel.EventsList.value?.get(0)?.posterMobile.toString()
-        if(flag) {
+//        if(flag) {
             intent = Intent(
                 this,
                 RegisterActivity()::class.java
@@ -82,7 +82,7 @@ class ViewerActivity : AppCompatActivity() {
             {
                 startActivity(intent)
             }
-        }
+//        }
     }
 
     public class RetrofitInstanceForSingleEvent {
