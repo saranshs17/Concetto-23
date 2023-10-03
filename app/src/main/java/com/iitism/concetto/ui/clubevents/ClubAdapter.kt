@@ -26,10 +26,14 @@ class ClubAdapter: RecyclerView.Adapter<ClubAdapter.MyViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun seteventList(ceventList: LiveData<List<Club_dataclass>?>){
-        this.ceventList = ceventList.value!!.toMutableList()
-        Log.d("tag","eventList --> ${this.ceventList}")
-        notifyDataSetChanged()
-        Log.d("tag","notified the data set changed")
+        try{
+            this.ceventList = ceventList.value!!.toMutableList()
+            Log.d("tag","eventList --> ${this.ceventList}")
+            notifyDataSetChanged()
+            Log.d("tag","notified the data set changed")
+        }
+        catch (e: Exception){}
+
     }
 
 

@@ -1,27 +1,43 @@
 package com.iitism.concetto.ui.singleevent
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.compose.runtime.traceEventEnd
+import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.iitism.concetto.R
 import com.iitism.concetto.databinding.ActivityViewerBinding
+
+import com.iitism.concetto.ui.allevents.AllEventsViewModel
+import com.iitism.concetto.ui.allevents.retrofit.AllEventsApiService
+import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
+import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
 import com.iitism.concetto.ui.registrationEvent.RegisterActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import retrofit2.http.Url
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
 class ViewerActivity : AppCompatActivity() {
 
@@ -31,7 +47,7 @@ class ViewerActivity : AppCompatActivity() {
     private lateinit var adapter: FragmentPageAdapter
     private lateinit var viewModel :MyViewModel
     public  lateinit var eventType : String
-    private var flag : Boolean = false
+
 
     interface ApiService {
         @GET
@@ -57,32 +73,12 @@ class ViewerActivity : AppCompatActivity() {
             networkCheckAndRun()
         }
 
-
-    }
-
-
-    fun startResgister()
-    {
-        Log.i("DAta",viewModel.EventsList.value?.get(0).toString())
         val maxParticipants : Int = viewModel.EventsList.value?.get(0)?.maxTeamSize ?: 0
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
-        val id : String = viewModel.EventsList.value?.get(0)?._id.toString()
-        val posterMobile : String =viewModel.EventsList.value?.get(0)?.posterMobile.toString()
-        if(flag) {
-            intent = Intent(
-                this,
-                RegisterActivity()::class.java
-            )
-            intent.putExtra("max", maxParticipants)
-            intent.putExtra("min", minParticipants)
-            intent.putExtra("id", id)
-            intent.putExtra("posterUrl", posterMobile)
 
-            binding.registerbtn.setOnClickListener()
-            {
-                startActivity(intent)
-            }
-        }
+        intent = Intent(this, RegisterActivity::class.java)
+        intent.putExtra("max",maxParticipants)
+        intent.putExtra("min",minParticipants)
     }
 
     public class RetrofitInstanceForSingleEvent {
@@ -124,12 +120,12 @@ class ViewerActivity : AppCompatActivity() {
                 val response: Response<SingleEventModel> = retrofit.apiService.getEvent(eventType)
                 if (response.isSuccessful) {
                     binding.loadingCardViewerActitivity.visibility = View.GONE
-                    flag = true
                     val data = response.body()
                     if (data != null) {
                         // Data fetched successfully
                         Log.i("Data One Event", data.toString())
                         viewModel.EventsList.postValue(data)
+
                         adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
                         tabLayout= binding.tabLayout
                         viewPager= binding.viewPager2
@@ -137,6 +133,13 @@ class ViewerActivity : AppCompatActivity() {
                         tabLayout.addTab(tabLayout.newTab().setText("RULES"))
                         tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
                         binding.viewPager2.adapter = adapter
+                        val compositePageTransformer = CompositePageTransformer()
+                        compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
+                        compositePageTransformer.addTransformer { page, position ->
+                            val r = 1 - abs(position)
+                            page.scaleY = (0.80f + r * 0.20f)
+                        }
+                        viewPager.setPageTransformer(compositePageTransformer)
                         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
                             override fun onTabSelected(tab: TabLayout.Tab?) {
                                 if (tab!= null){
@@ -156,11 +159,6 @@ class ViewerActivity : AppCompatActivity() {
                                 tabLayout.selectTab(tabLayout.getTabAt(position))
                             }
                         })
-                        delay(2000)
-
-                        if(viewModel.EventsList != null)
-                        startResgister()
-
 
                     }
                 } else {
