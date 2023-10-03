@@ -30,10 +30,16 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun seteventList(eventList: LiveData<List<AllEventsDataModel>?>){
-        this.eventList = eventList.value!!.toMutableList()
-        Log.d("tag","eventList --> ${this.eventList}")
-        notifyDataSetChanged()
-        Log.d("tag","notified the data set changed")
+        try {
+            this.eventList = eventList.value!!.toMutableList()
+            Log.d("tag","eventList --> ${this.eventList}")
+            notifyDataSetChanged()
+            Log.d("tag","notified the data set changed")
+        }
+        catch (e: Exception){
+            Log.i("errorInRetrieval","error in retrieval")
+        }
+
     }
 
 
