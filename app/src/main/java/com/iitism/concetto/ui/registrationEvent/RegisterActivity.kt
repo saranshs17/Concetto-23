@@ -52,7 +52,7 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var admissionNumber : TextView
     private lateinit var eventName : String
     private var  minTeamSize : Int = 0
-    val maxTeamSize: Int = 0
+    var maxTeamSize: Int = 0
 
     var isMemberSelected = 0
 
@@ -88,7 +88,7 @@ class RegisterActivity() : AppCompatActivity() {
         val eventID: String = intent?.getStringExtra("id") ?: ""
         val posterUrl: String = intent?.getStringExtra("posterUrl") ?: ""
         minTeamSize = intent?.getIntExtra("min", 1) ?: 1
-        maxTeamSize == intent?.getIntExtra("max", 5) ?: 5
+        maxTeamSize = intent?.getIntExtra("max", 5) ?: 5
 
         admissionNumber.visibility = View.VISIBLE
 
@@ -128,7 +128,7 @@ class RegisterActivity() : AppCompatActivity() {
 
     }
 
-    var selectedIndex = 0;
+    var selectedIndex = 1;
     var selectedMember : String? = null
     fun showMemberMenu()
     {
@@ -154,41 +154,52 @@ class RegisterActivity() : AppCompatActivity() {
                 binding.chooseMembers.text = member[selectedIndex]
 
                 //implement here the size part
+                when (selectedMember?.toInt()) {
+                    1 -> {member1layout.visibility = View.VISIBLE
+                        member2layout.visibility = View.GONE
+                        member3layout.visibility = View.GONE
+                        member4layout.visibility = View.GONE
+                        member5layout.visibility = View.GONE}
+                    2 -> {
+                        member1layout.visibility = View.VISIBLE
+                        member2layout.visibility = View.VISIBLE
+                        member3layout.visibility = View.GONE
+                        member4layout.visibility = View.GONE
+                        member5layout.visibility = View.GONE
+                    }
+
+                    3 -> {
+                        member1layout.visibility = View.VISIBLE
+                        member2layout.visibility = View.VISIBLE
+                        member3layout.visibility = View.VISIBLE
+                        member4layout.visibility = View.GONE
+                        member5layout.visibility = View.GONE
+                    }
+
+                    4 -> {
+                        member1layout.visibility = View.VISIBLE
+                        member2layout.visibility = View.VISIBLE
+                        member3layout.visibility = View.VISIBLE
+                        member4layout.visibility = View.VISIBLE
+                        member5layout.visibility = View.GONE
+                    }
+
+                    5 -> {
+                        member1layout.visibility = View.VISIBLE
+                        member2layout.visibility = View.VISIBLE
+                        member3layout.visibility = View.VISIBLE
+                        member4layout.visibility = View.VISIBLE
+                        member5layout.visibility = View.VISIBLE
+                    }
+
+                }
             }
             .setNeutralButton("Cancel"){dialog,which ->
                 Toast.makeText(this,"Size is required",Toast.LENGTH_LONG).show()
             }
             .show()
 
-        when (selectedMember?.toInt()) {
-            1 -> member1layout.visibility = View.VISIBLE
-            2 -> {
-                member1layout.visibility = View.VISIBLE
-                member2layout.visibility = View.VISIBLE
-            }
 
-            3 -> {
-                member1layout.visibility = View.VISIBLE
-                member2layout.visibility = View.VISIBLE
-                member3layout.visibility = View.VISIBLE
-            }
-
-            4 -> {
-                member1layout.visibility = View.VISIBLE
-                member2layout.visibility = View.VISIBLE
-                member3layout.visibility = View.VISIBLE
-                member4layout.visibility = View.VISIBLE
-            }
-
-            5 -> {
-                member1layout.visibility = View.VISIBLE
-                member2layout.visibility = View.VISIBLE
-                member3layout.visibility = View.VISIBLE
-                member4layout.visibility = View.VISIBLE
-                member5layout.visibility = View.VISIBLE
-            }
-
-        }
     }
     private fun showSnackBar(msg : String)
     {
