@@ -50,8 +50,8 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var datamodel : RegisterDataModel
     private lateinit var admissionNumber : TextView
     val eventName : String = intent?.getStringExtra("EventName") ?: ""
-    val minTeamSize: Int = intent.getIntExtra("min", 1)
-    val maxTeamSize: Int = intent.getIntExtra("max", 5)
+    val minTeamSize: Int = intent?.getIntExtra("min", 1) ?: 1
+    val maxTeamSize: Int = intent?.getIntExtra("max", 5) ?: 5
     var memberNumber: Int = 0
     var isMemberSelected = 0
 
@@ -128,7 +128,6 @@ class RegisterActivity() : AppCompatActivity() {
 
     //    }
         binding.chooseMembers.setOnClickListener { showMemberMenu() }
-
         registerBtn.visibility = View.VISIBLE
         registerBtn.setOnClickListener {
             register()
@@ -220,7 +219,7 @@ class RegisterActivity() : AppCompatActivity() {
 
     private fun register()
     {
-        datamodel = RegisterDataModel("","","","","", emptyList<Member>(),"", emptyList<Stage>(),"","",)
+        datamodel = RegisterDataModel("dsafn","asfnlk","safnla","afnd","afkndk", emptyList<Member>(),"aknfkd", emptyList<Stage>(),"akfnkdf","sfeka",)
         datamodel.botWeight = botWeight.text.toString()
         datamodel.driveLink = driveLink.text.toString()
         datamodel.eventName = eventName
@@ -251,18 +250,18 @@ class RegisterActivity() : AppCompatActivity() {
         datamodel.stages = emptyList()
         var flag=1;
 
-if (botWeight.text.isEmpty()){
-    botWeight.error="Empty Fields Not Allowed";
-    flag = 0;
-}
-        if(driveLink.text.isEmpty()){
-            driveLink.error="Empty Fields Not Allowed";
-            flag = 0;
-        }
-        if(fieldOfIntrest.text.isEmpty()){
-            fieldOfIntrest.error="Empty Fields Not Allowed";
-            flag = 0;
-        }
+//if (botWeight.text.isEmpty()){
+//    botWeight.error="Empty Fields Not Allowed";
+//    flag = 0;
+//}
+//        if(driveLink.text.isEmpty()){
+//            driveLink.error="Empty Fields Not Allowed";
+//            flag = 0;
+//        }
+//        if(fieldOfIntrest.text.isEmpty()){
+//            fieldOfIntrest.error="Empty Fields Not Allowed";
+//            flag = 0;
+//        }
         if(problemStmt.text.isEmpty()){
             problemStmt.error="Empty Fields Not Allowed";
             flag = 0;
@@ -280,7 +279,7 @@ if (botWeight.text.isEmpty()){
             flag = 0;
         }
 
-        when(memberNumber)
+        when(selectedMember?.toInt())
         {
             1 ->{
                 if(binding.editBranch1.text.isEmpty()){
@@ -657,22 +656,47 @@ if (botWeight.text.isEmpty()){
                 }
             }
         }
-        if(flag == 1)
-        {
+        if(flag == 1) {
+           sendData()
+        }
+    }
+
+    fun sendData()
+    {
+//        if(flag == 1)
+//        {
             binding.loadingCard.visibility = View.VISIBLE
             binding.scrollViewMerchandise.visibility = View.INVISIBLE
-            registerBtn.visibility = View.VISIBLE
+
+
             val call = RetrofitInstance().apiService.uplaodData(datamodel)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-                    Log.i("Tag", response.toString())
-                    binding.loadingCard.visibility = View.INVISIBLE
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-
-                    Log.i("response",response.body()?.msg.toString())
-                    if(response.body() == null) Toast.makeText(this@RegisterActivity,"Something went wrong!",Toast.LENGTH_SHORT).show()
+                    if(response.isSuccessful) {
+                        Log.i("Tag", response.toString())
+                        Log.i("response", response.body()?.msg.toString())
+                        if (response.body() == null) {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Something went wrong!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            binding.loadingCard.visibility = View.GONE
+                        }
+                        else
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Order is succesfully placed!!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                    }
                     else
-                        Toast.makeText(this@RegisterActivity,"Order is succesfully placed!!",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Something went wrong!",
+                            Toast.LENGTH_SHORT).show()
+
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
@@ -681,10 +705,12 @@ if (botWeight.text.isEmpty()){
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
                     Toast.makeText(this@RegisterActivity,"Try again !!, It may happen first time",Toast.LENGTH_SHORT).show()
                 }
-        })
+            })
 
-        }
-
+//        }
     }
+
+
 }
+
 
