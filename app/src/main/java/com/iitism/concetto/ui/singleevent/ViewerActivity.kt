@@ -110,7 +110,7 @@ class ViewerActivity : AppCompatActivity() {
                 if (intent.resolveActivity(packageManager) != null) {
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this, "No web browser available", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, registrationLink, Toast.LENGTH_SHORT).show()
                 }
             }
             else

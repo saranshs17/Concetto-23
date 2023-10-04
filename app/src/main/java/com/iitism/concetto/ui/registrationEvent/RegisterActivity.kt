@@ -25,6 +25,7 @@ import com.iitism.concetto.ui.registrationEvent.retrofit.RetrofitInstance
 import com.iitism.concetto.ui.registrationEvent.retrofit.Stage
 import retrofit2.Call
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class RegisterActivity() : AppCompatActivity() {
 
@@ -32,7 +33,7 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var teamName: TextView
     private lateinit var teamLeader: TextView
-    private lateinit var noOfMembers: TextView
+
     private lateinit var problemStmt: TextView
     private lateinit var botWeight: TextView
     private lateinit var driveLink: TextView
@@ -49,10 +50,10 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var refreshButton: Button
     private lateinit var datamodel : RegisterDataModel
     private lateinit var admissionNumber : TextView
-    val eventName : String = intent?.getStringExtra("EventName") ?: ""
-    val minTeamSize: Int = intent?.getIntExtra("min", 1) ?: 1
-    val maxTeamSize: Int = intent?.getIntExtra("max", 5) ?: 5
-    var memberNumber: Int = 0
+    private lateinit var eventName : String
+    private var  minTeamSize : Int = 0
+    val maxTeamSize: Int = 0
+
     var isMemberSelected = 0
 
 
@@ -61,9 +62,10 @@ class RegisterActivity() : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        eventName = intent?.getStringExtra("EventName") ?: ""
         teamName = findViewById(R.id.edit_team_name)
         teamLeader = findViewById(R.id.edit_team_leader)
-       // noOfMembers = findViewById(R.id.edit_noOfMembers)
+
         problemStmt = findViewById(R.id.edit_PS)
         botWeight = findViewById(R.id.edit_botwt)
         driveLink = findViewById(R.id.edit_DriveLink)
@@ -82,10 +84,13 @@ class RegisterActivity() : AppCompatActivity() {
         loadingComponent.visibility = View.VISIBLE
 
 
+
         val eventID: String = intent?.getStringExtra("id") ?: ""
         val posterUrl: String = intent?.getStringExtra("posterUrl") ?: ""
+        minTeamSize = intent?.getIntExtra("min", 1) ?: 1
+        maxTeamSize == intent?.getIntExtra("max", 5) ?: 5
 
-
+        admissionNumber.visibility = View.VISIBLE
 
         if (eventID != null) {
             viewModel = ViewModelProvider(this, RegistrationViewModelFactory(this, eventID)).get(
@@ -113,20 +118,6 @@ class RegisterActivity() : AppCompatActivity() {
 
 
 
-
-//        if (noOfMembers.text.toString() != "")
-//            memberNumber = noOfMembers.text.toString().toInt()
-
-//        if (memberNumber < minTeamSize && memberNumber > maxTeamSize) {
-//            if (memberNumber < minTeamSize)
-//                Toast.makeText(this, "Min Team Size is ${minTeamSize}", Toast.LENGTH_SHORT).show()
-//            else
-//                Toast.makeText(this, "Max Team Size is ${maxTeamSize}", Toast.LENGTH_SHORT).show()
-//        } else {
-
-//
-
-    //    }
         binding.chooseMembers.setOnClickListener { showMemberMenu() }
         registerBtn.visibility = View.VISIBLE
         registerBtn.setOnClickListener {
@@ -146,8 +137,7 @@ class RegisterActivity() : AppCompatActivity() {
        for (i in minTeamSize..maxTeamSize)
         memberList.add(i.toString())
 
-//        val member = arrayOf<String>()
-//        member = memberList
+
 
         val member = memberList.toTypedArray()
 
@@ -219,13 +209,13 @@ class RegisterActivity() : AppCompatActivity() {
 
     private fun register()
     {
+
         datamodel = RegisterDataModel("dsafn","asfnlk","safnla","afnd","afkndk", emptyList<Member>(),"aknfkd", emptyList<Stage>(),"akfnkdf","sfeka",)
         datamodel.botWeight = botWeight.text.toString()
         datamodel.driveLink = driveLink.text.toString()
         datamodel.eventName = eventName
         datamodel.fieldOfInterest = fieldOfIntrest.text.toString()
         datamodel.problemStatement = problemStmt.text.toString()
-       // datamodel.teamLeader = teamLeader.text.toString()
         datamodel.admissionNumber = admissionNumber.text.toString()
         datamodel.teamLeader = teamLeader.text.toString()
         datamodel.teamName = teamName.text.toString()
@@ -240,8 +230,8 @@ class RegisterActivity() : AppCompatActivity() {
 
 
 
-//        membersList.add(member1)
-//        membersList.add(member2)
+        membersList.add(member1)
+        membersList.add(member1)
 //        membersList.add(member3)
 //        membersList.add(member4)
 //        membersList.add(member5)
@@ -249,23 +239,35 @@ class RegisterActivity() : AppCompatActivity() {
         datamodel.member =membersList
         datamodel.stages = emptyList()
         var flag=1;
+if(viewModel.criterialList.value?.botWeight == true)
+{
+    botWeight.visibility = View.VISIBLE
+if (botWeight.text.isEmpty()){
+    botWeight.error="Empty Fields Not Allowed";
+    flag = 0;
+}}
+        if(viewModel.criterialList.value?.driveLink == true)
+        {
+            driveLink.visibility = View.VISIBLE
+        if(driveLink.text.isEmpty()){
+            driveLink.error="Empty Fields Not Allowed";
+            flag = 0;
+        }}
+        if(viewModel.criterialList.value?.fieldOfInterest == true)
+        {
+            fieldOfIntrest.visibility = View.VISIBLE
+        if(fieldOfIntrest.text.isEmpty()){
+            fieldOfIntrest.error="Empty Fields Not Allowed";
+            flag = 0;
+        }}
+        if(viewModel.criterialList.value?.botWeight == true)
+        {
+            problemStmt.visibility = View.VISIBLE
 
-//if (botWeight.text.isEmpty()){
-//    botWeight.error="Empty Fields Not Allowed";
-//    flag = 0;
-//}
-//        if(driveLink.text.isEmpty()){
-//            driveLink.error="Empty Fields Not Allowed";
-//            flag = 0;
-//        }
-//        if(fieldOfIntrest.text.isEmpty()){
-//            fieldOfIntrest.error="Empty Fields Not Allowed";
-//            flag = 0;
-//        }
         if(problemStmt.text.isEmpty()){
             problemStmt.error="Empty Fields Not Allowed";
             flag = 0;
-        }
+        }}
         if(admissionNumber.text.isEmpty()){
             admissionNumber.error="Empty Fields Not Allowed";
             flag = 0;
@@ -686,9 +688,11 @@ class RegisterActivity() : AppCompatActivity() {
                         else
                             Toast.makeText(
                                 this@RegisterActivity,
-                                "Order is succesfully placed!!",
+                                "Member is Successfully Registered!!",
                                 Toast.LENGTH_SHORT
                             ).show()
+                    binding.loadingCard.visibility = View.GONE
+
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
