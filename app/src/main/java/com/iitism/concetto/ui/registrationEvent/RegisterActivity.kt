@@ -123,35 +123,7 @@ class RegisterActivity() : AppCompatActivity() {
 //            else
 //                Toast.makeText(this, "Max Team Size is ${maxTeamSize}", Toast.LENGTH_SHORT).show()
 //        } else {
-            when (selectedMember?.toInt()) {
-                1 -> member1layout.visibility = View.VISIBLE
-                2 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                }
 
-                3 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                }
-
-                4 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                    member4layout.visibility = View.VISIBLE
-                }
-
-                5 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                    member4layout.visibility = View.VISIBLE
-                    member5layout.visibility = View.VISIBLE
-                }
-
-            }
 //
 
     //    }
@@ -198,6 +170,36 @@ class RegisterActivity() : AppCompatActivity() {
                 Toast.makeText(this,"Size is required",Toast.LENGTH_LONG).show()
             }
             .show()
+
+        when (selectedMember?.toInt()) {
+            1 -> member1layout.visibility = View.VISIBLE
+            2 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+            }
+
+            3 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+            }
+
+            4 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+                member4layout.visibility = View.VISIBLE
+            }
+
+            5 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+                member4layout.visibility = View.VISIBLE
+                member5layout.visibility = View.VISIBLE
+            }
+
+        }
     }
     private fun showSnackBar(msg : String)
     {
