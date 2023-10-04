@@ -30,10 +30,16 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun seteventList(eventList: LiveData<List<AllEventsDataModel>?>){
-        this.eventList = eventList.value!!.toMutableList()
-        Log.d("tag","eventList --> ${this.eventList}")
-        notifyDataSetChanged()
-        Log.d("tag","notified the data set changed")
+        try {
+            this.eventList = eventList.value!!.toMutableList()
+            Log.d("tag","eventList --> ${this.eventList}")
+            notifyDataSetChanged()
+            Log.d("tag","notified the data set changed")
+        }
+        catch (e: Exception){
+            Log.i("errorInRetrieval","error in retrieval")
+        }
+
     }
 
 
@@ -73,13 +79,15 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
 
             holder.prize.text = event.prizes
             val stages : List<com.iitism.concetto.ui.clubevents.Stage> = event.stages
-            if(stages.isNotEmpty())
-            holder.venue.text = stages[0].venue
+            if(stages.isNotEmpty()) {
+                holder.venue.text = stages[0].venue
+            }
 
             holder.buttonViewMore.setOnClickListener {
 
                 if(event._id != null) {
                     val intent = Intent(holder.itemView.context, ViewerActivity::class.java)
+                    Log.i("id",event._id)
                     intent.putExtra("eventID", event._id)
                     holder.itemView.context.startActivity(intent)
                 }

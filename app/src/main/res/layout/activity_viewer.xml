@@ -35,10 +35,13 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="wrap_content"
+        android:id="@+id/registerbtn"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:text="REGISTER"
-        android:textColor="@color/white"
+        app:backgroundTint="#71EC8B"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
         android:textAlignment="center"/>
 
 

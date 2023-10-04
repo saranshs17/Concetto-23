@@ -17,7 +17,7 @@ class RetrofitInstanceEvents {
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://concetto-backend-clone.onrender.com/")
+        .baseUrl("https://concetto-backend-heli.onrender.com/")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

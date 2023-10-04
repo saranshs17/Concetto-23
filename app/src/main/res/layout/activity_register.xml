@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegisterActivity">
+    tools:context=".ui.registrationEvent.RegisterActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -69,18 +69,20 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/white" />
+
             <EditText
-                android:id="@+id/edit_noOfMembers"
+                android:id="@+id/edit_admission"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:background="@drawable/border1"
                 android:layout_margin="10dp"
-                android:inputType = "textEmailAddress"
-                android:hint=" No of Members*"
+                android:hint="Admission Number*"
+                android:inputType = "text"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/white" />
+
             <EditText
                 android:id="@+id/edit_PS"
                 android:layout_width="300dp"
@@ -88,7 +90,8 @@
                 android:background="@drawable/border1"
                 android:layout_margin="10dp"
                 android:hint="Problem Statement*"
-                android:inputType = "number"
+                android:visibility="gone"
+                android:inputType = "text"
                 android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
@@ -133,7 +136,20 @@
                 android:textColor="@color/white" />
 
 
-        <LinearLayout
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chooseMembers"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background1"
+                android:fontFamily="@font/genos_light"
+                android:onClick="showSizeMenu"
+                android:padding="10dp"
+                android:text="No of Members"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
             android:id="@+id/member1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -678,5 +694,18 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
+        android:id="@+id/retry_button_register_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Refresh"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        />
 
 </FrameLayout>

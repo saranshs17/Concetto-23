@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
 
-class extraDetailsAdapter(private val extraDetailsArrayPair : ArrayList<Pair<String,String>>) : RecyclerView.Adapter<extraDetailsAdapter.MyViewHolder>() {
+class extraDetailsAdapter(private val extraDetailsArrayPair : ArrayList<Pair<ArrayList<String>,String>>) : RecyclerView.Adapter<extraDetailsAdapter.MyViewHolder>() {
     class MyViewHolder (View : View) : RecyclerView.ViewHolder(View){
         val extraKey : TextView = View.findViewById(R.id.tv_extraDetailsKey)
         val extraValue : TextView = View.findViewById(R.id.tv_extraDetailsValue)
@@ -27,8 +27,13 @@ class extraDetailsAdapter(private val extraDetailsArrayPair : ArrayList<Pair<Str
 
     override fun onBindViewHolder(holder: extraDetailsAdapter.MyViewHolder, position: Int) {
         val currentItem = extraDetailsArrayPair[position]
-        holder.extraKey.text = currentItem.first
-        holder.extraValue.text = currentItem.second
+        var integer = 1
+        var text =""
+        for(i in currentItem.first){
+            text+=(integer++.toString()+")"+i+"\n")
+        }
+        holder.extraKey.text = currentItem.second + " :"
+        holder.extraValue.text = text
     }
 
     override fun getItemCount(): Int {

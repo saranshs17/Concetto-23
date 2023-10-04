@@ -21,7 +21,7 @@ class DetailsFragment(
     private lateinit var tvProblemStatement : TextView
     private lateinit var recyclerViewContacts: RecyclerView
     private lateinit var recyclerViewExtraDetails: RecyclerView
-    private var extraDetailsArrayPair : ArrayList<Pair<String,String>> = arrayListOf()
+    private var extraDetailsArrayPair : ArrayList<Pair<ArrayList<String>,String>> = arrayListOf()
     private  var StagesArrayPair: ArrayList<Pair<String,Pair<String,String>>> = arrayListOf()
     private  var ContactsArrayPair : ArrayList<Pair<String,String>> = arrayListOf()
 
@@ -62,7 +62,7 @@ class DetailsFragment(
         }
 
         for (k in arrayList?.get(0)?.extraDetails!!){
-            extraDetailsArrayPair.add(Pair(k.key,k.value.toString()))
+            extraDetailsArrayPair.add(Pair(k.value,k.key) as Pair<ArrayList<String>, String>)
         }
         recyclerViewContacts.adapter = ContactsAdapter(ContactsArrayPair)
         recyclerViewStages.adapter = StagesAdapter(StagesArrayPair)

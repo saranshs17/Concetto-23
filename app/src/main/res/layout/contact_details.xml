@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/genos_light"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textAlignment="center"
         android:text="Contact Name"/>
@@ -22,8 +22,8 @@
         android:layout_weight="1"
         android:fontFamily="@font/genos_light"
         android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textAlignment="viewStart"
         android:text="1234567890"/>
 
 </LinearLayout>

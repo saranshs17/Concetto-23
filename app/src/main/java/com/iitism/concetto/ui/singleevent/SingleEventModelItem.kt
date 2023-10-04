@@ -10,6 +10,8 @@ data class SingleEventModelItem(
     val maxTeamSize: Int,
     val minTeamSize: Int,
     val mode: String,
+    val registrationLink:String,
+    val registrationStatus : String,
     val name: String,
     val organizer: String,
     val pdfLink: String,
