@@ -369,13 +369,13 @@
     "image": "https://res.cloudinary.com/dvlxqrbjm/image/upload/v1695845207/dc6sladth4jkbv4ol9bk.jpg"
   },
   {
+    "image": "https://res.cloudinary.com/dgpgsuay1/image/upload/v1696427264/dumgtb7qgntecx2apv4b.jpg",
     "name": "Aryan Rawat",
     "position": "Volunteer",
     "imgDrive": "https://drive.google.com/open?id=15_I8iYcPfojS5PbQx37_wGRAYtvPiLIS",
     "team": "Tech Team",
-    "linkedin_url": "https://www.linkedin.com/in/rahul-a-25992723a/",
-    "insta_url": "https://www.instagram.com/binaryscribe/",
-    "image": ""
+    "linkedin_url": "https://www.linkedin.com/in/aryan-rawat-08a16b221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    "insta_url": "https://instagram.com/r_ary.n?utm_source=qr&igshid=MzNlNGNkZWQ4Mg=="
   },
   {
     "image": "https://res.cloudinary.com/dqev44wx0/image/upload/v1696111033/img_dwjdk7.jpg",
@@ -385,5 +385,14 @@
     "team": "Tech Team",
     "linkedin_url": "https://www.linkedin.com/in/saransh-shivhare-7810aa254/",
     "insta_url": "https://www.instagram.com/saranshs17/"
+  },
+  {
+    "image": "https://res.cloudinary.com/dgpgsuay1/image/upload/v1696327151/SAVE_20230819_073836_nuhp2p.jpg",
+    "name": "Gande Bhargav",
+    "position": "Volunteer",
+    "imgDrive": "https://drive.google.com/open?id=1pSrsvb5qcJLtmn6HVFh4PblzK1rpSgS6",
+    "team": "Tech Team",
+    "linkedin_url": "https://www.linkedin.com/in/bhargav-gande-544b18217/",
+    "insta_url": "https://www.instagram.com/gande_bhargav_/"
   }
 ]
