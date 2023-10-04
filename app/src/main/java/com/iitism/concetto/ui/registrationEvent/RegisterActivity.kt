@@ -240,11 +240,11 @@ class RegisterActivity() : AppCompatActivity() {
 
 
 
-        membersList.add(member1)
-        membersList.add(member2)
-        membersList.add(member3)
-        membersList.add(member4)
-        membersList.add(member5)
+//        membersList.add(member1)
+//        membersList.add(member2)
+//        membersList.add(member3)
+//        membersList.add(member4)
+//        membersList.add(member5)
 
         datamodel.member =membersList
         datamodel.stages = emptyList()
@@ -656,30 +656,29 @@ class RegisterActivity() : AppCompatActivity() {
                 }
             }
         }
-        if(flag == 1) {
+//        if(flag == 1) {
            sendData()
-        }
+//        }
     }
 
     fun sendData()
     {
-//        if(flag == 1)
-//        {
+//
             binding.loadingCard.visibility = View.VISIBLE
             binding.scrollViewMerchandise.visibility = View.INVISIBLE
 
-
+          Log.i("dataModel",datamodel.toString())
             val call = RetrofitInstance().apiService.uplaodData(datamodel)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-                    if(response.isSuccessful) {
+//                    if(response.isSuccessful) {
                         Log.i("Tag", response.toString())
                         Log.i("response", response.body()?.msg.toString())
                         if (response.body() == null) {
                             Toast.makeText(
                                 this@RegisterActivity,
-                                "Something went wrong!",
+                                "Something went wrong!" + response.code().toString(),
                                 Toast.LENGTH_SHORT
                             ).show()
                             binding.loadingCard.visibility = View.GONE
@@ -690,13 +689,6 @@ class RegisterActivity() : AppCompatActivity() {
                                 "Order is succesfully placed!!",
                                 Toast.LENGTH_SHORT
                             ).show()
-                    }
-                    else
-                        Toast.makeText(
-                            this@RegisterActivity,
-                            "Something went wrong!",
-                            Toast.LENGTH_SHORT).show()
-
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
