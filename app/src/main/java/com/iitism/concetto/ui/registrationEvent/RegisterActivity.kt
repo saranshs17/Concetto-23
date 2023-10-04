@@ -152,17 +152,24 @@ class RegisterActivity() : AppCompatActivity() {
                 }
 
             }
-//            registerBtn.visibility = View.VISIBLE
+//
 
     //    }
-        binding.chooseMembers.setOnClickListener { showSizeMenu()
+        binding.chooseMembers.setOnClickListener { showMemberMenu()
             isMemberSelected = 1}
+
+        registerBtn.visibility = View.VISIBLE
+        registerBtn.setOnClickListener {
+            register()
+            Log.i("Btn Pressed","Btn is Pressed")
+        }
+
 
     }
 
     var selectedIndex = 0;
     var selectedMember : String? = null
-    fun showSizeMenu()
+    fun showMemberMenu()
     {
 
         val memberList = ArrayList<String>()
