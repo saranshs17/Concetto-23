@@ -229,12 +229,35 @@ class RegisterActivity() : AppCompatActivity() {
         val member5 = Member(binding.editBranch5.text.toString(),binding.editCollege5.text.toString(),binding.editEmail5.text.toString(),binding.editName5.toString(),binding.editPhone5.text.toString(),binding.editYos5.text.toString())
 
 
+when(selectedMember?.toInt())
+{
+    1->{ membersList.add(member1)
+    }
+    2 -> {
+        membersList.add(member1)
+        membersList.add(member2)
+    }
+    3 ->
+    {
+        membersList.add(member1)
+        membersList.add(member2)
+        membersList.add(member3)
+    }
+    4-> {
+        membersList.add(member1)
+        membersList.add(member2)
+        membersList.add(member3)
+        membersList.add(member4)
+    }
+    5 ->{
+        membersList.add(member1)
+        membersList.add(member2)
+        membersList.add(member3)
+        membersList.add(member4)
+        membersList.add(member5)
+    }
+}
 
-        membersList.add(member1)
-        membersList.add(member1)
-//        membersList.add(member3)
-//        membersList.add(member4)
-//        membersList.add(member5)
 
         datamodel.member =membersList
         datamodel.stages = emptyList()
@@ -658,14 +681,14 @@ if (botWeight.text.isEmpty()){
                 }
             }
         }
-//        if(flag == 1) {
+      if(flag == 1) {
            sendData()
-//        }
+      }
     }
 
     fun sendData()
     {
-//
+
             binding.loadingCard.visibility = View.VISIBLE
             binding.scrollViewMerchandise.visibility = View.INVISIBLE
 
@@ -674,7 +697,6 @@ if (botWeight.text.isEmpty()){
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
-//                    if(response.isSuccessful) {
                         Log.i("Tag", response.toString())
                         Log.i("response", response.body()?.msg.toString())
                         if (response.body() == null) {
@@ -702,11 +724,7 @@ if (botWeight.text.isEmpty()){
                     Toast.makeText(this@RegisterActivity,"Try again !!, It may happen first time",Toast.LENGTH_SHORT).show()
                 }
             })
-
-//        }
     }
-
-
 }
 
 
