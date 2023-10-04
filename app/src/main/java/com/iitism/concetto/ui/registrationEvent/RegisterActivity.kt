@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.ActivityMainBinding
 import com.iitism.concetto.databinding.ActivityRegisterBinding
@@ -48,7 +50,10 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var datamodel : RegisterDataModel
     private lateinit var admissionNumber : TextView
     val eventName : String = intent?.getStringExtra("EventName") ?: ""
+    val minTeamSize: Int = intent.getIntExtra("min", 1)
+    val maxTeamSize: Int = intent.getIntExtra("max", 5)
     var memberNumber: Int = 0
+    var isMemberSelected = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +63,7 @@ class RegisterActivity() : AppCompatActivity() {
 
         teamName = findViewById(R.id.edit_team_name)
         teamLeader = findViewById(R.id.edit_team_leader)
-        noOfMembers = findViewById(R.id.edit_noOfMembers)
+       // noOfMembers = findViewById(R.id.edit_noOfMembers)
         problemStmt = findViewById(R.id.edit_PS)
         botWeight = findViewById(R.id.edit_botwt)
         driveLink = findViewById(R.id.edit_DriveLink)
@@ -76,8 +81,10 @@ class RegisterActivity() : AppCompatActivity() {
         admissionNumber = findViewById(R.id.edit_admission)
         loadingComponent.visibility = View.VISIBLE
 
+
         val eventID: String = intent?.getStringExtra("id") ?: ""
         val posterUrl: String = intent?.getStringExtra("posterUrl") ?: ""
+
 
 
         if (eventID != null) {
@@ -104,54 +111,100 @@ class RegisterActivity() : AppCompatActivity() {
                 .into(imageViewRegister)
         }
 
-        val minTeamSize: Int = intent.getIntExtra("min", 1)
-        val maxTeamSize: Int = intent.getIntExtra("max", 5)
 
 
-        if (noOfMembers.text.toString() != "")
-            memberNumber = noOfMembers.text.toString().toInt()
 
-        if (memberNumber < minTeamSize && memberNumber > maxTeamSize) {
-            if (memberNumber < minTeamSize)
-                Toast.makeText(this, "Min Team Size is ${minTeamSize}", Toast.LENGTH_SHORT).show()
-            else
-                Toast.makeText(this, "Max Team Size is ${maxTeamSize}", Toast.LENGTH_SHORT).show()
-        } else {
-            when (memberNumber) {
-                1 -> member1layout.visibility = View.VISIBLE
-                2 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                }
+//        if (noOfMembers.text.toString() != "")
+//            memberNumber = noOfMembers.text.toString().toInt()
 
-                3 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                }
+//        if (memberNumber < minTeamSize && memberNumber > maxTeamSize) {
+//            if (memberNumber < minTeamSize)
+//                Toast.makeText(this, "Min Team Size is ${minTeamSize}", Toast.LENGTH_SHORT).show()
+//            else
+//                Toast.makeText(this, "Max Team Size is ${maxTeamSize}", Toast.LENGTH_SHORT).show()
+//        } else {
 
-                4 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                    member4layout.visibility = View.VISIBLE
-                }
+//
 
-                5 -> {
-                    member1layout.visibility = View.VISIBLE
-                    member2layout.visibility = View.VISIBLE
-                    member3layout.visibility = View.VISIBLE
-                    member4layout.visibility = View.VISIBLE
-                    member5layout.visibility = View.VISIBLE
-                }
+    //    }
+        binding.chooseMembers.setOnClickListener { showMemberMenu()
+            isMemberSelected = 1}
 
-            }
-//            registerBtn.visibility = View.VISIBLE
-
+        registerBtn.visibility = View.VISIBLE
+        registerBtn.setOnClickListener {
+            register()
+            Log.i("Btn Pressed","Btn is Pressed")
         }
+
 
     }
 
+    var selectedIndex = 0;
+    var selectedMember : String? = null
+    fun showMemberMenu()
+    {
+
+        val memberList = ArrayList<String>()
+       for (i in minTeamSize..maxTeamSize)
+        memberList.add(i.toString())
+
+//        val member = arrayOf<String>()
+//        member = memberList
+
+        val member = memberList.toTypedArray()
+
+        selectedMember = member[selectedIndex]
+        MaterialAlertDialogBuilder(this)
+            .setTitle("No of Members")
+            .setSingleChoiceItems(member, selectedIndex){ dialog, which ->
+                selectedIndex = which
+                selectedMember = member[selectedIndex]
+            }
+            .setPositiveButton("OK"){dialog,which ->
+                showSnackBar("$selectedMember members selected")
+                binding.chooseMembers.text = member[selectedIndex]
+
+                //implement here the size part
+            }
+            .setNeutralButton("Cancel"){dialog,which ->
+                Toast.makeText(this,"Size is required",Toast.LENGTH_LONG).show()
+            }
+            .show()
+
+        when (selectedMember?.toInt()) {
+            1 -> member1layout.visibility = View.VISIBLE
+            2 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+            }
+
+            3 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+            }
+
+            4 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+                member4layout.visibility = View.VISIBLE
+            }
+
+            5 -> {
+                member1layout.visibility = View.VISIBLE
+                member2layout.visibility = View.VISIBLE
+                member3layout.visibility = View.VISIBLE
+                member4layout.visibility = View.VISIBLE
+                member5layout.visibility = View.VISIBLE
+            }
+
+        }
+    }
+    private fun showSnackBar(msg : String)
+    {
+        Snackbar.make(binding.root,msg, Snackbar.LENGTH_SHORT).show()
+    }
     private fun networkCheckAndRun() {
         loadingComponent.visibility = View.GONE
         if (viewModel.isNetworkAvailable()) {
@@ -163,6 +216,7 @@ class RegisterActivity() : AppCompatActivity() {
             }
         }
     }
+
 
     private fun register()
     {

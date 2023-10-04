@@ -1,6 +1,7 @@
 package com.iitism.concetto.ui.singleevent
 
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.iitism.concetto.databinding.ActivityViewerBinding
@@ -23,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Url
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
 class ViewerActivity : AppCompatActivity() {
 
@@ -168,6 +172,13 @@ class ViewerActivity : AppCompatActivity() {
                         tabLayout.addTab(tabLayout.newTab().setText("RULES"))
                         tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
                         binding.viewPager2.adapter = adapter
+                        val compositePageTransformer = CompositePageTransformer()
+                        compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
+                        compositePageTransformer.addTransformer { page, position ->
+                            val r = 1 - abs(position)
+                            page.scaleY = (0.80f + r * 0.20f)
+                        }
+                        viewPager.setPageTransformer(compositePageTransformer)
                         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
                             override fun onTabSelected(tab: TabLayout.Tab?) {
                                 if (tab!= null){

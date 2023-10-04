@@ -69,18 +69,7 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/white" />
-            <EditText
-                android:id="@+id/edit_noOfMembers"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:background="@drawable/border1"
-                android:layout_margin="10dp"
-                android:inputType = "number"
-                android:hint=" No of Members*"
-                android:textColorHint="@color/white"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="@color/white" />
+
             <EditText
                 android:id="@+id/edit_PS"
                 android:layout_width="300dp"
@@ -145,7 +134,18 @@
                 android:textSize="16sp"
                 android:textColor="@color/white" />
 
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chooseMembers"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background1"
+                android:fontFamily="@font/genos_light"
+                android:onClick="showSizeMenu"
+                android:padding="10dp"
+                android:text="No of Members"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <LinearLayout
             android:id="@+id/member1"
