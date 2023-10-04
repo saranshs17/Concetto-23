@@ -49,13 +49,12 @@ class RulesFragment(
         pdfLink.setOnClickListener {
             if (Pdflink != null) {
                 val url = Pdflink
-                val intent = Intent(Intent.ACTION_VIEW)
+                val intent = Intent(android.content.Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
-                if (intent.resolveActivity(requireContext().packageManager) != null) {
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(context, "No web browser available", Toast.LENGTH_SHORT).show()
-                }
+                intent.setPackage("com.android.chrome")
+                Log.i("pdflink",intent.data.toString())
+                startActivity(intent)
+
             }
             else
                 Toast.makeText(context, "No PDF Link available", Toast.LENGTH_SHORT).show()

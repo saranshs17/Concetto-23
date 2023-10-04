@@ -46,7 +46,7 @@
       android:fontFamily="@font/genos_light"
       android:text="PDF Link"
       android:layout_gravity="center_vertical"
-      android:textColor="#0000FF"
+      android:textColor="#2F81F7"
       android:textSize="22sp" />
  </LinearLayout>
 
