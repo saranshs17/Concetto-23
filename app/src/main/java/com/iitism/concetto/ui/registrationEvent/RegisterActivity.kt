@@ -127,8 +127,7 @@ class RegisterActivity() : AppCompatActivity() {
 //
 
     //    }
-        binding.chooseMembers.setOnClickListener { showMemberMenu()
-            isMemberSelected = 1}
+        binding.chooseMembers.setOnClickListener { showMemberMenu() }
 
         registerBtn.visibility = View.VISIBLE
         registerBtn.setOnClickListener {
@@ -162,6 +161,7 @@ class RegisterActivity() : AppCompatActivity() {
             }
             .setPositiveButton("OK"){dialog,which ->
                 showSnackBar("$selectedMember members selected")
+                isMemberSelected = 1
                 binding.chooseMembers.text = member[selectedIndex]
 
                 //implement here the size part
