@@ -47,7 +47,7 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var refreshButton: Button
     private lateinit var datamodel : RegisterDataModel
     private lateinit var admissionNumber : TextView
-    val eventName : String = intent.getStringExtra("EventName") ?: ""
+    val eventName : String = intent?.getStringExtra("EventName") ?: ""
     var memberNumber: Int = 0
 
 
@@ -76,8 +76,8 @@ class RegisterActivity() : AppCompatActivity() {
         admissionNumber = findViewById(R.id.edit_admission)
         loadingComponent.visibility = View.VISIBLE
 
-        val eventID: String = intent.getStringExtra("id") ?: ""
-        val posterUrl: String = intent.getStringExtra("posterUrl") ?: ""
+        val eventID: String = intent?.getStringExtra("id") ?: ""
+        val posterUrl: String = intent?.getStringExtra("posterUrl") ?: ""
 
 
         if (eventID != null) {
@@ -146,8 +146,7 @@ class RegisterActivity() : AppCompatActivity() {
                 }
 
             }
-            //registerBtn.visibility = View.VISIBLE
-
+//            registerBtn.visibility = View.VISIBLE
 
         }
 

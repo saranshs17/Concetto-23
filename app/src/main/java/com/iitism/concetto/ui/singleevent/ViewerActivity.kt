@@ -46,17 +46,24 @@ class ViewerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.binding= ActivityViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        eventType = intent.getStringExtra("eventID").toString()
-
-        viewModel = ViewModelProvider(this,MyViewModelFactory(this)).get(MyViewModel::class.java)
-        Log.i("type",eventType)
-        if(intent != null)
-          networkCheckAndRun()
-
-        binding.retryButtonViwerActivity.setOnClickListener()
-        {
+        val eventIdExtra = intent?.getStringExtra("eventID")
+        if (eventIdExtra != null) {
+            eventType = eventIdExtra
+            viewModel = ViewModelProvider(this, MyViewModelFactory(this)).get(MyViewModel::class.java)
+            Log.i("type", eventType)
             networkCheckAndRun()
+        } else {
+            // Handle the case where "eventID" extra is not provided in the Intent
+            Toast.makeText(this, "Event ID is missing.", Toast.LENGTH_SHORT).show()
+            // Optionally, you can finish this activity or take appropriate action.
+            // For example:
+            // finish()
         }
+
+//        binding.retryButtonViwerActivity.setOnClickListener()
+//        {
+//            networkCheckAndRun()
+//        }
 
 
     }
@@ -182,8 +189,9 @@ class ViewerActivity : AppCompatActivity() {
                         })
                         delay(2000)
 
-                        if(viewModel.EventsList != null)
-                        startResgister()
+                        if(viewModel.EventsList != null) {
+                            startResgister()
+                        }
 
 
                     }

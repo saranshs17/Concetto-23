@@ -34,6 +34,7 @@ class RegisterViewModel(
                     val data = response.body()
                     if(data != null)
                     {
+                        Log.i("Boolean Data",data.toString())
                         criterialList.postValue(data)
                         fl = true
                     }

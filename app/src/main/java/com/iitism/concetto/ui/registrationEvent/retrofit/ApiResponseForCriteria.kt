@@ -2,7 +2,7 @@ package com.iitism.concetto.ui.registrationEvent.retrofit
 
 data class ApiResponseForCriteria(
     val __v: Int,
-    val _id: Id,
+    val _id: String,
     val botWeight: Boolean,
     val driveLink: Boolean,
     val eventName: String,
