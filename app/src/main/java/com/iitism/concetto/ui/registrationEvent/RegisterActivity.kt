@@ -129,7 +129,7 @@ class RegisterActivity() : AppCompatActivity() {
     }
 
     var selectedIndex = 1;
-    var selectedMember : String? = null
+    var selectedMember : String? = minTeamSize.toString()
     fun showMemberMenu()
     {
 
