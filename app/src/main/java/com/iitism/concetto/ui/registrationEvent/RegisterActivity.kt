@@ -195,7 +195,7 @@ class RegisterActivity() : AppCompatActivity() {
                 }
             }
             .setNeutralButton("Cancel"){dialog,which ->
-                Toast.makeText(this,"Size is required",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Number of members is required",Toast.LENGTH_LONG).show()
             }
             .show()
 
@@ -233,7 +233,7 @@ class RegisterActivity() : AppCompatActivity() {
 
         val membersList = mutableListOf<Member>()
 
-            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editName1.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString())
+            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editTeamLeader.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString())
         val member2 = Member(binding.editBranch2.text.toString(),binding.editCollege2.text.toString(),binding.editEmail2.text.toString(),binding.editName2.toString(),binding.editPhone2.text.toString(),binding.editYos2.text.toString())
         val member3 = Member(binding.editBranch3.text.toString(),binding.editCollege3.text.toString(),binding.editEmail3.text.toString(),binding.editName3.toString(),binding.editPhone3.text.toString(),binding.editYos3.text.toString())
         val member4 = Member(binding.editBranch4.text.toString(),binding.editCollege4.text.toString(),binding.editEmail4.text.toString(),binding.editName4.toString(),binding.editPhone4.text.toString(),binding.editYos4.text.toString())
@@ -330,10 +330,7 @@ if (botWeight.text.isEmpty()){
                     binding.editEmail1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
-                if (binding.editName1.text.isEmpty()){
-                    binding.editName1.error="Empty Fields Not Allowed";
-                    flag = 0;
-                }
+
                 if (binding.editPhone1.text.isEmpty()){
                     binding.editPhone1.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -357,10 +354,7 @@ if (botWeight.text.isEmpty()){
                     binding.editEmail1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
-                if (binding.editName1.text.isEmpty()){
-                    binding.editName1.error="Empty Fields Not Allowed";
-                    flag = 0;
-                }
+
                 if (binding.editPhone1.text.isEmpty()){
                     binding.editPhone1.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -408,10 +402,7 @@ if (botWeight.text.isEmpty()){
                     binding.editEmail1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
-                if (binding.editName1.text.isEmpty()){
-                    binding.editName1.error="Empty Fields Not Allowed";
-                    flag = 0;
-                }
+
                 if (binding.editPhone1.text.isEmpty()){
                     binding.editPhone1.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -483,10 +474,7 @@ if (botWeight.text.isEmpty()){
                     binding.editEmail1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
-                if (binding.editName1.text.isEmpty()){
-                    binding.editName1.error="Empty Fields Not Allowed";
-                    flag = 0;
-                }
+
                 if (binding.editPhone1.text.isEmpty()){
                     binding.editPhone1.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -582,10 +570,7 @@ if (botWeight.text.isEmpty()){
                     binding.editEmail1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
-                if (binding.editName1.text.isEmpty()){
-                    binding.editName1.error="Empty Fields Not Allowed";
-                    flag = 0;
-                }
+
                 if (binding.editPhone1.text.isEmpty()){
                     binding.editPhone1.error="Empty Fields Not Allowed";
                     flag = 0;
