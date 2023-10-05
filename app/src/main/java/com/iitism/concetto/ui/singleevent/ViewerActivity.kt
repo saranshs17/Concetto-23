@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+//import com.iitism.concett.RegisterActivity
 import com.iitism.concetto.databinding.ActivityViewerBinding
 import com.iitism.concetto.ui.registrationEvent.RegisterActivity
 import kotlinx.coroutines.Dispatchers

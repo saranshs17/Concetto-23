@@ -32,7 +32,7 @@ class RegisterActivity() : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var teamName: TextView
-    private lateinit var teamLeader: TextView
+  //  private lateinit var teamLeader: TextView
 
     private lateinit var problemStmt: TextView
     private lateinit var botWeight: TextView
@@ -49,7 +49,7 @@ class RegisterActivity() : AppCompatActivity() {
     private lateinit var viewModel: RegisterViewModel
     private lateinit var refreshButton: Button
     private lateinit var datamodel : RegisterDataModel
-    private lateinit var admissionNumber : TextView
+   // private lateinit var admissionNumber : TextView
     private lateinit var eventName : String
     private var  minTeamSize : Int = 0
     var maxTeamSize: Int = 0
@@ -90,7 +90,7 @@ class RegisterActivity() : AppCompatActivity() {
         minTeamSize = intent?.getIntExtra("min", 1) ?: 1
         maxTeamSize = intent?.getIntExtra("max", 5) ?: 5
 
-        admissionNumber.visibility = View.VISIBLE
+       // admissionNumber.visibility = View.VISIBLE
 
         if (eventID != null) {
             viewModel = ViewModelProvider(this, RegistrationViewModelFactory(this, eventID)).get(
@@ -129,7 +129,7 @@ class RegisterActivity() : AppCompatActivity() {
     }
 
     var selectedIndex = 1;
-    var selectedMember : String? = minTeamSize.toString()
+    var selectedMember : String? = null
     fun showMemberMenu()
     {
 
@@ -339,6 +339,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission1.text.isEmpty())
+                {
+                    binding.editAdmission1.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
 
             }
 
@@ -363,6 +368,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission1.text.isEmpty())
+                {
+                    binding.editAdmission1.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch2.text.isEmpty()){
                     binding.editBranch2.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -385,6 +395,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos2.text.isEmpty()){
                     binding.editYos2.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission2.text.isEmpty())
+                {
+                    binding.editAdmission2.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
 
@@ -411,6 +426,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission1.text.isEmpty())
+                {
+                    binding.editAdmission1.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch2.text.isEmpty()){
                     binding.editBranch2.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -435,6 +455,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos2.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission2.text.isEmpty())
+                {
+                    binding.editAdmission2.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch3.text.isEmpty()){
                     binding.editBranch3.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -457,6 +482,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos3.text.isEmpty()){
                     binding.editYos3.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission3.text.isEmpty())
+                {
+                    binding.editAdmission3.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
             }
@@ -483,6 +513,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission1.text.isEmpty())
+                {
+                    binding.editAdmission1.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch2.text.isEmpty()){
                     binding.editBranch2.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -505,6 +540,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos2.text.isEmpty()){
                     binding.editYos2.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission2.text.isEmpty())
+                {
+                    binding.editAdmission2.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
                 if(binding.editBranch3.text.isEmpty()){
@@ -531,6 +571,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos3.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission3.text.isEmpty())
+                {
+                    binding.editAdmission3.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch4.text.isEmpty()){
                     binding.editBranch4.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -553,6 +598,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos4.text.isEmpty()){
                     binding.editYos4.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission4.text.isEmpty())
+                {
+                    binding.editAdmission4.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
             }
@@ -579,6 +629,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos1.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission1.text.isEmpty())
+                {
+                    binding.editAdmission1.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch2.text.isEmpty()){
                     binding.editBranch2.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -601,6 +656,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos2.text.isEmpty()){
                     binding.editYos2.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission2.text.isEmpty())
+                {
+                    binding.editAdmission2.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
                 if(binding.editBranch3.text.isEmpty()){
@@ -627,6 +687,11 @@ if (botWeight.text.isEmpty()){
                     binding.editYos3.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission3.text.isEmpty())
+                {
+                    binding.editAdmission3.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
                 if(binding.editBranch4.text.isEmpty()){
                     binding.editBranch4.error="Empty Fields Not Allowed";
                     flag = 0;
@@ -649,6 +714,11 @@ if (botWeight.text.isEmpty()){
                 }
                 if (binding.editYos4.text.isEmpty()){
                     binding.editYos4.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
+                if (binding.editAdmission4.text.isEmpty())
+                {
+                    binding.editAdmission4.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
                 if(binding.editBranch5.text.isEmpty()){
@@ -675,10 +745,22 @@ if (botWeight.text.isEmpty()){
                     binding.editYos5.error="Empty Fields Not Allowed";
                     flag = 0;
                 }
+                if (binding.editAdmission5.text.isEmpty())
+                {
+                    binding.editAdmission5.error="Empty Fields Not Allowed";
+                    flag = 0;
+                }
             }
         }
-      if(flag == 1) {
+      if(flag == 1 && (selectedMember?.toInt() ?: 0) >= minTeamSize.toInt()) {
            sendData()
+      }
+        else
+      {
+          if ((selectedMember?.toInt() ?: 0) < minTeamSize.toInt())
+          {
+              Toast.makeText(this,"Select the no of team Members", Toast.LENGTH_SHORT).show()
+          }
       }
     }
 
