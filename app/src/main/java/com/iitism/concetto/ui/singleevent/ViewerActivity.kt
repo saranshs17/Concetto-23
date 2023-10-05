@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -50,6 +51,8 @@ class ViewerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.binding= ActivityViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.registerbtn.visibility = View.INVISIBLE
         val eventIdExtra = intent?.getStringExtra("eventID")
         if (eventIdExtra != null) {
             eventType = eventIdExtra
@@ -130,7 +133,7 @@ class ViewerActivity : AppCompatActivity() {
             .build()
 
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://concetto-backend-clone.onrender.com/")
+            .baseUrl("https://concetto-backend-heli.onrender.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -198,8 +201,10 @@ class ViewerActivity : AppCompatActivity() {
                                 tabLayout.selectTab(tabLayout.getTabAt(position))
                             }
                         })
-                        delay(2000)
 
+//
+                        delay(1000)
+                        binding.registerbtn.visibility = View.VISIBLE
                         if(viewModel.EventsList != null) {
                             startResgister()
                         }
