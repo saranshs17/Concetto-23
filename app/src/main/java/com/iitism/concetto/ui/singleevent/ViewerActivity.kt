@@ -169,6 +169,7 @@ class ViewerActivity : AppCompatActivity() {
                 eventType = "api/showEvents/" + eventType
                 val response: Response<SingleEventModel> = retrofit.apiService.getEvent(eventType)
                 if (response.isSuccessful) {
+//                    delay(1000)
                     binding.loadingCardViewerActitivity.visibility = View.GONE
                     flag = true
                     val data = response.body()

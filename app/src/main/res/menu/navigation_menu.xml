@@ -49,10 +49,10 @@
 <!--                    android:id="@+id/nav_gatepass"-->
 <!--                    android:icon="@drawable/baseline_door_sliding_24"-->
 <!--                    android:title="Gate Pass"/>-->
-<!--                <item-->
-<!--                    android:id="@+id/nav_timeline"-->
-<!--                    android:icon="@drawable/baseline_access_time_filled_24"-->
-<!--                    android:title="@string/menu_timeline" />-->
+                <item
+                    android:id="@+id/nav_timeline"
+                    android:icon="@drawable/baseline_access_time_filled_24"
+                    android:title="@string/menu_timeline" />
                 <item
                     android:id="@+id/nav_sponsors"
                     android:icon="@drawable/baseline_view_list_24"
