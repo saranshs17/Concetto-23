@@ -108,14 +108,21 @@ class ViewerActivity : AppCompatActivity() {
         {
             if (registrationLink != null) {
                 val url = registrationLink
-                val intent = Intent(Intent.ACTION_VIEW)
+//                val intent = Intent(Intent.ACTION_VIEW)
+//                intent.data = Uri.parse(url)
+//                if (intent.resolveActivity(packageManager) != null) {
+//                    startActivity(intent)
+                val intent = Intent(android.content.Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
-                if (intent.resolveActivity(packageManager) != null) {
+                intent.setPackage("com.android.chrome")
+                Log.i("reg link",intent.data.toString())
+                binding.registerbtn.setOnClickListener()
+                {
                     startActivity(intent)
-                } else {
-                    Toast.makeText(this, registrationLink, Toast.LENGTH_SHORT).show()
                 }
-            }
+
+                }
+
             else
                 Toast.makeText(this, "No Registration Link  available", Toast.LENGTH_SHORT).show()
         }
