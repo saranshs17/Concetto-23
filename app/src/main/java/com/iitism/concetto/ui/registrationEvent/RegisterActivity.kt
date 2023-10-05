@@ -64,7 +64,7 @@ class RegisterActivity() : AppCompatActivity() {
 
         eventName = intent?.getStringExtra("EventName") ?: ""
         teamName = findViewById(R.id.edit_team_name)
-        teamLeader = findViewById(R.id.edit_team_leader)
+       // teamLeader = findViewById(R.id.edit_team_leader)
 
         problemStmt = findViewById(R.id.edit_PS)
         botWeight = findViewById(R.id.edit_botwt)
@@ -80,7 +80,7 @@ class RegisterActivity() : AppCompatActivity() {
         imageViewRegister = findViewById(R.id.ivEvent)
         loadingComponent = findViewById(R.id.loading_card)
         refreshButton = findViewById(R.id.retry_button_register_activity)
-        admissionNumber = findViewById(R.id.edit_admission)
+       // admissionNumber = findViewById(R.id.edit_admission)
         loadingComponent.visibility = View.VISIBLE
 
 
@@ -221,23 +221,23 @@ class RegisterActivity() : AppCompatActivity() {
     private fun register()
     {
 
-        datamodel = RegisterDataModel("dsafn","asfnlk","safnla","afnd","afkndk", emptyList<Member>(),"aknfkd", emptyList<Stage>(),"akfnkdf","sfeka",)
+        datamodel = RegisterDataModel("asfnlk","safnla","afnd","afkndk", emptyList<Member>(),"aknfkd", emptyList<Stage>(),"akfnkdf","sfeka",)
         datamodel.botWeight = botWeight.text.toString()
         datamodel.driveLink = driveLink.text.toString()
         datamodel.eventName = eventName
         datamodel.fieldOfInterest = fieldOfIntrest.text.toString()
         datamodel.problemStatement = problemStmt.text.toString()
-        datamodel.admissionNumber = admissionNumber.text.toString()
-        datamodel.teamLeader = teamLeader.text.toString()
+       // datamodel.admissionNumber = admissionNumber.text.toString()
+        datamodel.teamLeader = binding.editTeamLeader.toString()
         datamodel.teamName = teamName.text.toString()
 
         val membersList = mutableListOf<Member>()
 
-            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editTeamLeader.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString())
-        val member2 = Member(binding.editBranch2.text.toString(),binding.editCollege2.text.toString(),binding.editEmail2.text.toString(),binding.editName2.toString(),binding.editPhone2.text.toString(),binding.editYos2.text.toString())
-        val member3 = Member(binding.editBranch3.text.toString(),binding.editCollege3.text.toString(),binding.editEmail3.text.toString(),binding.editName3.toString(),binding.editPhone3.text.toString(),binding.editYos3.text.toString())
-        val member4 = Member(binding.editBranch4.text.toString(),binding.editCollege4.text.toString(),binding.editEmail4.text.toString(),binding.editName4.toString(),binding.editPhone4.text.toString(),binding.editYos4.text.toString())
-        val member5 = Member(binding.editBranch5.text.toString(),binding.editCollege5.text.toString(),binding.editEmail5.text.toString(),binding.editName5.toString(),binding.editPhone5.text.toString(),binding.editYos5.text.toString())
+            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editTeamLeader.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString(),binding.editAdmission1.text.toString())
+        val member2 = Member(binding.editBranch2.text.toString(),binding.editCollege2.text.toString(),binding.editEmail2.text.toString(),binding.editName2.toString(),binding.editPhone2.text.toString(),binding.editYos2.text.toString(),binding.editAdmission2.text.toString())
+        val member3 = Member(binding.editBranch3.text.toString(),binding.editCollege3.text.toString(),binding.editEmail3.text.toString(),binding.editName3.toString(),binding.editPhone3.text.toString(),binding.editYos3.text.toString(),binding.editAdmission3.text.toString())
+        val member4 = Member(binding.editBranch4.text.toString(),binding.editCollege4.text.toString(),binding.editEmail4.text.toString(),binding.editName4.toString(),binding.editPhone4.text.toString(),binding.editYos4.text.toString(),binding.editAdmission4.text.toString())
+        val member5 = Member(binding.editBranch5.text.toString(),binding.editCollege5.text.toString(),binding.editEmail5.text.toString(),binding.editName5.toString(),binding.editPhone5.text.toString(),binding.editYos5.text.toString(),binding.editAdmission5.text.toString())
 
 
 when(selectedMember?.toInt())
@@ -302,14 +302,14 @@ if (botWeight.text.isEmpty()){
             problemStmt.error="Empty Fields Not Allowed";
             flag = 0;
         }}
-        if(admissionNumber.text.isEmpty()){
-            admissionNumber.error="Empty Fields Not Allowed";
-            flag = 0;
-        }
-        if(teamLeader.text.isEmpty()){
-            teamLeader.error="Empty Fields Not Allowed";
-            flag = 0;
-        }
+//        if(admissionNumber.text.isEmpty()){
+//            admissionNumber.error="Empty Fields Not Allowed";
+//            flag = 0;
+//        }
+//        if(teamLeader.text.isEmpty()){
+//            teamLeader.error="Empty Fields Not Allowed";
+//            flag = 0;
+//        }
         if(teamName.text.isEmpty()){
             teamName.error="Empty Fields Not Allowed";
             flag = 0;

@@ -58,18 +58,6 @@
                 android:textSize="16sp"
                 android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/edit_admission"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:background="@drawable/border1"
-                android:layout_margin="10dp"
-                android:hint="Your College Admission Number*"
-                android:inputType = "text"
-                android:textColorHint="@color/gray"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/edit_PS"
@@ -164,8 +152,21 @@
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/edit_admission1"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border1"
+                    android:layout_margin="10dp"
+                    android:hint="Your College Admission Number*"
+                    android:inputType = "text"
+                    android:textColorHint="@color/gray"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
 
-            <EditText
+
+                <EditText
                 android:id="@+id/edit_email1"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
@@ -260,6 +261,19 @@
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/edit_admission2"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border1"
+                    android:layout_margin="10dp"
+                    android:hint="Your College Admission Number*"
+                    android:inputType = "text"
+                    android:textColorHint="@color/gray"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
+
 
                 <EditText
                     android:id="@+id/edit_email2"
@@ -355,6 +369,19 @@
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/edit_admission3"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border1"
+                    android:layout_margin="10dp"
+                    android:hint="Your College Admission Number*"
+                    android:inputType = "text"
+                    android:textColorHint="@color/gray"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
+
 
                 <EditText
                     android:id="@+id/edit_email3"
@@ -450,6 +477,19 @@
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/edit_admission4"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border1"
+                    android:layout_margin="10dp"
+                    android:hint="Your College Admission Number*"
+                    android:inputType = "text"
+                    android:textColorHint="@color/gray"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
+
 
                 <EditText
                     android:id="@+id/edit_email4"
@@ -545,6 +585,19 @@
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/edit_admission5"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border1"
+                    android:layout_margin="10dp"
+                    android:hint="Your College Admission Number*"
+                    android:inputType = "text"
+                    android:textColorHint="@color/gray"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
+
 
                 <EditText
                     android:id="@+id/edit_email5"

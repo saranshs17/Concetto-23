@@ -1,7 +1,6 @@
 package com.iitism.concetto.ui.registrationEvent.retrofit
 
 data class RegisterDataModel(
-    var admissionNumber: String,
     var botWeight: String,
     var driveLink: String,
     var eventName: String,
