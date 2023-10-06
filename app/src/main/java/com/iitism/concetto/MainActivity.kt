@@ -1,5 +1,6 @@
 package com.iitism.concetto
 
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +12,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.concetto.databinding.ActivityMainBinding
+import com.iitism.concetto.ui.fcm_service_package.token_api_service_package.ApiService
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +33,23 @@ class MainActivity : AppCompatActivity() {
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
 
-
+        val sharedPreferences=getSharedPreferences("TokenPreferences", MODE_PRIVATE)
+        val savedToken=sharedPreferences.getString("SavedToken","Nothing")
+        if(savedToken.equals("Nothing")){
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("Task Unsuccessful", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+                // Get new FCM registration token
+                val token = task.result.toString()
+                Log.d("Your Device Token=>>>", token)
+                val editPref:SharedPreferences.Editor=sharedPreferences.edit()
+                editPref.putString("SavedToken",token)
+                editPref.commit()
+                ApiService().addTokenService(token,this)
+            })
+        }
 
 
         val drawerLayout:DrawerLayout  = binding.drawerLayout

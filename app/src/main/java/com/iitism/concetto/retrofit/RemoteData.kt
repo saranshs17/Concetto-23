@@ -1,6 +1,8 @@
 package com.iitism.concetto.retrofit
 
+//import androidx.viewbinding.BuildConfig
 import com.iitism.concetto.BuildConfig
+//import com.iitism.concetto.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
