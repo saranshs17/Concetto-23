@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/clipped_layer.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Add the custom shape as a clip path -->
+    <item android:id="@+id/clippedComponent">
+        <clip-path xmlns:android="http://schemas.android.com/apk/res/android"
+            android:path="@drawable/vector_1" />
+    </item>
+
+    <!-- Add the view or component you want to clip -->
+    <item android:id="@android:id/background">
+        <bitmap android:src="@drawable/border" />
+    </item>
+</layer-list>
+
