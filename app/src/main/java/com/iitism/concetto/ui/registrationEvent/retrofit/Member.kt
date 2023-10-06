@@ -7,5 +7,5 @@ data class Member(
     val name: String,
     val phone: String,
     val yearOfStudy: String,
-    val admNo : String
+    val admissionNumber : String
 )
