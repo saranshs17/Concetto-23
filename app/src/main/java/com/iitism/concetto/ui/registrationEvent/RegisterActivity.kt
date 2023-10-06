@@ -774,9 +774,12 @@ if (botWeight.text.isEmpty()){
             val call = RetrofitInstance().apiService.uplaodData(datamodel)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
+
                         Log.i("Tag", response.toString())
-                        Log.i("response", response.body()?.msg.toString())
+
+                    Log.i("response", response.body()?.msg.toString())
                         if (response.body() == null) {
                             Toast.makeText(
                                 this@RegisterActivity,
