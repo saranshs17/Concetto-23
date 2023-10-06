@@ -15,7 +15,7 @@ class NotificationService {
         val apiInterface= FcmRetrofitInstance.getRetrofit()?.create(FcmApiInterface::class.java)
         apiInterface?.sendFCMNotification(fcmDataBody)?.enqueue(object :Callback<JsonObject>{
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                Log.d("Notification",response.body().toString())
+                Log.d("Notification tome",response.body().toString())
             }
 
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
