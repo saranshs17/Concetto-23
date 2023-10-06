@@ -43,7 +43,7 @@ class TimelineFragment : Fragment() {
 
         )
 
-        recyclerView.adapter = timelineAdapter(timelineList)
+//        recyclerView.adapter = timelineAdapter(timelineList)
 
     }
 

@@ -1,7 +1,10 @@
 package com.iitism.concetto.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,29 +36,34 @@ class WorkshopFragment : Fragment() {
         mprogressBar = rootView.findViewById(R.id.progressBar)
 
         var url: String = "https://linktr.ee/Concetto_Workshops"
-        if (url != null) {
-            mwb_webView!!.settings.javaScriptEnabled = true
-            mwb_webView!!.settings.safeBrowsingEnabled = true
+//        if (url != null) {
+//            mwb_webView!!.settings.javaScriptEnabled = true
+//            mwb_webView!!.settings.safeBrowsingEnabled = true
+//
+//            mwb_webView!!.webViewClient = object : WebViewClient() {
+//                override fun onPageFinished(view: WebView?, url: String?) {
+//                    super.onPageFinished(view, url)
+//                    mprogressBar!!.visibility = View.GONE
+//                    mwb_webView!!.visibility = View.VISIBLE
+//                }
+//            }
+//            mwb_webView!!.settings.setSupportZoom(true)
+//
+//            try {
+//                pdf = URLEncoder.encode(url, "UTF-8")
+//            } catch (e: UnsupportedEncodingException) {
+//                e.printStackTrace()
+//            }
+//
+////            Toast.makeText(context, "$pdf", Toast.LENGTH_LONG).show()
+//            mwb_webView!!.loadUrl("https://linktr.ee/Concetto_Workshops")
+//        }
 
-            mwb_webView!!.webViewClient = object : WebViewClient() {
-                override fun onPageFinished(view: WebView?, url: String?) {
-                    super.onPageFinished(view, url)
-                    mprogressBar!!.visibility = View.GONE
-                    mwb_webView!!.visibility = View.VISIBLE
-                }
-            }
-            mwb_webView!!.settings.setSupportZoom(true)
-
-            try {
-                pdf = URLEncoder.encode(url, "UTF-8")
-            } catch (e: UnsupportedEncodingException) {
-                e.printStackTrace()
-            }
-
-//            Toast.makeText(context, "$pdf", Toast.LENGTH_LONG).show()
-            mwb_webView!!.loadUrl("https://linktr.ee/Concetto_Workshops")
-        }
-
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        intent.setPackage("com.android.chrome")
+        Log.i("pdflink",intent.data.toString())
+        startActivity(intent)
         return rootView
     }
 }
