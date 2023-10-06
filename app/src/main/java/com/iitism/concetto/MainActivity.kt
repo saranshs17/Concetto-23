@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.concetto.databinding.ActivityMainBinding
+import com.iitism.concetto.ui.fcm_service_package.fcm_api_service_package.NotificationService
 import com.iitism.concetto.ui.fcm_service_package.token_api_service_package.ApiService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -58,7 +59,10 @@ class MainActivity : AppCompatActivity() {
                 val editPref:SharedPreferences.Editor=sharedPreferences.edit()
                 editPref.putString("SavedToken",token)
                 editPref.commit()
-               ApiService().addTokenService(token,this)
+                ApiService().addTokenService(token,this)
+                val list=ArrayList<String>()
+                list.add(token)
+                NotificationService().sendNotification(list,"Concetto - Asia's Greatest Fest ","WELCOME")
             })
         }
 
