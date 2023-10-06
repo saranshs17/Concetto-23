@@ -60,9 +60,8 @@ class MainActivity : AppCompatActivity() {
                 editPref.putString("SavedToken",token)
                 editPref.commit()
                 ApiService().addTokenService(token,this)
-                val list=ArrayList<String>()
-                list.add(token)
-                NotificationService().sendNotification(list,"Concetto - Asia's Greatest Fest ","WELCOME")
+//                val list=ArrayList<String>()
+//                list.add(token)
             })
         }
 
@@ -70,13 +69,14 @@ class MainActivity : AppCompatActivity() {
             tokenList=ApiService().getRegisteredTokenListService(applicationContext)
             delay(2500)
             Log.d("Devices Token List=>>>", tokenList.toString())
+            delay(2500)
+            NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
         }
 
 
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
