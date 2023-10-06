@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             delay(2500)
             Log.d("Devices Token List=>>>", tokenList.toString())
             delay(2500)
-            NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
+           // NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
         }
 
 
