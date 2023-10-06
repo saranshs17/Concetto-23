@@ -228,16 +228,16 @@ class RegisterActivity() : AppCompatActivity() {
         datamodel.fieldOfInterest = fieldOfIntrest.text.toString()
         datamodel.problemStatement = problemStmt.text.toString()
        // datamodel.admissionNumber = admissionNumber.text.toString()
-        datamodel.teamLeader = binding.editTeamLeader.toString()
+        datamodel.teamLeader = binding.editTeamLeader.text.toString()
         datamodel.teamName = teamName.text.toString()
 
         val membersList = mutableListOf<Member>()
 
-            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editTeamLeader.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString(),binding.editAdmission1.text.toString())
-        val member2 = Member(binding.editBranch2.text.toString(),binding.editCollege2.text.toString(),binding.editEmail2.text.toString(),binding.editName2.toString(),binding.editPhone2.text.toString(),binding.editYos2.text.toString(),binding.editAdmission2.text.toString())
-        val member3 = Member(binding.editBranch3.text.toString(),binding.editCollege3.text.toString(),binding.editEmail3.text.toString(),binding.editName3.toString(),binding.editPhone3.text.toString(),binding.editYos3.text.toString(),binding.editAdmission3.text.toString())
-        val member4 = Member(binding.editBranch4.text.toString(),binding.editCollege4.text.toString(),binding.editEmail4.text.toString(),binding.editName4.toString(),binding.editPhone4.text.toString(),binding.editYos4.text.toString(),binding.editAdmission4.text.toString())
-        val member5 = Member(binding.editBranch5.text.toString(),binding.editCollege5.text.toString(),binding.editEmail5.text.toString(),binding.editName5.toString(),binding.editPhone5.text.toString(),binding.editYos5.text.toString(),binding.editAdmission5.text.toString())
+            val member1 = Member(binding.editBranch1.text.toString(),binding.editCollege1.text.toString(),binding.editEmail1.text.toString(),binding.editTeamLeader.text.toString(),binding.editPhone1.text.toString(),binding.editYos1.text.toString(),binding.editAdmission1.text.toString())
+        val member2 = Member(binding.editBranch2.text.toString(),binding.editCollege2.text.toString(),binding.editEmail2.text.toString(),binding.editName2.text.toString(),binding.editPhone2.text.toString(),binding.editYos2.text.toString(),binding.editAdmission2.text.toString())
+        val member3 = Member(binding.editBranch3.text.toString(),binding.editCollege3.text.toString(),binding.editEmail3.text.toString(),binding.editName3.text.toString(),binding.editPhone3.text.toString(),binding.editYos3.text.toString(),binding.editAdmission3.text.toString())
+        val member4 = Member(binding.editBranch4.text.toString(),binding.editCollege4.text.toString(),binding.editEmail4.text.toString(),binding.editName4.text.toString(),binding.editPhone4.text.toString(),binding.editYos4.text.toString(),binding.editAdmission4.text.toString())
+        val member5 = Member(binding.editBranch5.text.toString(),binding.editCollege5.text.toString(),binding.editEmail5.text.toString(),binding.editName5.text.toString(),binding.editPhone5.text.toString(),binding.editYos5.text.toString(),binding.editAdmission5.text.toString())
 
 
 when(selectedMember?.toInt())

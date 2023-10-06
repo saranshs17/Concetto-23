@@ -15,25 +15,25 @@ import com.iitism.concetto.R
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
-
 class WorkshopFragment : Fragment() {
 
     var mwb_webView: WebView? = null
     var mprogressBar: ProgressBar? = null
     var pdf:String? = null
 
-
-
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_workshop, container, false)
 
-        mwb_webView = view?.findViewById<View>(R.id.wb_webView) as WebView
-        mprogressBar = view?.findViewById(R.id.progressBar)
+        mwb_webView = rootView.findViewById(R.id.wb_webView)
+        mprogressBar = rootView.findViewById(R.id.progressBar)
+
         var url: String = "https://linktr.ee/Concetto_Workshops"
         if (url != null) {
-
-            // wb_webView= findViewById(R.id.wb_webView)
             mwb_webView!!.settings.javaScriptEnabled = true
             mwb_webView!!.settings.safeBrowsingEnabled = true
 
@@ -42,11 +42,9 @@ class WorkshopFragment : Fragment() {
                     super.onPageFinished(view, url)
                     mprogressBar!!.visibility = View.GONE
                     mwb_webView!!.visibility = View.VISIBLE
-
                 }
             }
             mwb_webView!!.settings.setSupportZoom(true)
-            // mwb_webView!!.settings.displayZoomControls.
 
             try {
                 pdf = URLEncoder.encode(url, "UTF-8")
@@ -54,19 +52,10 @@ class WorkshopFragment : Fragment() {
                 e.printStackTrace()
             }
 
-            Toast.makeText(requireContext(),"$pdf", Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, "$pdf", Toast.LENGTH_LONG).show()
             mwb_webView!!.loadUrl("https://linktr.ee/Concetto_Workshops")
-
         }
+
+        return rootView
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_workshop, container, false)
-    }
-
-
 }
