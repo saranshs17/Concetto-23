@@ -17,12 +17,22 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.concetto.databinding.ActivityMainBinding
 import com.iitism.concetto.ui.fcm_service_package.token_api_service_package.ApiService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.internal.wait
+import java.util.ArrayList
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    lateinit var tokenList:ArrayList<String>
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
+
 
         val sharedPreferences=getSharedPreferences("TokenPreferences", MODE_PRIVATE)
         val savedToken=sharedPreferences.getString("SavedToken","Nothing")
@@ -47,8 +58,14 @@ class MainActivity : AppCompatActivity() {
                 val editPref:SharedPreferences.Editor=sharedPreferences.edit()
                 editPref.putString("SavedToken",token)
                 editPref.commit()
-                ApiService().addTokenService(token,this)
+               ApiService().addTokenService(token,this)
             })
+        }
+
+        GlobalScope.launch {
+            tokenList=ApiService().getRegisteredTokenListService(applicationContext)
+            delay(2500)
+            Log.d("Devices Token List=>>>", tokenList.toString())
         }
 
 
