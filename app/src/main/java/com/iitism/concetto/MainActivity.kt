@@ -16,13 +16,24 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import com.iitism.concetto.databinding.ActivityMainBinding
+import com.iitism.concetto.ui.fcm_service_package.fcm_api_service_package.NotificationService
 import com.iitism.concetto.ui.fcm_service_package.token_api_service_package.ApiService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import okhttp3.internal.wait
+import java.util.ArrayList
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    lateinit var tokenList:ArrayList<String>
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
+
 
         val sharedPreferences=getSharedPreferences("TokenPreferences", MODE_PRIVATE)
         val savedToken=sharedPreferences.getString("SavedToken","Nothing")
@@ -48,14 +60,23 @@ class MainActivity : AppCompatActivity() {
                 editPref.putString("SavedToken",token)
                 editPref.commit()
                 ApiService().addTokenService(token,this)
+//                val list=ArrayList<String>()
+//                list.add(token)
             })
+        }
+
+        GlobalScope.launch {
+            tokenList=ApiService().getRegisteredTokenListService(applicationContext)
+            delay(2500)
+            Log.d("Devices Token List=>>>", tokenList.toString())
+            delay(2500)
+           // NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
         }
 
 
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
 
         appBarConfiguration = AppBarConfiguration(
             setOf(

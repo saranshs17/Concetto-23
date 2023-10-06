@@ -56,7 +56,8 @@
                 android:layout_margin="10dp"
                 android:inputType = "text"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
 
             <EditText
@@ -68,10 +69,10 @@
                 android:hint="Problem Statement*"
                 android:visibility="gone"
                 android:inputType = "text"
-                android:textColorHint="@color/white"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"/>
             <EditText
                 android:id="@+id/edit_botwt"
                 android:layout_width="300dp"
@@ -80,10 +81,11 @@
                 android:layout_margin="10dp"
                 android:hint="Bot Weight*"
                 android:visibility="gone"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
             <EditText
                 android:id="@+id/edit_DriveLink"
                 android:layout_width="300dp"
@@ -93,10 +95,11 @@
                 android:inputType = "text"
                 android:hint="Drive Link*"
                 android:visibility="gone"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
             <EditText
                 android:id="@+id/edit_Foi"
                 android:layout_width="300dp"
@@ -106,10 +109,11 @@
                 android:hint="Field Of Intrest*"
                 android:inputType = "text"
                 android:visibility="gone"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -151,7 +155,8 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_admission1"
                     android:layout_width="300dp"
@@ -163,7 +168,8 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
 
                 <EditText
@@ -177,7 +183,8 @@
                 android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
             <EditText
                 android:id="@+id/edit_phone1"
@@ -190,7 +197,8 @@
                 android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
             <EditText
                 android:id="@+id/edit_College1"
@@ -203,7 +211,8 @@
                 android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
             <EditText
                 android:id="@+id/edit_branch1"
@@ -216,7 +225,8 @@
                 android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
             <EditText
                 android:id="@+id/edit_yos1"
                 android:layout_width="300dp"
@@ -228,7 +238,8 @@
                 android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
         </LinearLayout>
 
@@ -257,10 +268,11 @@
                     android:layout_margin="10dp"
                     android:hint="Name*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_admission2"
                     android:layout_width="300dp"
@@ -272,7 +284,8 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
 
                 <EditText
@@ -283,10 +296,11 @@
                     android:layout_margin="10dp"
                     android:hint="Email*"
                     android:inputType = "textEmailAddress"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_phone2"
@@ -296,10 +310,11 @@
                     android:layout_margin="10dp"
                     android:hint="Phone*"
                     android:inputType = "number"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_College2"
@@ -309,10 +324,11 @@
                     android:layout_margin="10dp"
                     android:hint="College*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_branch2"
@@ -322,10 +338,11 @@
                     android:layout_margin="10dp"
                     android:hint="Branch*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_yos2"
                     android:layout_width="300dp"
@@ -334,10 +351,11 @@
                     android:layout_margin="10dp"
                     android:hint="Year of Study*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
             </LinearLayout>
 
@@ -365,10 +383,11 @@
                     android:layout_margin="10dp"
                     android:hint="Name*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_admission3"
                     android:layout_width="300dp"
@@ -380,7 +399,9 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
 
                 <EditText
@@ -391,10 +412,11 @@
                     android:layout_margin="10dp"
                     android:hint="Email*"
                     android:inputType = "textEmailAddress"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_phone3"
@@ -404,10 +426,11 @@
                     android:layout_margin="10dp"
                     android:hint="Phone*"
                     android:inputType = "number"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_College3"
@@ -417,10 +440,11 @@
                     android:layout_margin="10dp"
                     android:hint="College*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_branch3"
@@ -430,10 +454,11 @@
                     android:layout_margin="10dp"
                     android:hint="Branch*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_yos3"
                     android:layout_width="300dp"
@@ -442,10 +467,11 @@
                     android:layout_margin="10dp"
                     android:hint="Year of Study*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
             </LinearLayout>
 
@@ -473,10 +499,11 @@
                     android:layout_margin="10dp"
                     android:hint="Name*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_admission4"
                     android:layout_width="300dp"
@@ -488,7 +515,8 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
 
                 <EditText
@@ -499,10 +527,11 @@
                     android:layout_margin="10dp"
                     android:hint="Email*"
                     android:inputType = "textEmailAddress"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_phone4"
@@ -512,10 +541,11 @@
                     android:layout_margin="10dp"
                     android:hint="Phone*"
                     android:inputType = "number"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_College4"
@@ -525,10 +555,11 @@
                     android:layout_margin="10dp"
                     android:hint="College*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_branch4"
@@ -538,10 +569,11 @@
                     android:layout_margin="10dp"
                     android:hint="Branch*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_yos4"
                     android:layout_width="300dp"
@@ -550,10 +582,11 @@
                     android:layout_margin="10dp"
                     android:hint="Year of Study*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
             </LinearLayout>
 
@@ -581,10 +614,11 @@
                     android:layout_margin="10dp"
                     android:hint="Name*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_admission5"
                     android:layout_width="300dp"
@@ -596,7 +630,8 @@
                     android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
 
                 <EditText
@@ -607,10 +642,11 @@
                     android:layout_margin="10dp"
                     android:hint="Email*"
                     android:inputType = "textEmailAddress"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_phone5"
@@ -620,10 +656,11 @@
                     android:layout_margin="10dp"
                     android:hint="Phone*"
                     android:inputType = "number"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_College5"
@@ -633,10 +670,11 @@
                     android:layout_margin="10dp"
                     android:hint="College*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
                 <EditText
                     android:id="@+id/edit_branch5"
@@ -646,10 +684,11 @@
                     android:layout_margin="10dp"
                     android:hint="Branch*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
                 <EditText
                     android:id="@+id/edit_yos5"
                     android:layout_width="300dp"
@@ -658,10 +697,11 @@
                     android:layout_margin="10dp"
                     android:hint="Year of Study*"
                     android:inputType = "text"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/gray"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"/>
 
             </LinearLayout>
 
@@ -688,10 +728,11 @@
                 android:layout_margin="10dp"
                 android:hint="Phone Number*"
                 android:inputType = "number"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/gray"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"/>
 
             <View
                 android:layout_width="match_parent"

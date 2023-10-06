@@ -774,9 +774,12 @@ if (botWeight.text.isEmpty()){
             val call = RetrofitInstance().apiService.uplaodData(datamodel)
             call.enqueue(object : retrofit2.Callback<ApiResponse>{
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+
                     binding.scrollViewMerchandise.visibility = View.VISIBLE
+
                         Log.i("Tag", response.toString())
-                        Log.i("response", response.body()?.msg.toString())
+
+                    Log.i("response", response.body()?.msg.toString())
                         if (response.body() == null) {
                             Toast.makeText(
                                 this@RegisterActivity,
@@ -791,6 +794,8 @@ if (botWeight.text.isEmpty()){
                                 "Member is Successfully Registered!!",
                                 Toast.LENGTH_SHORT
                             ).show()
+
+                    clearEditTextFields()
                     binding.loadingCard.visibility = View.GONE
 
                 }
@@ -802,6 +807,50 @@ if (botWeight.text.isEmpty()){
                     Toast.makeText(this@RegisterActivity,"Try again !!, It may happen first time",Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+    private fun clearEditTextFields() {
+        // Clear all EditText fields for members
+        binding.editBranch1.text.clear()
+        binding.editCollege1.text.clear()
+        binding.editEmail1.text.clear()
+        binding.editTeamName.text.clear()
+        binding.editPhone1.text.clear()
+        binding.editYos1.text.clear()
+        binding.editAdmission1.text.clear()
+
+        binding.editBranch2.text.clear()
+        binding.editCollege2.text.clear()
+        binding.editEmail2.text.clear()
+        binding.editName2.text.clear()
+        binding.editPhone2.text.clear()
+        binding.editYos2.text.clear()
+        binding.editAdmission2.text.clear()
+
+        binding.editBranch3.text.clear()
+        binding.editCollege3.text.clear()
+        binding.editEmail3.text.clear()
+        binding.editName3.text.clear()
+        binding.editPhone3.text.clear()
+        binding.editYos3.text.clear()
+        binding.editAdmission3.text.clear()
+
+        binding.editBranch4.text.clear()
+        binding.editCollege4.text.clear()
+        binding.editEmail4.text.clear()
+        binding.editName4.text.clear()
+        binding.editPhone4.text.clear()
+        binding.editYos4.text.clear()
+        binding.editAdmission4.text.clear()
+
+        binding.editBranch5.text.clear()
+        binding.editCollege5.text.clear()
+        binding.editEmail5.text.clear()
+        binding.editName5.text.clear()
+        binding.editPhone5.text.clear()
+        binding.editYos5.text.clear()
+        binding.editAdmission5.text.clear()
+
+        binding.editTeamLeader.text.clear()
     }
 }
 
