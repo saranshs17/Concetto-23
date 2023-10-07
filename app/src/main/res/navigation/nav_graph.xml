@@ -46,6 +46,11 @@
         android:name="com.iitism.concetto.ui.noticeboardfragment.NoticeBoardFragment"
         tools:layout="@layout/fragment_notice_board"/>
     <fragment
+        android:id="@+id/nav_add_notice"
+        android:label="Add Notice"
+        android:name="com.iitism.concetto.ui.noticeboardfragment.AddNoticeFragment"
+        tools:layout="@layout/fragment_add_notice"/>
+    <fragment
         android:id="@+id/nav_coreTeam"
         android:label="@string/menu_coreTeam"
         android:name="com.iitism.concetto.ui.coreteam.CoreTeamFragment"

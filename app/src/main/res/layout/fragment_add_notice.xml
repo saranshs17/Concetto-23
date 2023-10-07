@@ -22,7 +22,21 @@
             android:textColorHint="@color/gray"
             android:textAlignment="center"
             android:textColor="@color/teal_200"
-            android:textSize="22sp"
+            android:textSize="18sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <EditText
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:hint="Message"
+            android:textColorHint="@color/gray"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textSize="18sp"
+            android:inputType="textMultiLine"
             android:textStyle="bold">
         </EditText>
 
@@ -44,7 +58,7 @@
             android:fontFamily="@font/genos_light"
             android:padding="5dp"
             android:layout_gravity="center"
-            android:text="Place Order"
+            android:text="Send Notice"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
