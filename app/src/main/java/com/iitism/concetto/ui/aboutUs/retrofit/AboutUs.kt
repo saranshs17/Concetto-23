@@ -10,6 +10,6 @@ interface AboutUsApi {
     @GET("organizing")
     suspend fun getAllOrganizers(): Response<List<AboutUsModel>>
 
-    @GET("announcement")
+    @GET("notices")
     suspend fun getAllNotices(): Response<List<NoticeBoardModel>>
 }

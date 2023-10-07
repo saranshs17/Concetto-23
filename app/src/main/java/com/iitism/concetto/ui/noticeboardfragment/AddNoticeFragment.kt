@@ -27,6 +27,7 @@ class AddNoticeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddNoticeViewModel::class.java)
         // TODO: Use the ViewModel
+
     }
 
 }

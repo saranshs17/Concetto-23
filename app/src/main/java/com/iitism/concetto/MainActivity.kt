@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
            // NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
         }
 
-
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -99,9 +98,11 @@ class MainActivity : AppCompatActivity() {
             ),
             drawerLayout
         )
+
         binding.appBarMain.menuButton.setOnClickListener{
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             binding.appBarMain.titleactionbar.text = when (destination.id) {
                 R.id.nav_profile -> "PROFILE"

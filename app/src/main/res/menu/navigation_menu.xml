@@ -62,10 +62,10 @@
                     android:icon="@drawable/baseline_description_24"
                     android:title="@string/menu_coreTeam" />
 
-<!--                <item-->
-<!--                    android:id="@+id/nav_noticeboard"-->
-<!--                    android:icon="@drawable/baseline_notifications_24"-->
-<!--                    android:title="@string/menu_noticeboard" />-->
+                <item
+                    android:id="@+id/nav_noticeboard"
+                    android:icon="@drawable/baseline_notifications_24"
+                    android:title="@string/menu_noticeboard" />
 
             </group>
         </menu>

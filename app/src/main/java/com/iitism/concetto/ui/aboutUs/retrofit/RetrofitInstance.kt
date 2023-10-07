@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitInstance {
 
-    val Base_url = "https://hackfest-backend-3y92.onrender.com/"
+    val Base_url = "https://concetto-backend-clone.onrender.com/api/"
 
     val api: AboutUsApi by lazy {
         Retrofit.Builder()
