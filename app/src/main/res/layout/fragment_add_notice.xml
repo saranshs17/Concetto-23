@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.noticeboardfragment.AddNoticeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/event_card_border"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:hint="Title"
+            android:textColorHint="@color/gray"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textSize="22sp"
+            android:textStyle="bold">
+        </EditText>
+
+        <TextView
+            android:id="@+id/tv_notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/genos_light"
+            android:hint="Notice"
+            android:textColorHint="@color/gray"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sendNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/genos_light"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:text="Place Order"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>
