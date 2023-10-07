@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,11 +9,11 @@
     android:background="@color/black"
     tools:context=".ui.timelinefragment.TimelineFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -646,4 +647,61 @@
     </LinearLayout>
 
 
-</ScrollView>
+</ScrollView>-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="80dp"
+    android:background="@color/black"
+    tools:context=".ui.timelinefragment.TimelineFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="300dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/concetto_nav_logo" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Coming soon...."-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textColor="@color/teal_700"-->
+<!--        android:textSize="30sp" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="8dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:foreground="@drawable/button_background"-->
+<!--        android:layout_gravity="center"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_timeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/timeline_card"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/concetto_nav_logo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coming soon ... "
+        android:textSize="30sp"
+        android:textColor="@color/teal_700"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+</FrameLayout>
+

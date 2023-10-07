@@ -1,6 +1,7 @@
 package com.iitism.concetto.ui.aboutUs.retrofit
 
-import androidx.databinding.ktx.BuildConfig
+//import androidx.databinding.ktx.BuildConfig
+import com.iitism.concetto.BuildConfig
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+//import com.iitism.concett.RegisterActivity
 import com.iitism.concetto.databinding.ActivityViewerBinding
 import com.iitism.concetto.ui.registrationEvent.RegisterActivity
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +52,8 @@ class ViewerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.binding= ActivityViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.registerbtn.visibility = View.INVISIBLE
         val eventIdExtra = intent?.getStringExtra("eventID")
         if (eventIdExtra != null) {
             eventType = eventIdExtra
@@ -105,14 +109,21 @@ class ViewerActivity : AppCompatActivity() {
         {
             if (registrationLink != null) {
                 val url = registrationLink
-                val intent = Intent(Intent.ACTION_VIEW)
+//                val intent = Intent(Intent.ACTION_VIEW)
+//                intent.data = Uri.parse(url)
+//                if (intent.resolveActivity(packageManager) != null) {
+//                    startActivity(intent)
+                val intent = Intent(android.content.Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
-                if (intent.resolveActivity(packageManager) != null) {
+                intent.setPackage("com.android.chrome")
+                Log.i("reg link",intent.data.toString())
+                binding.registerbtn.setOnClickListener()
+                {
                     startActivity(intent)
-                } else {
-                    Toast.makeText(this, registrationLink, Toast.LENGTH_SHORT).show()
                 }
-            }
+
+                }
+
             else
                 Toast.makeText(this, "No Registration Link  available", Toast.LENGTH_SHORT).show()
         }
@@ -130,7 +141,7 @@ class ViewerActivity : AppCompatActivity() {
             .build()
 
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://concetto-backend-clone.onrender.com/")
+            .baseUrl("https://concetto-backend-heli.onrender.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -158,6 +169,7 @@ class ViewerActivity : AppCompatActivity() {
                 eventType = "api/showEvents/" + eventType
                 val response: Response<SingleEventModel> = retrofit.apiService.getEvent(eventType)
                 if (response.isSuccessful) {
+                    delay(1000)
                     binding.loadingCardViewerActitivity.visibility = View.GONE
                     flag = true
                     val data = response.body()
@@ -198,8 +210,10 @@ class ViewerActivity : AppCompatActivity() {
                                 tabLayout.selectTab(tabLayout.getTabAt(position))
                             }
                         })
-                        delay(2000)
 
+//
+                        delay(1000)
+                        binding.registerbtn.visibility = View.VISIBLE
                         if(viewModel.EventsList != null) {
                             startResgister()
                         }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "752675093818",
+    "project_id": "fcmint-ab741",
+    "storage_bucket": "fcmint-ab741.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752675093818:android:54915bf0c4f3f444d36403",
+        "android_client_info": {
+          "package_name": "com.iitism.concetto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAec2ggGb076SR3s3CXze5760dOEB4BX14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -36,7 +36,6 @@ class AllEventsFragment : Fragment() {
         binding = FragmentAllEventsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         retrofitInstance = RetrofitInstanceEvents()

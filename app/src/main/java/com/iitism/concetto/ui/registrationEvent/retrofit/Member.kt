@@ -6,5 +6,6 @@ data class Member(
     val email: String,
     val name: String,
     val phone: String,
-    val yearOfStudy: String
+    val yearOfStudy: String,
+    val admissionNumber : String
 )
