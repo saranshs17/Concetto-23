@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.noticeboardfragment.AddNoticeFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+
+    <LinearLayout
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:minHeight="200dp"
+        android:background="@drawable/event_card_border"
         android:orientation="vertical"
-        >
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -25,60 +26,57 @@
             android:textStyle="bold"
             android:layout_marginBottom="20dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="200dp"
-        android:background="@drawable/event_card_border"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-
-
 
         <EditText
             android:id="@+id/tv_title"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_bold"
+            android:minHeight="60dp"
+            android:background="@drawable/border1"
             android:hint="Title"
+            android:fontFamily="@font/inter_bold"
             android:textColorHint="@color/gray"
-            android:textAlignment="center"
-            android:textColor="@color/teal_200"
+            android:gravity="center"
+            android:layout_margin="10dp"
             android:textSize="18sp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold">
-        </EditText>
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
 
 
         <EditText
+            android:paddingTop="10dp"
             android:id="@+id/tv_message"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:fontFamily="@font/genos_light"
+            android:minHeight="60dp"
+            android:background="@drawable/border1"
             android:hint="Message"
-            android:textColorHint="@color/gray"/>
-
-    </LinearLayout>
+            android:fontFamily="@font/genos_light"
+            android:textColorHint="@color/gray"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor_color"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_marginTop="20dp"
             android:id="@+id/btn_sendNotice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/genos_light"
             android:padding="10dp"
             android:layout_gravity="center"
             android:text="Send Notice"
-            android:textColor="@color/black"
+            android:textColor="@color/teal_200"
             android:textSize="16sp" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </LinearLayout>
+
 
 </ScrollView>
