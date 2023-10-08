@@ -34,9 +34,10 @@ class NoticeBoardAdapter : RecyclerView.Adapter<NoticeBoardAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if(list.get(position).title!=null&&list.get(position).message!=null){
-            holder.binding.title.setText(list.get(position).title.toString())
-            holder.binding.description.setText(list.get(position).message.toString())
+        val position2 = list.size-1-position
+        if(list.get(position2).title!=null&&list.get(position2).message!=null){
+            holder.binding.title.setText(list.get(position2).title.toString())
+            holder.binding.description.setText(list.get(position2).message.toString())
         }
     }
 

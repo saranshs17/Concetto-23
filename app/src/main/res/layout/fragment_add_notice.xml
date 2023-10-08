@@ -66,12 +66,13 @@
             android:id="@+id/btn_sendNotice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="#009688"
             android:fontFamily="@font/genos_light"
             android:padding="10dp"
             android:layout_gravity="center"
             android:text="Send Notice"
-            android:textColor="@color/teal_200"
+            android:background="@drawable/button_background"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
 
