@@ -13,26 +13,7 @@
                     android:title="@string/menu_home"
                     />
 
-                <item
-                    android:id="@+id/nav_allEvents"
-                    android:icon="@drawable/baseline_emoji_events_24"
-                    android:title="@string/menu_events"
-                    />
-                <item
-                    android:id="@+id/nav_departementEvents"
-                    android:icon="@drawable/baseline_emoji_events_24"
-                    android:title="@string/menu_department_events"
-                    />
-                <item
-                    android:id="@+id/nav_clubEvents"
-                    android:icon="@drawable/baseline_emoji_events_24"
-                    android:title="@string/menu_club_events"
-                    />
-                <item
-                    android:id="@+id/nav_workshop"
-                    android:icon="@drawable/baseline_emoji_events_24"
-                    android:title="Workshops"
-                    />
+
 <!--                <item-->
 <!--                    android:id="@+id/nav_profile"-->
 <!--                    android:icon="@drawable/baseline_person_24"-->
@@ -57,10 +38,7 @@
                     android:id="@+id/nav_sponsors"
                     android:icon="@drawable/baseline_view_list_24"
                     android:title="@string/menu_sponsors"/>
-                <item
-                    android:id = "@+id/nav_coreTeam"
-                    android:icon="@drawable/baseline_description_24"
-                    android:title="@string/menu_coreTeam" />
+
 
                 <item
                     android:id="@+id/nav_noticeboard"
@@ -75,6 +53,40 @@
         </menu>
     </item>
 
+    <item android:title="Events">
+
+        <menu >
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_allEvents"
+                    android:icon="@drawable/baseline_emoji_events_24"
+                    android:title="@string/menu_events"
+                    />
+                <item
+                    android:id="@+id/nav_departementEvents"
+                    android:icon="@drawable/baseline_emoji_events_24"
+                    android:title="@string/menu_department_events"
+                    />
+                <item
+                    android:id="@+id/nav_clubEvents"
+                    android:icon="@drawable/baseline_emoji_events_24"
+                    android:title="@string/menu_club_events"
+                    />
+                <item
+                    android:id="@+id/nav_workshop"
+                    android:icon="@drawable/baseline_emoji_events_24"
+                    android:title="Workshops"
+                    />
+
+
+            </group>
+
+        </menu>
+
+    </item>
+
     <item
         android:title="@string/menu_supportsection"
         >
@@ -84,6 +96,11 @@
 <!--                    android:id = "@+id/nav_aboutus"-->
 <!--                    android:icon="@drawable/baseline_description_24"-->
 <!--                    android:title="@string/menu_aboutus" />-->
+
+                <item
+                android:id = "@+id/nav_coreTeam"
+                android:icon="@drawable/baseline_description_24"
+                android:title="@string/menu_coreTeam" />
 
                 <item
                     android:id="@+id/nav_contactus"
