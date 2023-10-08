@@ -5,17 +5,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.noticeboardfragment.AddNoticeFragment">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
         android:background="@drawable/event_card_border"
         android:orientation="vertical"
         android:padding="10dp">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOTICE"
+            android:fontFamily="@font/inter_bold"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
         <EditText
             android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
             android:hint="Title"
@@ -26,23 +48,11 @@
             android:textStyle="bold">
         </EditText>
 
+
         <EditText
             android:id="@+id/tv_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_bold"
-            android:hint="Message"
-            android:textColorHint="@color/gray"
-            android:textAlignment="center"
-            android:textColor="@color/teal_200"
-            android:textSize="18sp"
-            android:inputType="textMultiLine"
-            android:textStyle="bold">
-        </EditText>
-
-        <TextView
-            android:id="@+id/tv_notice"
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textAlignment="center"
@@ -50,17 +60,22 @@
             android:fontFamily="@font/genos_light"
             android:hint="Notice"
             android:textColorHint="@color/gray"/>
+
+    </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="10dp"
             android:id="@+id/btn_sendNotice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
             android:fontFamily="@font/genos_light"
-            android:padding="5dp"
+            android:padding="10dp"
             android:layout_gravity="center"
             android:text="Send Notice"
             android:textColor="@color/black"
             android:textSize="16sp" />
-    </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
