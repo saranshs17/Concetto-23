@@ -52,6 +52,8 @@ class AddNoticeFragment : Fragment() {
                 delay(2500)
                 NotificationService().sendNotification(tokenList,message,title)
             }
+            binding.tvTitle.text.clear()
+            binding.tvMessage.text.clear()
         }
     }
 
