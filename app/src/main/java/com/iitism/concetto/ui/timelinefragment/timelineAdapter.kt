@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
 
-class timelineAdapter(private val timelineArrayPair : ArrayList<Pair<String,String>>): RecyclerView.Adapter<timelineAdapter.MyViewHolder>() {
+class timelineAdapter(private val dataList : List<timilineDataModel>): RecyclerView.Adapter<timelineAdapter.MyViewHolder>() {
     class MyViewHolder(timelineView: View): RecyclerView.ViewHolder(timelineView) {
         val timeOnLeft: TextView = timelineView.findViewById(R.id.time_onLeft)
         val timeOnRight : TextView = timelineView.findViewById(R.id.time_onRight)
@@ -26,13 +26,13 @@ class timelineAdapter(private val timelineArrayPair : ArrayList<Pair<String,Stri
     }
 
     override fun getItemCount(): Int {
-        return timelineArrayPair.size
+        return dataList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = timelineArrayPair[position]
-        val time = currentItem.second
-        val name = currentItem.first
+        val currentItem = dataList[position]
+        val time = currentItem.time+ "\n" + currentItem.date
+        val name = currentItem.event+ "\n-"+ currentItem.venue
         if(position%2==0){
             holder.timeOnRight.visibility = GONE
             holder.timeOnLeft.visibility= VISIBLE
