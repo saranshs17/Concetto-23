@@ -16,6 +16,7 @@ import com.iitism.concetto.ui.aboutUs.retrofit.RetrofitInstance
 import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class AllEventsFragment : Fragment() {
@@ -58,6 +59,7 @@ class AllEventsFragment : Fragment() {
     {
         GlobalScope.launch(Dispatchers.IO) {
             viewModel.getAllEvents()
+            delay(2000)
             this.launch(Dispatchers.Main) {
                 binding.loadingCardAllevents.visibility = View.GONE
                 itemAdapter.seteventList(viewModel.EventsList)
@@ -65,8 +67,5 @@ class AllEventsFragment : Fragment() {
             }
         }
     }
-
-
-
 
 }
