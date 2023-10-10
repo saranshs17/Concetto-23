@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_rules,
                 R.id.nav_scanqr,
 //                R.id.nav_gatepass,
+                R.id.nav_maps,
                 R.id.nav_merchandise,
                 R.id.nav_sponsors
             ),
@@ -118,6 +119,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_clubEvents -> "CLUB EVENTS"
                 R.id.nav_departementEvents -> "DEPARTMENT EVENTS"
                 R.id.nav_workshop -> "WORKSHOPS"
+                R.id.nav_maps-> "Maps"
 //                R.id.nav_gatepass -> "GATE PASS"
                 R.id.nav_sponsors -> "PAST SPONSORS"
                 else -> "Concetto'23"
