@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RemoteViews
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -61,12 +62,12 @@ class AddNoticeFragment : Fragment() {
             .setView(R.layout.dialog)
             .setCancelable(false)
             .setPositiveButton("CONFIRM"){ dialogInterface, _ ->
-                // Get the input string from the dialog box.
+
                 val inputString = (dialogInterface as AlertDialog).findViewById<EditText>(R.id.passDiag)!!.text.toString()
                 dialogInterface.setCancelable(false)
                 dialogInterface.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 // Compare the input string to the backend string.
-                if (inputString == "ElvishBhai") {
+                if (inputString.trim() == "ElvishBhai") {
                     // Execute the further steps.
                     Toast.makeText(requireContext(),"Welcome Admin",Toast.LENGTH_SHORT).show()
                     binding.btnSendNotice.setOnClickListener {
@@ -116,9 +117,6 @@ class AddNoticeFragment : Fragment() {
             .create()
 
         dialog.show()
-
-
-
 
         }
 }
