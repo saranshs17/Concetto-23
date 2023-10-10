@@ -39,7 +39,7 @@ class LocationFragment : Fragment() {
             )
 
         adapter = LocationAdapter(locationList)
-
+        recyclerView.adapter = adapter
          return rootView
     }
 
