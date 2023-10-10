@@ -1,7 +1,5 @@
 package com.iitism.concetto.ui.Maps
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,30 +27,33 @@ class LocationAdapter(private val locationList: List<LocationDataModel>): Recycl
         val location = locationList[position]
         holder.location_tv.text = location.locationname
         holder.button.setOnClickListener {
+
+            // Show a toast with the place name
+
             if (location.id == 1) {
-
+                Toast.makeText(holder.itemView.context, "Id = 1", Toast.LENGTH_SHORT).show()
             } else if (location.id == 2) {
-
+                Toast.makeText(holder.itemView.context, "Id = 2", Toast.LENGTH_SHORT).show()
             } else if (location.id == 3) {
-
+                Toast.makeText(holder.itemView.context, "Id = 3", Toast.LENGTH_SHORT).show()
             } else if (location.id == 4) {
-
+                Toast.makeText(holder.itemView.context, "Id = 4", Toast.LENGTH_SHORT).show()
             } else if (location.id == 5) {
-
+                Toast.makeText(holder.itemView.context, "Id = 5", Toast.LENGTH_SHORT).show()
             } else if (location.id == 6) {
-
+                Toast.makeText(holder.itemView.context, "Id = 6", Toast.LENGTH_SHORT).show()
             } else if (location.id == 7) {
-
+                Toast.makeText(holder.itemView.context, "Id = 7", Toast.LENGTH_SHORT).show()
             } else if (location.id == 8) {
-
+                Toast.makeText(holder.itemView.context, "Id = 8", Toast.LENGTH_SHORT).show()
             } else if (location.id == 9) {
-
+                Toast.makeText(holder.itemView.context, "Id = 9", Toast.LENGTH_SHORT).show()
             } else if (location.id == 10) {
-
+                Toast.makeText(holder.itemView.context, "Id = 10", Toast.LENGTH_SHORT).show()
             } else if (location.id == 11) {
-
+                Toast.makeText(holder.itemView.context, "Id = 11", Toast.LENGTH_SHORT).show()
             } else if (location.id == 12) {
-
+                Toast.makeText(holder.itemView.context, "Id = 12", Toast.LENGTH_SHORT).show()
             }
         }
     }
