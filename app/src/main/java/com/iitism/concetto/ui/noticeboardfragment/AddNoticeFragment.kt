@@ -56,67 +56,68 @@ class AddNoticeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddNoticeViewModel::class.java)
-        val dialog = AlertDialog.Builder(requireContext())
-            .setTitle("ONLY ADMIN CAN ACCESS")
-            .setMessage("Please enter the password to send the notification:")
-            .setView(R.layout.dialog)
-            .setCancelable(false)
-            .setPositiveButton("CONFIRM"){ dialogInterface, _ ->
+//        Toast.makeText(requireContext(),"Welcome Admin",Toast.LENGTH_SHORT).show()
+        binding.btnSendNotice.setOnClickListener {
+            val title = binding.tvTitle.text.toString()
+            val message = binding.tvMessage.text.toString()
 
-                val inputString = (dialogInterface as AlertDialog).findViewById<EditText>(R.id.passDiag)!!.text.toString()
-                dialogInterface.setCancelable(false)
-                dialogInterface.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                // Compare the input string to the backend string.
-                if (inputString.trim() == "ElvishBhai") {
-                    // Execute the further steps.
-                    Toast.makeText(requireContext(),"Welcome Admin",Toast.LENGTH_SHORT).show()
-                    binding.btnSendNotice.setOnClickListener {
-                        val title = binding.tvTitle.text.toString()
-                        val message = binding.tvMessage.text.toString()
-
-                        if (title.isEmpty()) binding.tvTitle.error = "title Can't be empty"
-                        if (message.isEmpty()) binding.tvMessage.error = "Message can't be empty"
-                        if (title.isNotEmpty() && message.isNotEmpty()) {
-                            val databody = AddNoticeDataBody(title, message)
-                            viewModel.addNoticeService(databody)
-                            Toast.makeText(
-                                binding.root.context,
-                                "Notice Sent Successfully",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            GlobalScope.launch {
-                                tokenList =
-                                    ApiService().getRegisteredTokenListService(requireContext())
-                                delay(2500)
-                                Log.d("Devices Token List=>>>", tokenList.toString())
-                                delay(2500)
-                                NotificationService().sendNotification(tokenList, message, title)
-                            }
-
-                            binding.tvTitle.text?.clear()
-                            binding.tvMessage.text?.clear()
-                            binding.btnSendNotice.visibility = View.GONE
-                            Handler().postDelayed({
-                                binding.btnSendNotice.visibility = View.VISIBLE
-                            }, 2000)
-                        }
-                    }
-
-                } else {
-                    // Display an error message indicating that the user does not have admin access.
-                    Toast.makeText(requireContext(), "You do not have admin access.", Toast.LENGTH_LONG).show()
-                    val intent = Intent(requireContext(),MainActivity::class.java)
-                    startActivity(intent)
+            if (title.isEmpty()) binding.tvTitle.error = "title Can't be empty"
+            if (message.isEmpty()) binding.tvMessage.error = "Message can't be empty"
+            if (title.isNotEmpty() && message.isNotEmpty()) {
+                val databody = AddNoticeDataBody(title, message)
+                viewModel.addNoticeService(databody)
+                Toast.makeText(
+                    binding.root.context,
+                    "Notice Sent Successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+                GlobalScope.launch {
+                    tokenList =
+                        ApiService().getRegisteredTokenListService(requireContext())
+                    delay(2500)
+                    Log.d("Devices Token List=>>>", tokenList.toString())
+                    delay(2500)
+                    NotificationService().sendNotification(tokenList, message, title)
                 }
-            }
-            .setNegativeButton("Cancel") { dialogInterface, _ ->
-                dialogInterface.dismiss()
-                val intent = Intent(requireContext(),MainActivity::class.java)
-                startActivity(intent)
-            }
-            .create()
 
-        dialog.show()
+                binding.tvTitle.text?.clear()
+                binding.tvMessage.text?.clear()
+                binding.btnSendNotice.visibility = View.GONE
+                Handler().postDelayed({
+                    binding.btnSendNotice.visibility = View.VISIBLE
+                }, 2000)
+            }
+        }
+//        val dialog = AlertDialog.Builder(requireContext())
+//            .setTitle("ONLY ADMIN CAN ACCESS")
+//            .setMessage("Please enter the password to send the notification:")
+//            .setView(R.layout.dialog)
+//            .setCancelable(false)
+//            .setPositiveButton("CONFIRM"){ dialogInterface, _ ->
+//
+//                val inputString = (dialogInterface as AlertDialog).findViewById<EditText>(R.id.passDiag)!!.text.toString()
+//                dialogInterface.setCancelable(false)
+//                dialogInterface.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//                // Compare the input string to the backend string.
+//                if (inputString.trim() == "ElvishBhai") {
+//                    // Execute the further steps.
+//
+//
+//                } else {
+//                    // Display an error message indicating that the user does not have admin access.
+//                    Toast.makeText(requireContext(), "You do not have admin access.", Toast.LENGTH_LONG).show()
+//                    val intent = Intent(requireContext(),MainActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            }
+//            .setNegativeButton("Cancel") { dialogInterface, _ ->
+//                dialogInterface.dismiss()
+//                val intent = Intent(requireContext(),MainActivity::class.java)
+//                startActivity(intent)
+//            }
+//            .create()
+//
+//        dialog.show()
 
         }
 }
