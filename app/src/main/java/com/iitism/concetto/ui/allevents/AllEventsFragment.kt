@@ -95,6 +95,8 @@ class AllEventsFragment : Fragment() {
                 for (dataClass in viewModel.EventsList.value!!.toMutableList()) {
                     if (dataClass.name?.lowercase()
                             ?.contains(text.lowercase(Locale.getDefault())) == true
+                        && dataClass.organizer?.lowercase()
+                            ?.contains(text.lowercase(Locale.getDefault())) == true
                     ) {
                         searchList.add(dataClass)
                     }

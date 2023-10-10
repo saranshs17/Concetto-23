@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
@@ -15,13 +16,16 @@ import com.iitism.concetto.databinding.FragmentDepartmentEventsBinding
 import com.iitism.concetto.ui.aboutUs.retrofit.RetrofitInstance
 import com.iitism.concetto.ui.allevents.AllEventsFragment
 import com.iitism.concetto.ui.allevents.AllEventsViewModel
+import com.iitism.concetto.ui.allevents.retrofit.AllEventsDataModel
 import com.iitism.concetto.ui.allevents.retrofit.RetrofitInstanceEvents
 import com.iitism.concetto.ui.clubevents.ClubAdapter
 import com.iitism.concetto.ui.clubevents.ClubEventsViewModel
 import com.iitism.concetto.ui.clubevents.RetrofitInstanceClubEvents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 import kotlin.properties.Delegates
 
 class DepartmentEventsFragment : Fragment() {
@@ -57,6 +61,16 @@ class DepartmentEventsFragment : Fragment() {
         binding.loadingCardDepartmentevents.visibility = View.VISIBLE
         // itemAdapter.notifyDataSetChanged()
         getEvents()
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                return true
+            }
+        })
     }
 
     private fun getEvents()
@@ -72,5 +86,31 @@ class DepartmentEventsFragment : Fragment() {
         }
     }
 
+
+    fun searchList(text: String) {
+
+        GlobalScope.launch(Dispatchers.IO) {
+            viewModel.getAllEvents()
+            delay(2000)
+            this.launch(Dispatchers.Main) {
+                binding.loadingCardDepartmentevents.visibility = View.GONE
+                val searchList = ArrayList<AllEventsDataModel>()
+                //val dataClass = itemSnapshot.getValue(UserId::class.java)
+
+                for (dataClass in viewModel.EventsList.value!!.toMutableList()) {
+                    if (dataClass.name?.lowercase()
+                            ?.contains(text.lowercase(Locale.getDefault())) == true
+                        && dataClass.organizer?.lowercase()
+                            ?.contains(text.lowercase(Locale.getDefault())) == true
+                    ) {
+                        searchList.add(dataClass)
+                    }
+                }
+                clubAdapter.searchDataList(searchList)
+            }
+        }
+
+
+    }
 
 }
