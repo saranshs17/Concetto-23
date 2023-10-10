@@ -648,7 +648,7 @@
 
 
 </ScrollView>-->
-<FrameLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="80dp"
@@ -656,7 +656,16 @@
     tools:context=".ui.timelinefragment.TimelineFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     >
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/event_card_border"
+        android:layout_height="wrap_content"/>
 
 <!--    <ImageView-->
 <!--        android:layout_width="match_parent"-->
@@ -673,35 +682,31 @@
 <!--        android:textColor="@color/teal_700"-->
 <!--        android:textSize="30sp" />-->
 
-<!--    <TextView-->
-<!--        android:layout_width="8dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:foreground="@drawable/button_background"-->
-<!--        android:layout_gravity="center"/>-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_timeline"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/timeline_card"/>
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/concetto_nav_logo"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coming soon ... "
-        android:textSize="30sp"
-        android:textColor="@color/teal_700"
-        android:layout_gravity="center"/>
-    </LinearLayout>
+        <TextView
+
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:foreground="@drawable/button_background"
+            android:layout_gravity="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_timeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/timeline_card"/>
 
 
-</FrameLayout>
+    </FrameLayout>
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
 
