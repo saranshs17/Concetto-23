@@ -44,10 +44,11 @@
                     android:id="@+id/nav_noticeboard"
                     android:icon="@drawable/baseline_notifications_24"
                     android:title="@string/menu_noticeboard" />
+
                 <item
-                    android:id="@+id/nav_add_notice"
-                    android:icon="@drawable/baseline_send_24"
-                    android:title="Add Notice" />
+                    android:id="@+id/nav_maps"
+                    android:icon="@drawable/ic_baseline_location_on_24"
+                    android:title="Maps" />
 
             </group>
         </menu>
@@ -81,11 +82,23 @@
                     />
 
 
+
             </group>
 
         </menu>
 
     </item>
+
+<!--    <item android:title="Admin" >-->
+
+<!--        <menu>-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_add_notice"-->
+<!--                android:icon="@drawable/baseline_send_24"-->
+<!--                android:title="Add Notice" />-->
+<!--        </menu>-->
+<!--    </item>-->
 
     <item
         android:title="@string/menu_supportsection"
