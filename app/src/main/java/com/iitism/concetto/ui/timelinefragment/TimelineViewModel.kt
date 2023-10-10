@@ -1,6 +1,7 @@
 package com.iitism.concetto.ui.timelinefragment
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +18,8 @@ class TimelineViewModel(private val context : Context) : ViewModel() {
 
     var error: String? = null
 
+    lateinit var timeline: Array<timilineDataModel>
+
     fun getTimelineList(){
         viewModelScope.launch {
             try{
@@ -30,13 +33,28 @@ class TimelineViewModel(private val context : Context) : ViewModel() {
                 val json = String(buffer, Charsets.UTF_8)
                 val gson = Gson()
 
-                val timeline = gson.fromJson(json,Array<timilineDataModel>::class.java)
+                timeline = gson.fromJson(json,Array<timilineDataModel>::class.java)
+
+//                val filteredData = data.filter { it.type == 1 }
+//                Log.d("Data", data.toString())
+//                ClubEventList.postValue(filteredData)
                 _timelineList.addAll(timeline)
+
+
             }
             catch (e: Exception){
                 error= e.toString()
             }
 
         }
+    }
+
+    fun filterDataByDate(selectedDate: String) {
+        var filteredList =timeline.filter { it.date == selectedDate }
+        Log.i("data1",_timelineList.size.toString())
+        _timelineList.clear()
+
+        _timelineList.addAll(filteredList)
+        Log.i("data",filteredList.toString())
     }
 }
