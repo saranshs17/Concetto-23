@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="40dp"
+    android:elevation="20dp"
+    android:backgroundTint="#CDFFD6"
+    android:backgroundTintMode="src_in"
+    android:outlineAmbientShadowColor="@color/white"
+    app:cardCornerRadius="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/location_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nothing"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/inter_bold"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                />
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_getlocation"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:text="Get Direction"
+            android:textColor="@color/text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
+            android:textAllCaps="false"
+            android:elevation="20dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/black"
+            ></com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
