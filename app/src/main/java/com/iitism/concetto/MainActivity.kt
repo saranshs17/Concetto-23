@@ -1,6 +1,7 @@
 package com.iitism.concetto
 
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//Set portrait
 
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
