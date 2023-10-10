@@ -93,6 +93,10 @@ class ClubAdapter: RecyclerView.Adapter<ClubAdapter.MyViewHolder>() {
     }
 
 
+    fun searchDataList(searchList: ArrayList<Club_dataclass>) {
+        ceventList = searchList
+        notifyDataSetChanged()
+    }
 }
 
 
