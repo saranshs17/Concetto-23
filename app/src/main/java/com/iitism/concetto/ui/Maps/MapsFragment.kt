@@ -25,6 +25,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.ktx.Firebase
 import com.iitism.concetto.R
@@ -37,7 +38,10 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 
 
-class MapsFragment : Fragment() , OnMapReadyCallback {
+class MapsFragment(
+    private val destLat : Double,
+    private val destLng : Double
+) : Fragment() , OnMapReadyCallback {
 
 
     private var binding:FragmentMapsBinding? = null
@@ -57,7 +61,7 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         val intent = Intent()
 
-        destinationLatLng = LatLng(intent.getFloatExtra("Latitude",0.0F).toDouble() ,intent.getFloatExtra("Longitude",0.0F).toDouble())
+        destinationLatLng = LatLng(destLat ,destLng)
         init()
             return binding?.root
     }
@@ -132,18 +136,23 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
                                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                             }.addOnSuccessListener { location ->
                                 userLatLng = LatLng(location.latitude, location.longitude)
-                                mMap.animateCamera(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        userLatLng,
-                                        15F
-                                    )
-                                )
+//                                mMap.animateCamera(
+//                                    CameraUpdateFactory.newLatLngZoom(
+//                                        userLatLng,
+//                                        15F
+//                                    )
+//                                )
+                                val markerOptions = MarkerOptions()
+                                    .position(LatLng(destLat, destLng)) // Set the marker position (latitude and longitude)
+                                    .title("Your Destination")
+                                googleMap.addMarker(markerOptions)
+                                // Set a title for the marker (optional)
                                 val startPoint = LatLng(userLatLng.latitude, userLatLng.longitude)
                                 val endPoint = LatLng(destinationLatLng.latitude, destinationLatLng.longitude)
                                 val polylineOptions = PolylineOptions()
                                     .add(startPoint, endPoint)
                                     .color(Color.BLUE)  // Set the color of the polyline
-                                    .width(10f)         // Set the width of the polyline
+                                    .width(20f)         // Set the width of the polyline
 
                                 val polyline = googleMap.addPolyline(polylineOptions)
                                 val boundsBuilder = LatLngBounds.builder()

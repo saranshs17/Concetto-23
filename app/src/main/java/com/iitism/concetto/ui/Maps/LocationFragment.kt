@@ -38,7 +38,7 @@ class LocationFragment : Fragment() {
             LocationDataModel(12,"IsmSports Office", 23.81322030671901, 86.43993656695105)
             )
 
-        adapter = LocationAdapter(locationList)
+        adapter = LocationAdapter(requireContext(),locationList)
         recyclerView.adapter = adapter
          return rootView
     }

@@ -1,5 +1,6 @@
 package com.iitism.concetto.ui.Maps
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
 
 
-class LocationAdapter(private val locationList: List<LocationDataModel>): RecyclerView.Adapter<LocationAdapter.MyViewHolder>() {
+class LocationAdapter(private val act : Context,private val locationList: List<LocationDataModel>): RecyclerView.Adapter<LocationAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val location_tv = itemView.findViewById<TextView>(R.id.location_tv)
@@ -58,12 +60,23 @@ class LocationAdapter(private val locationList: List<LocationDataModel>): Recycl
                 Toast.makeText(holder.itemView.context, "Id = 12", Toast.LENGTH_SHORT).show()
             }
 
-            val intent  = Intent(holder.itemView.context,MapsFragment()::class.java)
-            intent.putExtra("Latitude",location.latitude)
-            intent.putExtra("Longitude",location.longitude)
-            holder.itemView.context.startActivity(intent)
+            val fragment = MapsFragment(location.latitude,location.longitude)
+            val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_host_fragment_content_main, fragment)
+            transaction.addToBackStack(null) // Optional: Add to back stack for navigation
+            transaction.commit()
+
+//            val intent  = Intent(holder.itemView.context,MapsFragment()::class.java)
+//            intent.putExtra("Latitude",location.latitude)
+//            intent.putExtra("Longitude",location.longitude)
+//            holder.itemView.context.startActivity(intent)
+
+
         }
     }
+
+
 
     override fun getItemCount(): Int {
         return locationList.size
