@@ -1,11 +1,13 @@
 package com.iitism.concetto.ui.Maps
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
 
@@ -55,6 +57,11 @@ class LocationAdapter(private val locationList: List<LocationDataModel>): Recycl
             } else if (location.id == 12) {
                 Toast.makeText(holder.itemView.context, "Id = 12", Toast.LENGTH_SHORT).show()
             }
+
+            val intent  = Intent(holder.itemView.context,MapsFragment()::class.java)
+            intent.putExtra("Latitude",location.latitude)
+            intent.putExtra("Longitude",location.longitude)
+            holder.itemView.context.startActivity(intent)
         }
     }
 
