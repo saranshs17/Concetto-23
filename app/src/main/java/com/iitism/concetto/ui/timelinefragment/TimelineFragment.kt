@@ -50,12 +50,10 @@ class TimelineFragment : Fragment() {
             spinner.adapter= adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
 
                     val selectedDate = dates[position]
                     viewModel.filterDataByDate(selectedDate)
-                    itemAdapter.notifyDataSetChanged()
                     itemAdapter.notifyDataSetChanged()
 
                 }
