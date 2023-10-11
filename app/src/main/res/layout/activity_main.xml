@@ -25,8 +25,7 @@
         app:menu="@menu/navigation_menu"
         android:theme="@style/Theme.HackfestApp.AppBarOverlay"
         app:headerLayout="@layout/nav_view_header"
-        app:itemTextAppearance="@style/NavigationDrawerTextViewStyle"
-        tools:targetApi="o"/>
+        app:itemTextAppearance="@style/NavigationDrawerTextViewStyle" />
 
 
 

@@ -128,15 +128,16 @@ class RegisterActivity() : AppCompatActivity() {
 
     }
 
-    var selectedIndex = 1;
+    var selectedIndex = 0;
     var selectedMember : String? = null
     fun showMemberMenu()
     {
 
         val memberList = ArrayList<String>()
+        memberList.add("Select")
+
        for (i in minTeamSize..maxTeamSize)
         memberList.add(i.toString())
-
 
 
         val member = memberList.toTypedArray()
@@ -149,49 +150,59 @@ class RegisterActivity() : AppCompatActivity() {
                 selectedMember = member[selectedIndex]
             }
             .setPositiveButton("OK"){dialog,which ->
-                showSnackBar("$selectedMember members selected")
                 isMemberSelected = 1
-                binding.chooseMembers.text = member[selectedIndex]
+                if(selectedIndex == 0)
+                {
+                    Toast.makeText(this,"Number of members is required",Toast.LENGTH_SHORT)
+                    isMemberSelected = 0;
+                }
+                if(isMemberSelected == 1) {
+                    showSnackBar("$selectedMember members selected")
+                    binding.chooseMembers.text = member[selectedIndex]
 
-                //implement here the size part
-                when (selectedMember?.toInt()) {
-                    1 -> {member1layout.visibility = View.VISIBLE
-                        member2layout.visibility = View.GONE
-                        member3layout.visibility = View.GONE
-                        member4layout.visibility = View.GONE
-                        member5layout.visibility = View.GONE}
-                    2 -> {
-                        member1layout.visibility = View.VISIBLE
-                        member2layout.visibility = View.VISIBLE
-                        member3layout.visibility = View.GONE
-                        member4layout.visibility = View.GONE
-                        member5layout.visibility = View.GONE
+                    //implement here the size part
+                    when (selectedMember?.toInt()) {
+                        1 -> {
+                            member1layout.visibility = View.VISIBLE
+                            member2layout.visibility = View.GONE
+                            member3layout.visibility = View.GONE
+                            member4layout.visibility = View.GONE
+                            member5layout.visibility = View.GONE
+                        }
+
+                        2 -> {
+                            member1layout.visibility = View.VISIBLE
+                            member2layout.visibility = View.VISIBLE
+                            member3layout.visibility = View.GONE
+                            member4layout.visibility = View.GONE
+                            member5layout.visibility = View.GONE
+                        }
+
+                        3 -> {
+                            member1layout.visibility = View.VISIBLE
+                            member2layout.visibility = View.VISIBLE
+                            member3layout.visibility = View.VISIBLE
+                            member4layout.visibility = View.GONE
+                            member5layout.visibility = View.GONE
+                        }
+
+                        4 -> {
+                            member1layout.visibility = View.VISIBLE
+                            member2layout.visibility = View.VISIBLE
+                            member3layout.visibility = View.VISIBLE
+                            member4layout.visibility = View.VISIBLE
+                            member5layout.visibility = View.GONE
+                        }
+
+                        5 -> {
+                            member1layout.visibility = View.VISIBLE
+                            member2layout.visibility = View.VISIBLE
+                            member3layout.visibility = View.VISIBLE
+                            member4layout.visibility = View.VISIBLE
+                            member5layout.visibility = View.VISIBLE
+                        }
+
                     }
-
-                    3 -> {
-                        member1layout.visibility = View.VISIBLE
-                        member2layout.visibility = View.VISIBLE
-                        member3layout.visibility = View.VISIBLE
-                        member4layout.visibility = View.GONE
-                        member5layout.visibility = View.GONE
-                    }
-
-                    4 -> {
-                        member1layout.visibility = View.VISIBLE
-                        member2layout.visibility = View.VISIBLE
-                        member3layout.visibility = View.VISIBLE
-                        member4layout.visibility = View.VISIBLE
-                        member5layout.visibility = View.GONE
-                    }
-
-                    5 -> {
-                        member1layout.visibility = View.VISIBLE
-                        member2layout.visibility = View.VISIBLE
-                        member3layout.visibility = View.VISIBLE
-                        member4layout.visibility = View.VISIBLE
-                        member5layout.visibility = View.VISIBLE
-                    }
-
                 }
             }
             .setNeutralButton("Cancel"){dialog,which ->

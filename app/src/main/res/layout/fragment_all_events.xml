@@ -19,6 +19,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:queryHint="Search..."
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"/>

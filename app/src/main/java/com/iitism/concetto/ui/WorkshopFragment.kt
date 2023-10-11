@@ -14,8 +14,10 @@ import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.iitism.concetto.MainActivity
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.FragmentWorkshopBinding
+import com.iitism.concetto.ui.homefragment.HomeFragment
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
@@ -24,6 +26,7 @@ class WorkshopFragment : Fragment() {
     var mprogressBar: ProgressBar? = null
     private lateinit var bindng : FragmentWorkshopBinding
     var pdf:String? = null
+    private  var fl = 1
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -33,7 +36,7 @@ class WorkshopFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_workshop, container, false)
         bindng = FragmentWorkshopBinding.inflate(layoutInflater)
-        mprogressBar = rootView.findViewById(R.id.progressBar)
+        fl = 0;
 //        if (url != null) {
 //            mwb_webView!!.settings.javaScriptEnabled = true
 //            mwb_webView!!.settings.safeBrowsingEnabled = true
@@ -55,15 +58,15 @@ class WorkshopFragment : Fragment() {
 ////            Toast.makeText(context, "$pdf", Toast.LENGTH_LONG).show()
 //            mwb_webView!!.loadUrl("https://linktr.ee/Concetto_Workshops")
 //        }
-
         goOn()
-
-
-
         return rootView
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        val intent  = Intent(context,MainActivity::class.java)
+        startActivity(intent)
+    }
     fun goOn()
     {
         var url: String = "https://linktr.ee/Concetto_Workshops"
@@ -78,7 +81,6 @@ class WorkshopFragment : Fragment() {
             Toast.makeText(context,"Browser not found",Toast.LENGTH_SHORT).show()
             Log.i("Exception",e.toString())
         }
-        mprogressBar!!.visibility = View.GONE
     }
 
 

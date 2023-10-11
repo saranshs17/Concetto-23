@@ -41,6 +41,7 @@
                 android:textColor="@color/teal_700"
                 android:text="Enter Your Information"
                 android:textSize="30dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/inter_bold"
                 android:textAlignment="center"
                 />
