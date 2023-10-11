@@ -1,5 +1,9 @@
 package com.iitism.concetto.ui.allevents
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iitism.concetto.databinding.FragmentAllEventsBinding
 import com.iitism.concetto.ui.aboutUs.AboutUsRepository
@@ -40,6 +46,7 @@ class AllEventsFragment : Fragment() {
         binding = FragmentAllEventsBinding.inflate(inflater, container, false)
         return binding.root
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         retrofitInstance = RetrofitInstanceEvents()
@@ -55,18 +62,34 @@ class AllEventsFragment : Fragment() {
         // itemdapter.notifyDataSetChanged()
         binding.loadingCardAllevents.visibility = View.VISIBLE
 
-        getEvents()
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
+//        getEvents()
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                searchList(newText)
-                return true
-            }
-        })
+        if (isNetworkAvailable()) {
+            getEvents()
+            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    return false
+                }
 
+                override fun onQueryTextChange(newText: String): Boolean {
+                    searchList(newText)
+                    return true
+                }
+            })
+        } else {
+            binding.loadingCardAllevents.visibility = View.VISIBLE
+            binding.searchView.visibility = View.GONE
+            Toast.makeText(requireContext(), "Network unavailable. Please try again.", Toast.LENGTH_LONG).show()
+        }
+
+
+    }
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+        return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
     }
 
     private fun getEvents()
@@ -95,7 +118,7 @@ class AllEventsFragment : Fragment() {
                 for (dataClass in viewModel.EventsList.value!!.toMutableList()) {
                     if (dataClass.name?.lowercase()
                             ?.contains(text.lowercase(Locale.getDefault())) == true
-                        && dataClass.organizer?.lowercase()
+                        || dataClass.organizer?.lowercase()
                             ?.contains(text.lowercase(Locale.getDefault())) == true
                     ) {
                         searchList.add(dataClass)

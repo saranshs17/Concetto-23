@@ -1,5 +1,9 @@
 package com.iitism.concetto.ui.clubevents
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iitism.concetto.R
@@ -46,6 +52,7 @@ class ClubEventsFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         retrofitInstance = RetrofitInstanceClubEvents()
@@ -58,20 +65,33 @@ class ClubEventsFragment : Fragment() {
         binding.rvClub.setHasFixedSize(true)
         binding.loadingCardClubevents.visibility = View.VISIBLE
         // itemAdapter.notifyDataSetChanged()
-        getEvents()
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
+        if (isNetworkAvailable()) {
+            getEvents()
+            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    return false
+                }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                searchList(newText)
-                return true
-            }
-        })
+                override fun onQueryTextChange(newText: String): Boolean {
+                    searchList(newText)
+                    return true
+                }
+            })
+        } else {
+            binding.loadingCardClubevents.visibility = View.VISIBLE
+            binding.searchView.visibility = View.GONE
+            Toast.makeText(requireContext(), "Network unavailable. Please try again.", Toast.LENGTH_LONG).show()
+        }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+        return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+    }
     private fun getEvents()
     {
         GlobalScope.launch(Dispatchers.IO) {
@@ -98,7 +118,7 @@ class ClubEventsFragment : Fragment() {
                 for (dataClass in viewModel.ClubEventList.value!!.toMutableList()) {
                     if (dataClass.name?.lowercase()
                             ?.contains(text.lowercase(Locale.getDefault())) == true
-                        && dataClass.organizer?.lowercase()
+                        || dataClass.organizer?.lowercase()
                             ?.contains(text.lowercase(Locale.getDefault())) == true
                     ) {
                         searchList.add(dataClass)

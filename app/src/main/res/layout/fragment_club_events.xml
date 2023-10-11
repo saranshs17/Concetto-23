@@ -16,9 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:queryHint="Search..."
         android:iconifiedByDefault="false"
-        android:background="@drawable/searchview_back"
+        android:background="@drawable/event_card_border"
         android:queryBackground="@android:color/transparent"/>
 
     <androidx.cardview.widget.CardView
