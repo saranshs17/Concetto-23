@@ -35,7 +35,12 @@ class SponsorsAdapter(private var DataList: List<Sponsor>) :
         holder.setIsRecyclable(false)
         val currentData = DataList[position]
         if(currentData.img!=null){
-            Picasso.get().load(currentData.img).into(holder.ivSponsorImg)
+            Picasso.get()
+                .load(currentData.img)
+                .placeholder(R.drawable.concetto_nav_logo)
+                .error(R.drawable.concetto_nav_logo)
+                .into(holder.ivSponsorImg)
+
             //holder.ivSponsorImg.layoutParams.height = 200
         }
 
