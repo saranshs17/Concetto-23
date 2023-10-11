@@ -1,7 +1,9 @@
 package com.iitism.concetto.ui.Maps
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -21,7 +23,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.ktx.Firebase
 import com.iitism.concetto.R
 import com.iitism.concetto.databinding.FragmentMapsBinding
@@ -33,7 +38,10 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 
 
-class MapsFragment : Fragment() , OnMapReadyCallback {
+class MapsFragment(
+    private val destLat : Double,
+    private val destLng : Double
+) : Fragment() , OnMapReadyCallback {
 
 
     private var binding:FragmentMapsBinding? = null
@@ -41,18 +49,21 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var mMap: GoogleMap
+    private lateinit var destinationLatLng: LatLng
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       binding=FragmentMapsBinding.inflate(layoutInflater)
+        binding = FragmentMapsBinding.inflate(layoutInflater)
 
-        init()
         mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        val intent = Intent()
 
-        return binding?.root
+        destinationLatLng = LatLng(destLat ,destLng)
+        init()
+            return binding?.root
     }
 
     @SuppressLint("MissingPermission")
@@ -111,6 +122,7 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
         mMap = googleMap
 
         //Request Permissions
+        var userLatLng : LatLng = LatLng(0.0,0.0)
         Dexter.withContext(context)
             .withPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
             .withListener(object : PermissionListener {
@@ -123,13 +135,34 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
                             .addOnFailureListener {
                                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                             }.addOnSuccessListener { location ->
-                                val userLatLng = LatLng(location.latitude, location.longitude)
-                                mMap.animateCamera(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        userLatLng,
-                                        15F
-                                    )
-                                )
+                                userLatLng = LatLng(location.latitude, location.longitude)
+//                                mMap.animateCamera(
+//                                    CameraUpdateFactory.newLatLngZoom(
+//                                        userLatLng,
+//                                        15F
+//                                    )
+//                                )
+                                val markerOptions = MarkerOptions()
+                                    .position(LatLng(destLat, destLng)) // Set the marker position (latitude and longitude)
+                                    .title("Your Destination")
+                                googleMap.addMarker(markerOptions)
+                                // Set a title for the marker (optional)
+                                val startPoint = LatLng(userLatLng.latitude, userLatLng.longitude)
+                                val endPoint = LatLng(destinationLatLng.latitude, destinationLatLng.longitude)
+                                val polylineOptions = PolylineOptions()
+                                    .add(startPoint, endPoint)
+                                    .color(Color.BLUE)  // Set the color of the polyline
+                                    .width(20f)         // Set the width of the polyline
+
+                                val polyline = googleMap.addPolyline(polylineOptions)
+                                val boundsBuilder = LatLngBounds.builder()
+                                    .include(startPoint)
+                                    .include(endPoint)
+
+                                val bounds = boundsBuilder.build()
+                                val padding = 100 // Adjust padding as needed
+
+                                googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
                             }
                         true
                     }
@@ -142,6 +175,8 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
                     params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
                     params.bottomMargin = 250
                 }
+
+
                 override fun onPermissionDenied(permissions: PermissionDeniedResponse?) {
 
                 }
@@ -152,8 +187,8 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
                 ) {
 
                 }
-
             }).check()
+
         mMap.uiSettings.isZoomControlsEnabled = true
 
     }
