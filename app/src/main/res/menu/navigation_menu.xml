@@ -89,16 +89,16 @@
 
     </item>
 
-<!--    <item android:title="Admin" >-->
+    <item android:title="Admin" >
 
-<!--        <menu>-->
+        <menu>
 
-<!--            <item-->
-<!--                android:id="@+id/nav_add_notice"-->
-<!--                android:icon="@drawable/baseline_send_24"-->
-<!--                android:title="Add Notice" />-->
-<!--        </menu>-->
-<!--    </item>-->
+            <item
+                android:id="@+id/nav_add_notice"
+                android:icon="@drawable/baseline_send_24"
+                android:title="Add Notice" />
+        </menu>
+    </item>
 
     <item
         android:title="@string/menu_supportsection"
