@@ -213,13 +213,12 @@ class ViewerActivity : AppCompatActivity() {
                         binding.loadingCardViewerActitivity.visibility = View.GONE
                         binding.viewPager2.adapter = adapter
                         adapter.notifyDataSetChanged()
-
-
                         // Data fetched successfully
                         Log.i("Data One Event", data.toString())
                         viewModel.EventsList.postValue(data)
                         viewModel.EventsList.observe( this@ViewerActivity, Observer {
 //                           startResgister()
+                            adapter.notifyDataSetChanged()
                         })
                         binding.registerbtn.visibility = View.VISIBLE
                     }
