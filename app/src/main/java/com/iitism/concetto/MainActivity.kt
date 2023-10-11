@@ -1,11 +1,15 @@
 package com.iitism.concetto
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
@@ -40,12 +44,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var tokenList:ArrayList<String>
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//Set portrait
+
+
 
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
@@ -101,6 +108,16 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
 
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_workshop -> {
+                    goOn()
+                }
+            }
+            true
+        }
+
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             binding.appBarMain.titleactionbar.text = when (destination.id) {
                 R.id.nav_profile -> "PROFILE"
@@ -113,9 +130,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_merchandise -> "MERCHANDISE"
                 R.id.nav_coreTeam -> "CORE TEAM"
                 R.id.nav_allEvents-> "ALL EVENTS"
+                R.id.nav_workshop->"WORKSHOP"
                 R.id.nav_clubEvents -> "CLUB EVENTS"
                 R.id.nav_departementEvents -> "DEPARTMENT EVENTS"
-                R.id.nav_workshop -> "WORKSHOPS"
                 R.id.nav_location-> "Location"
 //                R.id.nav_gatepass -> "GATE PASS"
                 R.id.nav_sponsors -> "PAST SPONSORS"
@@ -126,6 +143,21 @@ class MainActivity : AppCompatActivity() {
         }
         navView.setupWithNavController(navController)
         navView.setCheckedItem(R.id.nav_home)
+    }
+    private fun goOn()
+    {
+        var url: String = "https://linktr.ee/Concetto_Workshops"
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            Log.i("pdflink", intent.data.toString())
+            startActivity(intent)
+        }
+        catch (e : Exception)
+        {
+            Toast.makeText(this,"Browser not found",Toast.LENGTH_SHORT).show()
+            Log.i("Exception",e.toString())
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

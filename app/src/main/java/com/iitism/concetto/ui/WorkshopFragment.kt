@@ -57,10 +57,7 @@ class WorkshopFragment : Fragment() {
 //        }
 
         goOn()
-        bindng.refreshbtn.setOnClickListener()
-        {
-            goOn()
-        }
+
 
 
         return rootView
