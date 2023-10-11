@@ -128,6 +128,12 @@
             app:destination="@id/nav_allEvents" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_newaboutus"
+        android:label="About Us"
+        android:name="com.iitism.concetto.ui.newaboutus.BlankFragment"
+        tools:layout="@layout/fragment_blank"/>
+
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->
 <!--        android:label="Gate Pass"-->
