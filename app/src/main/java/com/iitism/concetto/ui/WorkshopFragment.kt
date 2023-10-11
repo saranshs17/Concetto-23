@@ -63,6 +63,7 @@ class WorkshopFragment : Fragment() {
         return rootView
     }
 
+
     fun goOn()
     {
         var url: String = "https://linktr.ee/Concetto_Workshops"
