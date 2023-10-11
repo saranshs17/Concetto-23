@@ -32,7 +32,7 @@ class LocationAdapter(private val act : Context,private val locationList: List<L
         holder.location_tv.text = location.locationname
         holder.button.setOnClickListener {
 
-            // Show a toast with the place name
+
 
             if (location.id == 1) {
                 Toast.makeText(holder.itemView.context, "Id = 1", Toast.LENGTH_SHORT).show()
@@ -60,22 +60,18 @@ class LocationAdapter(private val act : Context,private val locationList: List<L
                 Toast.makeText(holder.itemView.context, "Id = 12", Toast.LENGTH_SHORT).show()
             }
 
-            val fragment = MapsFragment(location.latitude,location.longitude)
-            val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.nav_host_fragment_content_main, fragment)
-            transaction.addToBackStack(null) // Optional: Add to back stack for navigation
-            transaction.commit()
 
-//            val intent  = Intent(holder.itemView.context,MapsFragment()::class.java)
-//            intent.putExtra("Latitude",location.latitude)
-//            intent.putExtra("Longitude",location.longitude)
-//            holder.itemView.context.startActivity(intent)
+
+
+            val intent  = Intent(holder.itemView.context,MapsActivity::class.java)
+            intent.putExtra("destLat",location.latitude)
+            intent.putExtra("destLng",location.longitude)
+            intent.putExtra("locationName",location.locationname)
+            holder.itemView.context.startActivity(intent)
 
 
         }
     }
-
 
 
     override fun getItemCount(): Int {
