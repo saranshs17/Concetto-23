@@ -210,7 +210,6 @@ class ViewerActivity : AppCompatActivity() {
                     flag = true
                     val data = response.body()
                     if (data != null) {
-                        binding.loadingCardViewerActitivity.visibility = View.GONE
                         binding.viewPager2.adapter = adapter
                         adapter.notifyDataSetChanged()
                         // Data fetched successfully
@@ -220,6 +219,8 @@ class ViewerActivity : AppCompatActivity() {
 //                           startResgister()
                             adapter.notifyDataSetChanged()
                         })
+                        binding.loadingCardViewerActitivity.visibility = View.GONE
+                        adapter.notifyDataSetChanged()
                         binding.registerbtn.visibility = View.VISIBLE
                     }
                 } else {
@@ -231,6 +232,7 @@ class ViewerActivity : AppCompatActivity() {
                 Log.e("Error", e.toString())
             }
         }
+        adapter.notifyDataSetChanged()
 
     }
 

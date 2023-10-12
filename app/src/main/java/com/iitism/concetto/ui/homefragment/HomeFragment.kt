@@ -97,8 +97,7 @@ class HomeFragment : Fragment() {
                     }
                     else {
                         countDownHackfestEnd()
-                        binding.textcounterdown.text = "Time Remaining"
-                        binding.LinearLayout1.visibility = View.GONE
+                        binding.textcounterdown.text = "Concetto'23 is Live"
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -119,21 +118,30 @@ class HomeFragment : Fragment() {
                 try {
                     val currentDate = Date()
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2023-9-15 00:00:00")
+                    val futureDate: Date = dateFormat.parse("2023-10-16 00:00:00")
                     if (!currentDate.after(futureDate)) {
+
                         var diff: Long = (futureDate.getTime()
                                 - currentDate.getTime())
+                        val days = diff / (24 * 60 * 60 * 1000)
+                        diff -= days * (24 * 60 * 60 * 1000)
                         val hours = diff / (60 * 60 * 1000)
                         diff -= hours * (60 * 60 * 1000)
                         val minutes = diff / (60 * 1000)
                         diff -= minutes * (60 * 1000)
                         val seconds = diff / 1000
+                        binding.txtDay.setText("" + String.format("%02d", days))
                         binding.txtHour.setText("" + String.format("%02d", hours))
                         binding.txtMinute.setText("" + String.format("%02d", minutes))
-                        binding.txtSecond.setText(("" + String.format("%02d", seconds)))
+                        binding.txtSecond.setText("" + String.format("%02d",seconds))
                     }
                     else {
-                        binding.textcounterdown.text = "Its Live now"
+                        binding.textcounterdown.text = "Concetto'23 is  Over"
+                        binding.txtDay.visibility = View.INVISIBLE
+                        binding.txtHour.visibility = View.INVISIBLE
+                        binding.txtMinute.visibility = View.INVISIBLE
+                        binding.txtSecond.visibility = View.INVISIBLE
+
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
