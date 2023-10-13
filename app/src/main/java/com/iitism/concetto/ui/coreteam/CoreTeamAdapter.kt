@@ -47,7 +47,6 @@ class CoreTeamAdapter(private val dataList:List<CoreTeamDataModel>) :
                 .load(currentData.image)
                 .placeholder(R.drawable.concetto_full_logo)
                 .centerCrop()
-                .circleCrop()
                 .into(holder.image_c)
         }
 

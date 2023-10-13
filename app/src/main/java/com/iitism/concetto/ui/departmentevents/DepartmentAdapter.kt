@@ -93,6 +93,12 @@ class DepartmentAdapter: RecyclerView.Adapter<DepartmentAdapter.MyViewHolder>() 
         return eventList.size
     }
 
+    fun searchDataList(searchList: ArrayList<AllEventsDataModel>) {
+        eventList = searchList
+        notifyDataSetChanged()
+    }
+
+
 }
 
 

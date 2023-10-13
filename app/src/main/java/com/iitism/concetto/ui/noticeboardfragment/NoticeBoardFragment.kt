@@ -1,11 +1,13 @@
 package com.iitism.concetto.ui.noticeboardfragment
 
 import android.app.ProgressDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.iitism.concetto.databinding.FragmentNoticeBoardBinding
@@ -38,6 +40,7 @@ class NoticeBoardFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -62,6 +65,7 @@ class NoticeBoardFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun networkCheckAndRun(){
         if(viewModel.isNetworkAvailable()){
             binding.retryButton.visibility = View.GONE

@@ -34,6 +34,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contactus">The Annual Techno-Management Fest of IIT(ISM) Dhanbad</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -136,5 +137,23 @@
     </ul>
     ]]>
   </string>
+    <string-array name="date">
+        <item>12th October, 2023</item>
+        <item>13th October, 2023</item>
+        <item>14th October, 2023</item>
+        <item>15th October, 2023</item>
+    </string-array>
 
+    <string name="convener1Msg" >
+        "Convener's Message \nAs quoted by Edward Teller,\"The science of today is the technology of tomorrow.\" Today\'s young minds are in eager search of a platform to showcase their talent, and CONCETTO provides such a platform for students. CONCETTO \'23: Cosmic Odyssey celebrates the incredible journey of innovation and exploration. This year, under the theme \"Cosmic Odyssey,\" the fest  pays homage to India's accomplishments in space exploration and offers a platform where brilliant young minds converge "with industries seeking fresh perspectives. This remarkable event acknowledges the dedicated team and sponsors whose invaluable efforts have made it possible. Together, participants embark on a collective quest to reach for the stars,exploring new horizons in technology and innovation."
+    </string>
+
+    <string name="convener2Msg">
+        "With a sense of purpose, CONCETTO \'23 invites you to embark on a journey into the boundless mysteries of the universe. Navigating the cosmos under the theme \"Cosmic Odyssey,\" it pays tribute to India's remarkable achievements in space exploration. This fest is more than a showcase of talent, it's a bridge connecting industries with the next generation of innovators. The event is designed with a diverse range of technical and management events, providing a stage for emerging talent to shine. Our heartfelt thanks to the dedicated team, faculty, organizers, and sponsors who have made this remarkable event possible."
+    </string>
+
+    <string name="aboutus">
+        "CONCETTO is the annual three-day Techno-Management Fest hosted by the esteemed Indian Institute of Technology (Indian School of Mines), Dhanbad every year. Merging technology and management, the fest is a beacon of innovation and budding talent. It has the largest participation in Eastern India, with a footfall of over 20,000. CONCETTO is more than an event. It's a platform where participants take on challenges to test their technical skills, expand their horizons with workshops by experts, and enjoy electrifying performances by renown stars as the sun sets."
+        "This year, CONCETTO'23 - ORBITING INGENUITY is here with the theme \'Cosmic Odyssey\', which revolves around the Exploration and Colonization of Space. From 13th - 15th October 2023 the fest will mesmerize you with a plethora of technical and managerial events lined up. CONCETTO, a dream of engineering enthusiasts, empowers dreams to take flight. Certificates, goodies, and prizes worth lakhs await lucky participants. Step into the realm where technology and innovation entwine, where learning si festive, and each moment weaves cherished memories.
+    </string>
 </resources>

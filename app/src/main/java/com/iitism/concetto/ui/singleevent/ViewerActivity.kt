@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -54,10 +55,43 @@ class ViewerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.registerbtn.visibility = View.INVISIBLE
+        viewModel = ViewModelProvider(this, MyViewModelFactory(this)).get(MyViewModel::class.java)
+        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
+        tabLayout= binding.tabLayout
+        viewPager= binding.viewPager2
+        tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
+        tabLayout.addTab(tabLayout.newTab().setText("RULES"))
+        tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
+        compositePageTransformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = (0.80f + r * 0.20f)
+        }
+        viewPager.setPageTransformer(compositePageTransformer)
+        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab!= null){
+                    viewPager.currentItem= tab.position
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                tabLayout.selectTab(tabLayout.getTabAt(position))
+            }
+        })
+
         val eventIdExtra = intent?.getStringExtra("eventID")
         if (eventIdExtra != null) {
             eventType = eventIdExtra
-            viewModel = ViewModelProvider(this, MyViewModelFactory(this)).get(MyViewModel::class.java)
             Log.i("type", eventType)
             networkCheckAndRun()
         } else {
@@ -66,6 +100,12 @@ class ViewerActivity : AppCompatActivity() {
             // Optionally, you can finish this activity or take appropriate action.
             // For example:
             // finish()
+        }
+
+        binding.registerbtn.setOnClickListener()
+        {
+            binding.loadingCardViewerActitivity.visibility = View.VISIBLE
+            startResgister()
         }
 
 //        binding.retryButtonViwerActivity.setOnClickListener()
@@ -80,6 +120,12 @@ class ViewerActivity : AppCompatActivity() {
     fun startResgister()
     {
         Log.i("DAta",viewModel.EventsList.value?.get(0).toString())
+        if(viewModel.EventsList.value == null)
+        {
+            startResgister()
+            return
+        }
+
         val maxParticipants : Int = viewModel.EventsList.value?.get(0)?.maxTeamSize ?: 0
         val minParticipants : Int = viewModel.EventsList.value?.get(0)?.minTeamSize ?: 0
         val id : String = viewModel.EventsList.value?.get(0)?._id.toString()
@@ -98,34 +144,25 @@ class ViewerActivity : AppCompatActivity() {
             intent.putExtra("posterUrl", posterMobile)
         intent.putExtra("EventName",eventName)
 
+        binding.loadingCardViewerActitivity.visibility = View.GONE
         if (registationStatus == 1)
         {
-            binding.registerbtn.setOnClickListener()
-            {
-                startActivity(intent)
-            }
+            startActivity(intent)
         }
         else
         {
-            if (registrationLink != null) {
-                val url = registrationLink
-//                val intent = Intent(Intent.ACTION_VIEW)
-//                intent.data = Uri.parse(url)
-//                if (intent.resolveActivity(packageManager) != null) {
-//                    startActivity(intent)
+            val url = registrationLink
+            try {
                 val intent = Intent(android.content.Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
-                intent.setPackage("com.android.chrome")
                 Log.i("reg link",intent.data.toString())
-                binding.registerbtn.setOnClickListener()
-                {
-                    startActivity(intent)
-                }
-
-                }
-
-            else
-                Toast.makeText(this, "No Registration Link  available", Toast.LENGTH_SHORT).show()
+                binding.loadingCardViewerActitivity.visibility = View.GONE
+                startActivity(intent)
+            }
+            catch (e : Exception)
+            {
+                Toast.makeText(this,"No Browser found",Toast.LENGTH_SHORT)
+            }
         }
 
 
@@ -169,56 +206,22 @@ class ViewerActivity : AppCompatActivity() {
                 eventType = "api/showEvents/" + eventType
                 val response: Response<SingleEventModel> = retrofit.apiService.getEvent(eventType)
                 if (response.isSuccessful) {
-                    delay(1000)
-                    binding.loadingCardViewerActitivity.visibility = View.GONE
+
                     flag = true
                     val data = response.body()
                     if (data != null) {
+                        binding.viewPager2.adapter = adapter
+                        adapter.notifyDataSetChanged()
                         // Data fetched successfully
                         Log.i("Data One Event", data.toString())
                         viewModel.EventsList.postValue(data)
-                        adapter= FragmentPageAdapter(supportFragmentManager,lifecycle,viewModel)
-                        tabLayout= binding.tabLayout
-                        viewPager= binding.viewPager2
-                        tabLayout.addTab(tabLayout.newTab().setText("ABOUT"))
-                        tabLayout.addTab(tabLayout.newTab().setText("RULES"))
-                        tabLayout.addTab(tabLayout.newTab().setText("DETAILS"))
-                        binding.viewPager2.adapter = adapter
-                        val compositePageTransformer = CompositePageTransformer()
-                        compositePageTransformer.addTransformer(MarginPageTransformer((40 * Resources.getSystem().displayMetrics.density).toInt()))
-                        compositePageTransformer.addTransformer { page, position ->
-                            val r = 1 - abs(position)
-                            page.scaleY = (0.80f + r * 0.20f)
-                        }
-                        viewPager.setPageTransformer(compositePageTransformer)
-                        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-                            override fun onTabSelected(tab: TabLayout.Tab?) {
-                                if (tab!= null){
-                                    viewPager.currentItem= tab.position
-                                }
-                            }
-                            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                            }
-                            override fun onTabReselected(tab: TabLayout.Tab?) {
-                            }
-
+                        viewModel.EventsList.observe( this@ViewerActivity, Observer {
+//                           startResgister()
+                            adapter.notifyDataSetChanged()
                         })
-
-                        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-                            override fun onPageSelected(position: Int) {
-                                super.onPageSelected(position)
-                                tabLayout.selectTab(tabLayout.getTabAt(position))
-                            }
-                        })
-
-//
-                        delay(1000)
+                        binding.loadingCardViewerActitivity.visibility = View.GONE
+                        adapter.notifyDataSetChanged()
                         binding.registerbtn.visibility = View.VISIBLE
-                        if(viewModel.EventsList != null) {
-                            startResgister()
-                        }
-
-
                     }
                 } else {
                     Log.e("API Error", "Response code: ${response.code()}")
@@ -229,6 +232,7 @@ class ViewerActivity : AppCompatActivity() {
                 Log.e("Error", e.toString())
             }
         }
+        adapter.notifyDataSetChanged()
 
     }
 

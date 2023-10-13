@@ -22,8 +22,8 @@ android {
         applicationId "com.iitism.concetto"
         minSdk 21
         targetSdk 33
-        versionCode 5
-        versionName "1.2"
+        versionCode 7
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        signingConfig signingConfigs.release
@@ -67,6 +67,7 @@ dependencies {
     implementation 'org.chromium.net:cronet-api:113.5672.61'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.3.0'
     implementation 'com.google.firebase:firebase-messaging-ktx:23.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
     annotationProcessor 'androidx.room:room-compiler:2.5.1'
     implementation 'com.google.android.gms:play-services-fitness:21.1.0'
     testImplementation 'junit:junit:4.13.2'
@@ -128,4 +129,11 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
+
+    //Google Places
+    implementation "com.google.android.libraries.places:places:3.1.0"
+    //Dexter
+    implementation 'com.karumi:dexter:6.2.3'
+    //Location
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 }

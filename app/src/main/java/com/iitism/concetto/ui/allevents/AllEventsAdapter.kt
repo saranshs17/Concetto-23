@@ -101,6 +101,10 @@ class AllEventsAdapter: RecyclerView.Adapter<AllEventsAdapter.MyViewHolder>() {
         return eventList.size
     }
 
+    fun searchDataList(searchList: ArrayList<AllEventsDataModel>) {
+        eventList = searchList
+        notifyDataSetChanged()
+    }
 
 
 }

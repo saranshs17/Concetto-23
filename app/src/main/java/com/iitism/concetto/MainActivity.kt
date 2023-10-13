@@ -1,11 +1,20 @@
 package com.iitism.concetto
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -35,16 +44,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var tokenList:ArrayList<String>
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//Set portrait
+
+
 
         val playerEmail=intent.getStringExtra("playerEmail")
         Log.d("mainActivityData",playerEmail.toString())
-
-
+        askNotificationPermission()
         val sharedPreferences=getSharedPreferences("TokenPreferences", MODE_PRIVATE)
         val savedToken=sharedPreferences.getString("SavedToken","Nothing")
         if(savedToken.equals("Nothing")){
@@ -64,15 +76,6 @@ class MainActivity : AppCompatActivity() {
 //                list.add(token)
             })
         }
-
-        GlobalScope.launch {
-            tokenList=ApiService().getRegisteredTokenListService(applicationContext)
-            delay(2500)
-            Log.d("Devices Token List=>>>", tokenList.toString())
-            delay(2500)
-           // NotificationService().sendNotification(tokenList,"Concetto - Asia's Greatest Fest ","WELCOME")
-        }
-
 
         val drawerLayout:DrawerLayout  = binding.drawerLayout
         val navView:NavigationView = binding.navView
@@ -94,14 +97,27 @@ class MainActivity : AppCompatActivity() {
 //                R.id.nav_rules,
                 R.id.nav_scanqr,
 //                R.id.nav_gatepass,
+                R.id.nav_location,
                 R.id.nav_merchandise,
                 R.id.nav_sponsors
             ),
             drawerLayout
         )
+
         binding.appBarMain.menuButton.setOnClickListener{
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_workshop -> {
+                    goOn()
+                }
+            }
+            true
+        }
+
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             binding.appBarMain.titleactionbar.text = when (destination.id) {
                 R.id.nav_profile -> "PROFILE"
@@ -114,9 +130,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_merchandise -> "MERCHANDISE"
                 R.id.nav_coreTeam -> "CORE TEAM"
                 R.id.nav_allEvents-> "ALL EVENTS"
+                R.id.nav_workshop->"WORKSHOP"
                 R.id.nav_clubEvents -> "CLUB EVENTS"
                 R.id.nav_departementEvents -> "DEPARTMENT EVENTS"
-                R.id.nav_workshop -> "WORKSHOPS"
+                R.id.nav_location-> "Location"
 //                R.id.nav_gatepass -> "GATE PASS"
                 R.id.nav_sponsors -> "PAST SPONSORS"
                 else -> "Concetto'23"
@@ -126,6 +143,21 @@ class MainActivity : AppCompatActivity() {
         }
         navView.setupWithNavController(navController)
         navView.setCheckedItem(R.id.nav_home)
+    }
+    private fun goOn()
+    {
+        var url: String = "https://linktr.ee/Concetto_Workshops"
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            Log.i("pdflink", intent.data.toString())
+            startActivity(intent)
+        }
+        catch (e : Exception)
+        {
+            Toast.makeText(this,"Browser not found",Toast.LENGTH_SHORT).show()
+            Log.i("Exception",e.toString())
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -144,8 +176,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // FCM SDK (and your app) can post notifications.
+            //extract token
 
-
-
+        } else {
+            // TODO: Inform user that that your app will not show notifications.
+            Toast.makeText(this,"Notifications will not be shown",Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun askNotificationPermission() {
+        // This is only necessary for API level >= 33 (TIRAMISU)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) ==
+                PackageManager.PERMISSION_GRANTED) {
+                // FCM SDK (and your app) can post notifications.
+            }
+//            else if (shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS)) {
+//                // TODO: display an educational UI explaining to the user the features that will be enabled
+//                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
+//                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
+//                //       If the user selects "No thanks," allow the user to continue without notifications.
+//            }
+            else {
+                // Directly ask for the permission
+                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
 
 }

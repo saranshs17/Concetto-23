@@ -45,6 +45,17 @@
         android:label="@string/menu_noticeboard"
         android:name="com.iitism.concetto.ui.noticeboardfragment.NoticeBoardFragment"
         tools:layout="@layout/fragment_notice_board"/>
+
+    <fragment
+        android:id="@+id/nav_location"
+        android:label="Location"
+        android:name="com.iitism.concetto.ui.Maps.LocationFragment"
+        tools:layout="@layout/fragment_location"/>
+    <fragment
+        android:id="@+id/nav_add_notice"
+        android:label="Add Notice"
+        android:name="com.iitism.concetto.ui.noticeboardfragment.AddNoticeFragment"
+        tools:layout="@layout/fragment_add_notice"/>
     <fragment
         android:id="@+id/nav_coreTeam"
         android:label="@string/menu_coreTeam"
@@ -112,6 +123,12 @@
             android:id="@+id/action_nav_departementEvents_to_nav_allEvents"
             app:destination="@id/nav_allEvents" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_newaboutus"
+        android:label="About Us"
+        android:name="com.iitism.concetto.ui.newaboutus.BlankFragment"
+        tools:layout="@layout/fragment_blank"/>
 
 <!--    <fragment-->
 <!--        android:id="@id/nav_gatepass"-->

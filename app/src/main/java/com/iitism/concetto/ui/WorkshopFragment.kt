@@ -14,15 +14,19 @@ import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.iitism.concetto.MainActivity
 import com.iitism.concetto.R
+import com.iitism.concetto.databinding.FragmentWorkshopBinding
+import com.iitism.concetto.ui.homefragment.HomeFragment
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
 class WorkshopFragment : Fragment() {
 
-    var mwb_webView: WebView? = null
     var mprogressBar: ProgressBar? = null
+    private lateinit var bindng : FragmentWorkshopBinding
     var pdf:String? = null
+    private  var fl = 0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -31,39 +35,43 @@ class WorkshopFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_workshop, container, false)
+        bindng = FragmentWorkshopBinding.inflate(layoutInflater)
+        fl = 1;
 
-        mwb_webView = rootView.findViewById(R.id.wb_webView)
-        mprogressBar = rootView.findViewById(R.id.progressBar)
+        bindng.refreshbtn.setOnClickListener()
+        {
+            goOn()
+        }
 
-        var url: String = "https://linktr.ee/Concetto_Workshops"
-//        if (url != null) {
-//            mwb_webView!!.settings.javaScriptEnabled = true
-//            mwb_webView!!.settings.safeBrowsingEnabled = true
-//
-//            mwb_webView!!.webViewClient = object : WebViewClient() {
-//                override fun onPageFinished(view: WebView?, url: String?) {
-//                    super.onPageFinished(view, url)
-//                    mprogressBar!!.visibility = View.GONE
-//                    mwb_webView!!.visibility = View.VISIBLE
-//                }
-//            }
-//            mwb_webView!!.settings.setSupportZoom(true)
-//
-//            try {
-//                pdf = URLEncoder.encode(url, "UTF-8")
-//            } catch (e: UnsupportedEncodingException) {
-//                e.printStackTrace()
-//            }
-//
-////            Toast.makeText(context, "$pdf", Toast.LENGTH_LONG).show()
-//            mwb_webView!!.loadUrl("https://linktr.ee/Concetto_Workshops")
-//        }
-
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url)
-        intent.setPackage("com.android.chrome")
-        Log.i("pdflink",intent.data.toString())
-        startActivity(intent)
+        goOn()
         return rootView
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(fl == 1) {
+            fl = 0
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun goOn()
+    {
+        var url: String = "https://linktr.ee/Concetto_Workshops"
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            Log.i("pdflink", intent.data.toString())
+            startActivity(intent)
+        }
+        catch (e : Exception)
+        {
+            Toast.makeText(context,"Browser not found",Toast.LENGTH_SHORT).show()
+            Log.i("Exception",e.toString())
+        }
+    }
+
+
 }

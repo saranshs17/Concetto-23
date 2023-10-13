@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.noticeboardfragment.AddNoticeFragment">
+
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:background="@drawable/event_card_border"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOTICE"
+            android:fontFamily="@font/inter_bold"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+
+        <EditText
+            android:id="@+id/tv_title"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            android:background="@drawable/border1"
+            android:hint="Title"
+            android:fontFamily="@font/inter_bold"
+            android:textColorHint="@color/gray"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+
+
+        <EditText
+            android:paddingTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="7dp"
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="5"
+            android:background="@drawable/border1"
+            android:hint="Message"
+            android:fontFamily="@font/genos_light"
+            android:textColorHint="@color/gray"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:gravity="top|center"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_sendNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#009688"
+            android:fontFamily="@font/genos_light"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:text="Send Notice"
+            android:background="@drawable/button_background"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
