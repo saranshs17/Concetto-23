@@ -23,7 +23,7 @@ The app prioritizes functionality but has specific privacy-related details:
 - **Data Encryption**: Currently, the collected data is not encrypted.
 - **Data Deletion**: Unfortunately, users cannot delete their data through the app.
 
-**Note**: Please refer to the app's [Privacy Policy](#) for detailed information.
+**Note**: Please refer to the app's [Privacy Policy](privacy_policy.md) for detailed information.
 
 ---
 
